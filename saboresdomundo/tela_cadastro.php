@@ -61,20 +61,6 @@
 							</div>
 						</form>
 
-						<div class="text-center">
-							<a type="button" class="light-blue-text mx-2">
-								<i class="fab fa-facebook-f"></i>
-							</a>
-							<a type="button" class="light-blue-text mx-2">
-								<i class="fab fa-twitter"></i>
-							</a>
-							<a type="button" class="light-blue-text mx-2">
-								<i class="fab fa-linkedin-in"></i>
-							</a>
-							<a type="button" class="light-blue-text mx-2">
-								<i class="fab fa-github"></i>
-							</a>
-						</div>
 						<!-- Material form register -->
 
 					</div>
