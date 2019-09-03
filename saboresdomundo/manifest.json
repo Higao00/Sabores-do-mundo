@@ -1,0 +1,16 @@
+{
+  "name": "SaboresDoMundo",
+  "short_name": "SDM",
+  "theme_color": "#ff2e17",
+  "background_color": "#ff2e17",
+  "display": "fullscreen",
+  "orientation": "portrait",
+  "start_url": "/",
+  "icons": [
+    {
+      "src": "images/icons/icon-192x192.png",
+      "sizes": "72x72",
+      "type": "image/png"
+    }
+  ]
+}
