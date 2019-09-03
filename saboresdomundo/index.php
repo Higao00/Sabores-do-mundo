@@ -14,6 +14,9 @@
     <link href="css/mdb.min.css" rel="stylesheet">
     <!-- Your custom styles (optional) -->
     <link href="css/style.min.css" rel="stylesheet">
+    <link rel="manifest" href="/SaboresDoMundo/saboresdomundo/manifest.json">
+
+
     <style>
 
     	@media only screen and (max-width: 600px) {
@@ -213,6 +216,19 @@
     <script type="text/javascript" src="js/mdb.min.js"></script>
     <!-- Initializations -->
     <script type="text/javascript">
+    </script>
+
+    <!-- service Work -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('sw.js')
+          .then(function () {
+            console.log('service worker registered');
+          })
+          .catch(function () {
+            console.warn('service worker failed');
+          });
+      }
     </script>
 
     <!-- Charts -->
