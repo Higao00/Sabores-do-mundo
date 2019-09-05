@@ -1,4 +1,4 @@
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
@@ -11,74 +11,128 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <!-- Material Design Bootstrap -->
     <link href="css/mdb.min.css" rel="stylesheet">
+
     <link href="css/style.min.css" rel="stylesheet">
     <style>
-        #login{
+        .form-dark .font-small {
+            font-size: 0.8rem;
+        }
 
+        .form-dark .md-form label {
+            color: #fff;
+        }
+
+        .form-dark input[type=email]:focus:not([readonly]) {
+            border-bottom: 1px solid #FF8C00;
+            -webkit-box-shadow: 0 1px 0 0 #FF8C00;
+            box-shadow: 0 1px 0 0 #FF8C00;
+        }
+
+        .form-dark input[type=email]:focus:not([readonly])+label {
+            color: #fff;
+        }
+
+        .form-dark input[type=password]:focus:not([readonly]) {
+            border-bottom: 1px solid #FF8C00;
+            -webkit-box-shadow: 0 1px 0 0 #FF8C00;
+            box-shadow: 0 1px 0 0 #FF8C00;
+        }
+
+        .form-dark input[type=password]:focus:not([readonly])+label {
+            color: #fff;
+        }
+
+        .form-dark .modal-header {
+            border-bottom: none;
+        }
+        #login{
+            color: #FF8C00;
         }
     </style>
-
 </head>
 <body>
-    <section class="form-simple">
+    <!-- Modal -->
+    <div class="modal fade" id="darkModalForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog form-dark" role="document">
+            <!--Content-->
+            <div class="modal-content card card-image" style="background-image: url('images/pagina_principal.jfif');">
+                <div class="text-white rgba-stylish-strong py-5 px-5 z-depth-4">
+                    <!--Header-->
+                    <div class="modal-header text-center pb-4">
+                        <h3 class="modal-title w-100 white-text font-weight-bold" id="myModalLabel"><strong>Entrar</strong></h3>
+                        <button type="button" class="close white-text" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <!--Body-->
+                    <div class="modal-body">
+                        <!--Body-->
+                        <div class="md-form mb-5">
+                            <input type="email" id="Form-email5" class="form-control validate white-text">
+                            <label data-error="wrong" data-success="right" for="Form-email5">E-mail</label>
+                        </div>
 
-        <!--Form with header-->
-        <div class="card" id="login">
-      
-          <!--Header-->
-          <div class="header pt-3 grey lighten-2">
-      
-            <div class="row d-flex justify-content-start">
-              <h3 class="deep-grey-text mt-3 mb-4 pb-1 mx-5">Fazer login</h3>
-            </div>
-      
-          </div>
-          <!--Header-->
-      
-          <div class="card-body mx-4 mt-4">
-      
-            <!--Body-->
+                        <div class="md-form pb-3">
+                            <input type="password" id="Form-pass5" class="form-control validate white-text">
+                            <label data-error="wrong" data-success="right" for="Form-pass5">Senha</label>
 
-            <div class="md-form">
-                <i class="fa fa-envelope prefix grey-text"></i>
-                <input type="email" id="materialFormCardEmailEx" class="form-control">
-                <label for="materialFormCardEmailEx" class="font-weight-light">E-mail</label>
-              </div>
-      
-              <div class="md-form">
-                <i class="fa fa-lock prefix grey-text"></i>
-                <input type="password" id="materialFormCardPasswordEx" class="form-control">
-                <label for="materialFormCardPasswordEx" class="font-weight-light">Senha</label>
-              <p class="font-small grey-text d-flex justify-content-end">Esqueceu a <a href="#"
-                  class="dark-grey-text font-weight-bold ml-1"> Senha?</a></p>
-            </div>
-      
-            <div class="text-center mb-4">
-              <button type="button" class="btn btn-cyan">Entrar</button>
-            </div>
-            <p class="font-small grey-text d-flex justify-content-center">Não possui uma conta? <a href="#" class="dark-grey-text font-weight-bold ml-1"> inscrever-se</a></p>
-      
-          </div>
+                        </div>
 
-          <div class="text-center">
-                <a type="button" class="light-blue-text mx-2">
-                    <i class="fab fa-facebook-f"></i>
-                </a>
-                <a type="button" class="light-blue-text mx-2">
-                    <i class="fab fa-twitter"></i>
-                </a>
-                <a type="button" class="light-blue-text mx-2">
-                    <i class="fab fa-linkedin-in"></i>
-                </a>
-                <a type="button" class="light-blue-text mx-2">
-                    <i class="fab fa-github"></i>
-                </a>
+                        <!--Grid row-->
+                        <div class="row d-flex align-items-center mb-4">
+
+                            <!--Grid column-->
+                            <div class="text-center mb-3 col-md-12">
+                                <button type="button" class="btn btn-amber">Entar</button>
+                            </div>
+                            <!--Grid column-->
+
+                        </div>
+                        <!--Grid row-->
+
+                        <!--Grid row-->
+                        <div class="row">
+
+                            <!--Grid column-->
+                            <div class="col-md-12">
+                                <p class="font-small white-text d-flex justify-content-end">Não tem conta? <a href="#" class="orange-text ml-1 font-weight-bold">
+                                        Cadastre-se</a></p>
+                            </div>
+                            <!--Grid column-->
+
+                        </div>
+                        <!--Grid row-->
+
+                    </div>
+                </div>
             </div>
-      
+            <!--/.Content-->
         </div>
-        <!--/Form with header-->
-      
-      </section>
+    </div>
+    <!-- Modal -->
+
+    <div class="row">
+        <div class="col-xl-5 col-lg-6 col-md-10 col-sm-12 mx-auto mt-lg-5">
+            <div class="text-center">
+                <a href="" class="btn btn-amber" data-toggle="modal" data-target="#darkModalForm">Fazer Login</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="card mx-xl-6">
+
+
+    </div>
+    <!-- SCRIPTS -->
+    <!-- JQuery -->
+    <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="js/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="js/mdb.min.js"></script>
 
 </body>
+
 </html>
