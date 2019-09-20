@@ -6,6 +6,7 @@ include 'topo.php';
 <style>
     img#perfil {
         margin-top: 10%;
+       
     }
 
     div#menu {
@@ -27,7 +28,7 @@ include 'topo.php';
 
         <!-- Avatar -->
         <div class="avatar mx-auto white">
-            <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20%2810%29.jpg" id="perfil" class="rounded-circle" alt="woman avatar">
+            <img src="img/perfil-sem-foto.png" id="perfil" class="rounded-circle" alt="woman avatar">
         </div>
 
         <!-- Content -->
