@@ -1,11 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Material Design Bootstrap</title>
+    <title>Tela de login</title>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
     <!-- Bootstrap core CSS -->
@@ -13,6 +12,7 @@
     <!-- Material Design Bootstrap -->
     <link href="css/mdb.min.css" rel="stylesheet">
 
+    <link href="css/style.min.css" rel="stylesheet">
     <style>
         .form-dark .font-small {
             font-size: 0.8rem;
@@ -50,7 +50,6 @@
         }
     </style>
 </head>
-
 <body>
     <!-- Modal -->
     <div class="modal fade" id="darkModalForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

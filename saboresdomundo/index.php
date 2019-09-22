@@ -140,9 +140,6 @@
                         <li class="nav-item">
                             <a class="nav-link waves-effect bold-1" href="#" target="">Mais Vistas</a>
                         </li>
-                        <li class="nav-item">
-                            <a href="" class="nav-link waves-effect bold-1" data-toggle="modal" data-target="#darkModalForm">Receitas do Mundo</a>
-                        </li>
                     </ul>
                 </div>
 
@@ -454,39 +451,7 @@
     </div>
     <!-- Modal -->
 
-    <div class="modal fade" id="darkModalForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog form-dark" role="document">
-            <!--Content-->
-            <div class="modal-content card card-image" style="background-image: url('images/pagina_principal2.jfif');">
-                <div class="text-white rgba-stylish-strong py-5 px-5 z-depth-4">
-                    <!--Body-->
-                    <div class="modal-body">
-                        <!--Body-->
-                        <div class="md-form mb-5">
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item" href="#"><img src="images/icon_australia.png" alt=""> </a>
-                                <a class="dropdown-item" href="#"><img src="images/icon_brasil.png" alt=""> Brasil</a>
-                                <a class="dropdown-item" href="#"><img src="images/icon_china.png" alt=""> China</a>
-                                <a class="dropdown-item" href="#"><img src="images/icon_espanha.png" alt=""> Espanha</a>
-                                <a class="dropdown-item" href="#"><img src="images/icon_franca.png" alt=""> França</a>
-                                <a class="dropdown-item" href="#"><img src="images/icon_inglaterra.png" alt=""> Inglaterra </a>
-                                <a class="dropdown-item" href="#"><img src="images/icon_italia.png" alt=""> Italia</a>
-                                <a class="dropdown-item" href="#"><img src="images/icon_japao.png" alt=""> Japão</a>
-                                <a class="dropdown-item" href="#"><img src="images/icon_mexico.png" alt=""> Mexico</a>
-                                <a class="dropdown-item" href="#"><img src="images/icon_tailandia.png" alt=""> Tailandia</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--/.Content-->
-        </div>
-    </div>
-    <!-- Modal -->
-
-
-
-
+    
     <!-- SCRIPTS -->
     <!-- JQuery -->
     <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
