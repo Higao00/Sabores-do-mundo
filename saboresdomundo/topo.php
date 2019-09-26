@@ -18,29 +18,100 @@
 
 
     <style>
+        @media only screen and (max-width: 600px) {
+            p#icon_fade_mobile {
+                display: none;
+            }
+        }
 
-    	@media only screen and (max-width: 600px) {
-    		p#icon_fade_mobile{
-    			display: none;
-    		}
-    	}
+        form#form_principal {
+            margin: 2% !important;
+            margin-left: 0px !important;
+            margin-right: 0px !important;
+        }
 
-    	form#form_principal{
-    		margin: 2%!important;
-    		margin-left: 0px!important;
-    		margin-right: 0px!important;
-    	}
+        .bold-1 {
+            font-weight: 500;
+        }
 
-    	.bold-1{
-    		font-weight: 500;
-    	}
+        .list-group-item.active {
+            background-color: #e64a19 !important;
+            border-color: #e64a19 !important;
+        }
 
-    	.list-group-item.active {
-    	    background-color: #e64a19!important;
-    	    border-color: #e64a19!important;
-    	}
+        <style>.form-dark .font-small {
+            font-size: 0.8rem;
+        }
 
+        .form-dark .md-form label {
+            color: #fff;
+        }
 
+        .form-dark input[type=email]:focus:not([readonly]) {
+            border-bottom: 1px solid #FF8C00;
+            -webkit-box-shadow: 0 1px 0 0 #FF8C00;
+            box-shadow: 0 1px 0 0 #FF8C00;
+        }
+
+        .form-dark input[type=email]:focus:not([readonly])+label {
+            color: #fff;
+        }
+
+        .form-dark input[type=password]:focus:not([readonly]) {
+            border-bottom: 1px solid #FF8C00;
+            -webkit-box-shadow: 0 1px 0 0 #FF8C00;
+            box-shadow: 0 1px 0 0 #FF8C00;
+        }
+
+        .form-dark input[type=password]:focus:not([readonly])+label {
+            color: #fff;
+        }
+
+        .form-dark .modal-header {
+            border-bottom: none;
+        }
+
+        #login {
+            color: #FF8C00;
+        }
+
+        .form-dark .font-small {
+            font-size: 0.8rem;
+        }
+
+        .form-dark .md-form label {
+            color: #fff;
+        }
+
+        .form-dark input[type=email]:focus:not([readonly]) {
+            border-bottom: 1px solid #FF8C00;
+            -webkit-box-shadow: 0 1px 0 0 #FF8C00;
+            box-shadow: 0 1px 0 0 #FF8C00;
+        }
+
+        .form-dark input[type=email]:focus:not([readonly])+label {
+            color: #fff;
+        }
+
+        .form-dark input[type=password]:focus:not([readonly]) {
+            border-bottom: 1px solid #FF8C00;
+            -webkit-box-shadow: 0 1px 0 0 #FF8C00;
+            box-shadow: 0 1px 0 0 #FF8C00;
+        }
+
+        .form-dark input[type=password]:focus:not([readonly])+label {
+            color: #fff;
+        }
+
+        .form-dark .modal-header {
+            border-bottom: none;
+        }
+
+        #paises {
+            background-color: #ffde75;
+            overflow-y: scroll;
+            max-height: 400px;
+        }
     </style>
 </head>
 
@@ -53,11 +124,9 @@
         <nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar">
             <div class="container-fluid">
 
-                <a class="navbar-brand waves-effect" href="#" >
+                <a class="navbar-brand waves-effect" href="#">
                     <strong class="bold-1" style="color: #f4511e;">Sabores do Mundo</strong>
                 </a>
-
-               
 
                 <!-- Collapse -->
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -71,7 +140,7 @@
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item active">
                             <a class="nav-link waves-effect bold-1" href="#">Home
-						</a>
+                            </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link waves-effect bold-1" href="#" target="">Novas Receitas</a>
@@ -80,27 +149,44 @@
                             <a class="nav-link waves-effect bold-1" href="#" target="">Mais Vistas</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link waves-effect bold-1" href="#" target="">Receitas Internacionais</a>
+                            <div class="dropdown">
+                                <a id="dropdownMenuButton" class="nav-link waves-effect bold-1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Receitas do Mundo
+                                </a>
+                                <div class="dropdown-menu " aria-labelledby="dropdownMenuButton" id="paises" >
+                                    <a class="dropdown-item" href="#"><img src="images/icon_australia.png" alt="">Australia</a>
+                                    <a class="dropdown-item" href="#"><img src="images/icon_brasil.png" alt=""> Brasil</a>
+                                    <a class="dropdown-item" href="#"><img src="images/icon_china.png" alt=""> China</a>
+                                    <a class="dropdown-item" href="#"><img src="images/icon_espanha.png" alt=""> Espanha</a>
+                                    <a class="dropdown-item" href="#"><img src="images/icon_franca.png" alt=""> França</a>
+                                    <a class="dropdown-item" href="#"><img src="images/icon_inglaterra.png" alt=""> Inglaterra </a>
+                                    <a class="dropdown-item" href="#"><img src="images/icon_italia.png" alt=""> Italia</a>
+                                    <a class="dropdown-item" href="#"><img src="images/icon_japao.png" alt=""> Japão</a>
+                                    <a class="dropdown-item" href="#"><img src="images/icon_mexico.png" alt=""> Mexico</a>
+                                    <a class="dropdown-item" href="#"><img src="images/icon_tailandia.png" alt=""> Tailandia</a>
+                                </div>
+                            </div>
                         </li>
-                       
+
+
                     </ul>
 
-                   
+
                 </div>
 
                 <form class="form-inline" id="busca_principal" style="padding: 0px!important;">
-                	<input class="form-control" id="busca_principal" type="text" placeholder="Pesquise Aqui" aria-label="Pesquise Aqui">
+                    <input class="form-control" id="busca_principal" type="text" placeholder="Pesquise Aqui" aria-label="Pesquise Aqui">
                 </form>
 
                 <div class="collapse navbar-collapse" align="right">
-                	<!-- Right -->
-                	<ul class="navbar-nav nav-flex-icons">
-                	    <li class="nav-item">
-                	        <a href="#" class="nav-link waves-effect" target="">
-                	            <i class="fab fa-facebook-f"></i>
-                	        </a>
-                	    </li>
-                	</ul>
+                    <!-- Right -->
+                    <ul class="navbar-nav nav-flex-icons">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link waves-effect" target="">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </nav>
@@ -110,7 +196,7 @@
         <div class="sidebar-fixed position-fixed">
 
             <a class="logo-wrapper waves-effect">
-                <p id="icon" style="text-shadow: rgb(179, 32, 16) 0px 0px 0px, rgb(181, 33, 16) 1px 1px 0px, rgb(183, 33, 17) 2px 2px 0px, rgb(186, 33, 17) 3px 3px 0px, rgb(188, 34, 17) 4px 4px 0px, rgb(190, 34, 17) 5px 5px 0px, rgb(193, 35, 17) 6px 6px 0px, rgb(195, 35, 18) 7px 7px 0px, rgb(198, 36, 18) 8px 8px 0px, rgb(200, 36, 18) 9px 9px 0px, rgb(202, 37, 18) 10px 10px 0px, rgb(205, 37, 18) 11px 11px 0px, rgb(207, 37, 19) 12px 12px 0px, rgb(210, 38, 19) 13px 13px 0px, rgb(212, 38, 19) 14px 14px 0px, rgb(214, 39, 19) 15px 15px 0px, rgb(217, 39, 20) 16px 16px 0px, rgb(219, 40, 20) 17px 17px 0px, rgb(222, 40, 20) 18px 18px 0px, rgb(224, 40, 20) 19px 19px 0px, rgb(226, 41, 20) 20px 20px 0px, rgb(229, 41, 21) 21px 21px 0px, rgb(231, 42, 21) 22px 22px 0px, rgb(233, 42, 21) 23px 23px 0px, rgb(236, 43, 21) 24px 24px 0px, rgb(238, 43, 21) 25px 25px 0px, rgb(241, 43, 22) 26px 26px 0px, rgb(243, 44, 22) 27px 27px 0px, rgb(245, 44, 22) 28px 28px 0px, rgb(248, 45, 22) 29px 29px 0px, rgb(250, 45, 23) 30px 30px 0px, rgb(253, 46, 23) 31px 31px 0px; font-size: 58px; color: rgb(255, 255, 255); height: 139px; width: 139px; line-height: 139px; border-radius: 17%; text-align: center; background-color: rgb(255, 46, 23);"> SM </p> 	
+                <p id="icon" style="text-shadow: rgb(179, 32, 16) 0px 0px 0px, rgb(181, 33, 16) 1px 1px 0px, rgb(183, 33, 17) 2px 2px 0px, rgb(186, 33, 17) 3px 3px 0px, rgb(188, 34, 17) 4px 4px 0px, rgb(190, 34, 17) 5px 5px 0px, rgb(193, 35, 17) 6px 6px 0px, rgb(195, 35, 18) 7px 7px 0px, rgb(198, 36, 18) 8px 8px 0px, rgb(200, 36, 18) 9px 9px 0px, rgb(202, 37, 18) 10px 10px 0px, rgb(205, 37, 18) 11px 11px 0px, rgb(207, 37, 19) 12px 12px 0px, rgb(210, 38, 19) 13px 13px 0px, rgb(212, 38, 19) 14px 14px 0px, rgb(214, 39, 19) 15px 15px 0px, rgb(217, 39, 20) 16px 16px 0px, rgb(219, 40, 20) 17px 17px 0px, rgb(222, 40, 20) 18px 18px 0px, rgb(224, 40, 20) 19px 19px 0px, rgb(226, 41, 20) 20px 20px 0px, rgb(229, 41, 21) 21px 21px 0px, rgb(231, 42, 21) 22px 22px 0px, rgb(233, 42, 21) 23px 23px 0px, rgb(236, 43, 21) 24px 24px 0px, rgb(238, 43, 21) 25px 25px 0px, rgb(241, 43, 22) 26px 26px 0px, rgb(243, 44, 22) 27px 27px 0px, rgb(245, 44, 22) 28px 28px 0px, rgb(248, 45, 22) 29px 29px 0px, rgb(250, 45, 23) 30px 30px 0px, rgb(253, 46, 23) 31px 31px 0px; font-size: 58px; color: rgb(255, 255, 255); height: 139px; width: 139px; line-height: 139px; border-radius: 17%; text-align: center; background-color: rgb(255, 46, 23);"> SM </p>
 
             </a>
 
@@ -126,6 +212,9 @@
                     <i class="fas fa-cogs mr-3"></i>Configurações</a>
                 <a href="#" class="list-group-item list-group-item-action waves-effect">
                     <i class="fas fa-sign-out-alt mr-3"></i>Sair</a>
+                <a href="" class="list-group-item list-group-item-action waves-effect" data-toggle="modal" data-target="#cadastro"><i class="fas fa-stream mr-3"></i>Cadastrar-se</a>
+                <a href="" class="list-group-item list-group-item-action waves-effect" data-toggle="modal" data-target="#login"><i class="fas fa-stream mr-3"></i>Fazer Login</a>
+
             </div>
 
         </div>
@@ -137,4 +226,128 @@
     <!--Main layout-->
     <main class="pt-5 mx-lg-5">
         <div class="container-fluid mt-5">
-            
+            <!-- Modal -->
+            <div class="modal fade" id="cadastro" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog form-dark" role="document">
+                    <!--Content-->
+                    <div class="modal-content card card-image" style="background-image: url('images/pagina_principal2.jfif');">
+                        <div class="text-white rgba-stylish-strong py-5 px-5 z-depth-4">
+                            <!--Header-->
+                            <div class="modal-header text-center pb-4">
+                                <h3 class="modal-title w-100 white-text font-weight-bold" id="myModalLabel"><strong>Cadastro</strong></h3>
+                                <button type="button" class="close white-text" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <!--Body-->
+                            <div class="modal-body">
+                                <!--Body-->
+
+                                <div class="md-form mb-5">
+                                    <input type="email" id="Form-email5" class="form-control validate white-text">
+                                    <label data-error="wrong" data-success="right" for="Form-email5">Nome</label>
+                                </div>
+
+                                <div class="md-form mb-5">
+                                    <input type="email" id="Form-email5" class="form-control validate white-text">
+                                    <label data-error="wrong" data-success="right" for="Form-email5">E-mail</label>
+                                </div>
+
+                                <div class="md-form pb-3">
+                                    <input type="password" id="Form-pass5" class="form-control validate white-text">
+                                    <label data-error="wrong" data-success="right" for="Form-pass5">Senha</label>
+
+                                </div>
+
+                                <!--Grid row-->
+                                <div class="row d-flex align-items-center mb-4">
+
+                                    <!--Grid column-->
+                                    <div class="text-center mb-3 col-md-12">
+                                        <button type="button" class="btn btn-amber">Cadastrar</button>
+                                    </div>
+                                    <!--Grid column-->
+
+                                </div>
+                                <!--Grid row-->
+
+                                <!--Grid row-->
+                                <div class="row">
+
+                                    <!--Grid column-->
+                                    <div class="col-md-12">
+                                        <p class="font-small white-text d-flex justify-content-end">Já é cadastrado? <a href="#" class="orange-text ml-1 font-weight-bold">
+                                                Login</a></p>
+                                    </div>
+                                    <!--Grid column-->
+
+                                </div>
+                                <!--Grid row-->
+                            </div>
+                        </div>
+                    </div>
+                    <!--/.Content-->
+                </div>
+            </div>
+        </div>
+
+
+        <div class="container">
+            <div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog form-dark" role="document">
+                    <!--Content-->
+                    <div class="modal-content card card-image" style="background-image: url('images/pagina_principal.jfif');">
+                        <div class="text-white rgba-stylish-strong py-5 px-5 z-depth-4">
+                            <!--Header-->
+                            <div class="modal-header text-center pb-4">
+                                <h3 class="modal-title w-100 white-text font-weight-bold" id="myModalLabel"><strong>Entrar</strong></h3>
+                                <button type="button" class="close white-text" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <!--Body-->
+                            <div class="modal-body">
+                                <!--Body-->
+                                <div class="md-form mb-5">
+                                    <input type="email" id="Form-email5" class="form-control validate white-text">
+                                    <label data-error="wrong" data-success="right" for="Form-email5">E-mail</label>
+                                </div>
+
+                                <div class="md-form pb-3">
+                                    <input type="password" id="Form-pass5" class="form-control validate white-text">
+                                    <label data-error="wrong" data-success="right" for="Form-pass5">Senha</label>
+
+                                </div>
+
+                                <!--Grid row-->
+                                <div class="row d-flex align-items-center mb-4">
+
+                                    <!--Grid column-->
+                                    <div class="text-center mb-3 col-md-12">
+                                        <button type="button" class="btn btn-amber">Entar</button>
+                                    </div>
+                                    <!--Grid column-->
+
+                                </div>
+                                <!--Grid row-->
+
+                                <!--Grid row-->
+                                <div class="row">
+
+                                    <!--Grid column-->
+                                    <div class="col-md-12">
+                                        <p class="font-small white-text d-flex justify-content-end">Não tem conta? <a href="#" class="orange-text ml-1 font-weight-bold">
+                                                Cadastre-se</a></p>
+                                    </div>
+                                    <!--Grid column-->
+
+                                </div>
+                                <!--Grid row-->
+
+                            </div>
+                        </div>
+                    </div>
+                    <!--/.Content-->
+                </div>
+            </div>
+        </div>
