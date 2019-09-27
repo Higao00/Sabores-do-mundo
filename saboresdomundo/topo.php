@@ -112,6 +112,19 @@
             overflow-y: scroll;
             max-height: 400px;
         }
+
+        .modal-dialog.modal-notify.modal-info .fab,
+        .modal-dialog.modal-notify.modal-info .far,
+        .modal-dialog.modal-notify.modal-info .fas {
+            color: rgb(255, 46, 23);
+        }
+
+        .modal-dialog.modal-notify.modal-info .badge,
+        .modal-dialog.modal-notify.modal-info .modal-header {
+            background-color: rgb(255, 46, 23);
+        }
+
+        
     </style>
 </head>
 
@@ -153,7 +166,7 @@
                                 <a id="dropdownMenuButton" class="nav-link waves-effect bold-1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     Receitas do Mundo
                                 </a>
-                                <div class="dropdown-menu " aria-labelledby="dropdownMenuButton" id="paises" >
+                                <div class="dropdown-menu " aria-labelledby="dropdownMenuButton" id="paises">
                                     <a class="dropdown-item" href="#"><img src="images/icon_australia.png" alt="">Australia</a>
                                     <a class="dropdown-item" href="#"><img src="images/icon_brasil.png" alt=""> Brasil</a>
                                     <a class="dropdown-item" href="#"><img src="images/icon_china.png" alt=""> China</a>
@@ -208,9 +221,13 @@
                     <i class="fas fa-star mr-3"></i>Receitas Favoritas</a>
                 <a href="#" class="list-group-item list-group-item-action waves-effect">
                     <i class="fas fa-user mr-3"></i>Perfil</a>
-                <a href="#" class="list-group-item list-group-item-action waves-effect">
-                    <i class="fas fa-cogs mr-3"></i>Configurações</a>
-                <a href="#" class="list-group-item list-group-item-action waves-effect">
+                <a href="#" class="list-group-item list-group-item-action waves-effect" data-toggle="modal" data-target="#configuracao">
+                    <i class="fas fa-cogs mr-3"></i>Notificações</a>
+
+
+                <!-- Default switch -->
+
+                <a href="#" class="list-group-item list-group-item-action waves-effect" data-toggle="modal" data-target="#sair">
                     <i class="fas fa-sign-out-alt mr-3"></i>Sair</a>
                 <a href="" class="list-group-item list-group-item-action waves-effect" data-toggle="modal" data-target="#cadastro"><i class="fas fa-stream mr-3"></i>Cadastrar-se</a>
                 <a href="" class="list-group-item list-group-item-action waves-effect" data-toggle="modal" data-target="#login"><i class="fas fa-stream mr-3"></i>Fazer Login</a>
@@ -349,5 +366,51 @@
                     </div>
                     <!--/.Content-->
                 </div>
+            </div>
+        </div>
+
+
+        <!--Modal: modalPush-->
+        <div class="modal fade " id="configuracao" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-notify modal-info" role="document">
+                <!--Content-->
+                <div class="modal-content text-center">
+                    <!--Header-->
+                    <div class="modal-header d-flex justify-content-center">
+                        <p class="heading">Deseja Receber Notificação</p>
+                    </div>
+
+                    <!--Body-->
+                    <div class="modal-body">
+                        <i class="fas fa-bell fa-4x animated rotateIn mb-4"></i>
+                    </div>
+                    <!--Footer-->
+
+                    <div class="modal-footer flex-center">
+                        <a type="button" class="btn btn-success ">Sim</a>
+                        <a type="button" class="btn btn-amber">Não</a>
+                    </div>
+                </div>
+                <!--/.Content-->
+            </div>
+        </div>
+        <!--Modal: modalPush-->
+
+        <div class="modal fade top" id="sair" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="true">
+            <div class="modal-dialog modal-frame modal-top modal-notify modal-info" role="document">
+                <!--Content-->
+                <div class="modal-content">
+                    <!--Body-->
+                    <div class="modal-body">
+                        <div class="row d-flex justify-content-center align-items-center">
+
+                            <b><p class="pt-3 pr-2">Certeza que deseja sair da sua conta</p></b>
+
+                            <a type="button" class="btn btn-amber">Cancelar</a>
+                            <a type="button" class="btn btn-danger">Ok</a>
+                        </div>
+                    </div>
+                </div>
+                <!--/.Content-->
             </div>
         </div>
