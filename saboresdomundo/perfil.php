@@ -6,7 +6,7 @@ include 'topo.php';
 <style>
     img#perfil {
         margin-top: 10%;
-       
+
     }
 
     div#menu {
@@ -95,6 +95,6 @@ include 'topo.php';
     <script>
 
     </script>
-    
+
 </div>
-    <!--Main layout-->
+<!--Main layout-->

@@ -17,7 +17,7 @@ include 'topo.php';
 
                 <li class="list-group-item">
                     <div class="view overlay zoom">
-                        <a href="#" class="text-white btn-floating btn-fb btn-sm"><img src="img/massa48.PNG"></a> Massas
+                        <a href="#" class="text-white btn-floating btn-fb btn-sm"><img src="img/massa.PNG"></a> Massas
                     </div>
                 </li>
                 <li class="list-group-item">
