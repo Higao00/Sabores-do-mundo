@@ -1,36 +1,32 @@
 <?php
+include("conexao.php");
 include("Usuario.php");
+include("Avaliacao.php");
+include("Categoria.php");
 
-$usuario = new Usuario();
+//$usuario = new Usuario();
 
 //$usuario->setNome("José");
 //$usuario->setEmail("João@joão.com");
 //$usuario->setNascimento("20-11-1998");
 //$usuario->setSenha("1234");
 
+//$avaliacao = new Avaliacao('',1, 5, 15);
+//$avaliacao->selectAvaliacaoId($avaliacao->insertAvaliacao());
 
-$aux = $usuario->executeQuery("SELECT * FROM `usuario` WHERE  `id` = 10");
+//$aux = $avaliacao->executeQuery("SELECT * FROM avaliacao WHERE id >= 4");
+
+$categoria = new Categoria();
 
 echo '<pre>';
-print_r($aux);
+print_r($categoria);
 echo '</pre>';
 
-foreach ($aux as $key => $value) {
-	// $value->setNome("Nivaldo");
-	$value->setNascimento("2018-11-20");
-	$value->updateUser();
 
-}
+$categoria->selectCategoriaId(100);
 
-// Refiz o processo
-// echo '<pre>';
-// print_r($usuario);
-// echo '</pre>';
-
-$aux = $usuario->executeQuery("SELECT * FROM `usuario` WHERE  `id`  = 10");
-	
 echo '<pre>';
-print_r($aux);
+print_r($categoria);
 echo '</pre>';
 ?>
 

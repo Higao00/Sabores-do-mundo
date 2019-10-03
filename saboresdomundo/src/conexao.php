@@ -54,9 +54,9 @@
         $query->execute($params);
          
         if(isset($class)){
-            $rs = $query->fetchAll(PDO::FETCH_CLASS,$class); //or die(print_r($query->errorInfo(), true));
+            $rs = $query->fetchAll(PDO::FETCH_CLASS,$class)or die(print_r($query->errorInfo(), true));
         }else{
-            $rs = $query->fetchAll(PDO::FETCH_OBJ); // or die(print_r($query->errorInfo(), true));
+            $rs = $query->fetchAll(PDO::FETCH_OBJ)or die(print_r($query->errorInfo(), true));
         }
         self::__destruct();
         return $rs;

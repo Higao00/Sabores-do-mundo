@@ -1,29 +1,29 @@
 <?php
 
-include('conexao.php');
-
 class Usuario {
 
     private $id;
-    public $nome;
-    public $nascimento;
+    private $nome;
+    private $nascimento;
     private $email;
     private $senha;
     private $timestamp;
 
-    function __construct($nome = '', $nascimento = '', $email = '', $senha = '') {
+    function __construct($id='', $nome='', $nascimento='', $email='', $senha='', $timestamp='') {
+        $this->id = $id;
         $this->nome = $nome;
         $this->nascimento = $nascimento;
         $this->email = $email;
         $this->senha = $senha;
+        $this->timestamp = $timestamp;
+    }
+    
+    function getId() {
+        return $this->id;
     }
 
     function getNome() {
-        return utf8_encode($this->nome);
-    }
-
-    function getID() {
-        return $this->id;
+        return $this->nome;
     }
 
     function getNascimento() {
@@ -31,41 +31,42 @@ class Usuario {
     }
 
     function getEmail() {
-        return utf8_encode($this->email);
+        return $this->email;
     }
 
     function getSenha() {
-        return utf8_encode($this->senha);
+        return $this->senha;
     }
 
     function getTimestamp() {
-        return utf8_encode($this->timestamp);
+        return $this->timestamp;
+    }
+
+    function setId($id) {
+        $this->id = $id;
     }
 
     function setNome($nome) {
-        $this->nome = utf8_decode($nome);
+        $this->nome = $nome;
     }
 
     function setNascimento($nascimento) {
-        $this->nascimento = utf8_decode($nascimento);
+        $this->nascimento = $nascimento;
     }
 
     function setEmail($email) {
-        $this->email = utf8_decode($email);
+        $this->email = $email;
     }
 
     function setSenha($senha) {
-        $this->senha = utf8_decode($senha);
-    }
-
-    function setID($id) {
-        $this->id = $id;
+        $this->senha = $senha;
     }
 
     function setTimestamp($timestamp) {
         $this->timestamp = $timestamp;
     }
 
+    
     function insertUser() {
         if(empty($this->id)){
             $conexao = new conexao();
@@ -73,6 +74,8 @@ class Usuario {
                 $connect = $conexao->insertDB("INSERT INTO `usuario`(`nome`, `nascimento`, `email`, `senha`) "
                         . "VALUES ('".$this->nome."','".$this->nascimento."','$this->email','".$this->senha."')");
                 $this->id = $connect;
+                
+                return $connect;
             } catch (Exception $ex) {   
                 //var_dump($ex);
             }
@@ -105,8 +108,11 @@ class Usuario {
             foreach ($connect as $key => $value) {
                 $Usuarios[] = new Usuario($value->id, $value->nome, $value->nascimento, $value->email, $value->senha);
             }
+            
+            return $Usuarios;
         } catch (Exception $ex) {
             var_dump($ex);
+            return false;
         }
         return $Usuarios;
     }
@@ -131,18 +137,19 @@ class Usuario {
 
             foreach ($connect as $key => $value) {
                 if(isset($value->id) && isset($value->nome) && isset($value->nascimento) && isset($value->email) && isset($value->senha)){
-                    
-                    $aux = new Usuario($value->nome, $value->nascimento, $value->email, $value->senha);
-                    $aux->setID($value->id);
-                    $aux->setTimestamp($value->changelog);
+                    $aux = new Usuario($value->id, $value->nome, $value->nascimento, $value->email, $value->senha);
                     $Usuarios[] = $aux;
                 }
             }
+            
             return $Usuarios;
         } catch (Exception $ex) {
+            return false;
             //var_dump($ex);
         }
     }
+    
+    
 }
 
 ?>
