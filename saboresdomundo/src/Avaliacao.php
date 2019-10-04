@@ -41,11 +41,11 @@ class Avaliacao {
     }
 
     function setReceita($receita) {
-        $this->receita = $receita;
+        $this->receita = addslashes($receita);
     }
 
     function setAvaliacao($avaliacao) {
-        $this->avaliacao = $avaliacao;
+        $this->avaliacao = addslashes($avaliacao);
     }
 
     function setUsuario($usuario) {
