@@ -8,7 +8,7 @@ class Categoria {
 
     function __construct($id="", $titulo="", $timestamp="") {
         $this->id = $id;
-        $this->titulo = $titulo;
+        $this->titulo =  addslashes($titulo);
         $this->timestamp = $timestamp;
     }
 
@@ -29,7 +29,7 @@ class Categoria {
     }
 
     function setTitulo($titulo) {
-        $this->titulo = $titulo;
+        $this->titulo =  addslashes($titulo);
     }
 
     function setTimestamp($timestamp) {

@@ -11,10 +11,10 @@ class Usuario {
 
     function __construct($id='', $nome='', $nascimento='', $email='', $senha='', $timestamp='') {
         $this->id = $id;
-        $this->nome = $nome;
-        $this->nascimento = $nascimento;
-        $this->email = $email;
-        $this->senha = $senha;
+        $this->nome =  addslashes($nome);
+        $this->nascimento =  addslashes($nascimento);
+        $this->email =  addslashes($email);
+        $this->senha =  addslashes($senha);
         $this->timestamp = $timestamp;
     }
     
@@ -47,19 +47,19 @@ class Usuario {
     }
 
     function setNome($nome) {
-        $this->nome = $nome;
+        $this->nome =  addslashes($nome);
     }
 
     function setNascimento($nascimento) {
-        $this->nascimento = $nascimento;
+        $this->nascimento =  addslashes($nascimento);
     }
 
     function setEmail($email) {
-        $this->email = $email;
+        $this->email =  addslashes($email);
     }
 
     function setSenha($senha) {
-        $this->senha = $senha;
+        $this->senha =  addslashes($senha);
     }
 
     function setTimestamp($timestamp) {

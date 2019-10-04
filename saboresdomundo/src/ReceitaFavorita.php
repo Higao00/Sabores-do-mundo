@@ -9,8 +9,8 @@ class ReceitaFavorita{
     
     function __construct($id="", $receita="", $usuario="", $timestamp="") {
         $this->id = $id;
-        $this->receita = $receita;
-        $this->usuario = $usuario;
+        $this->receita =  addslashes($receita);
+        $this->usuario =  addslashes($usuario);
         $this->timestamp = $timestamp;
     }
     
@@ -35,11 +35,11 @@ class ReceitaFavorita{
     }
 
     function setReceita($receita) {
-        $this->receita = $receita;
+        $this->receita =  addslashes($receita);
     }
 
     function setUsuario($usuario) {
-        $this->usuario = $usuario;
+        $this->usuario =  addslashes($usuario);
     }
 
     function setTimestamp($timestamp) {
