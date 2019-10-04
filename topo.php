@@ -14,7 +14,7 @@
     <link href="css/mdb.min.css" rel="stylesheet">
     <!-- Your custom styles (optional) -->
     <link href="css/style.min.css" rel="stylesheet">
-    <link rel="manifest" href="/SaboresDoMundo/saboresdomundo/manifest.json">
+    <link rel="manifest" href="/SaboresDoMundo/manifest.json">
 
 
     <style>
