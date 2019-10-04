@@ -80,7 +80,7 @@
     <!-- service Work -->
     <script>
       if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('sw.js')
+        navigator.serviceWorker.register('js/sw.js')
           .then(function () {
             console.log('service worker registered');
           })
