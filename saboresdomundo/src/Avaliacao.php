@@ -10,9 +10,9 @@ class Avaliacao {
 
     function __construct($id = "", $receita = "", $avaliacao = "", $usuario = "", $timestamp = "") {
         $this->id = $id;
-        $this->receita = $receita;
-        $this->avaliacao = $avaliacao;
-        $this->usuario = $usuario;
+        $this->receita = addslashes($receita);
+        $this->avaliacao = addslashes($avaliacao);
+        $this->usuario =  addslashes($usuario);
         $this->timestamp = $timestamp;
     }
 
@@ -49,7 +49,7 @@ class Avaliacao {
     }
 
     function setUsuario($usuario) {
-        $this->usuario = $usuario;
+        $this->usuario =  addslashes($usuario);
     }
 
     function setTimestamp($timestamp) {

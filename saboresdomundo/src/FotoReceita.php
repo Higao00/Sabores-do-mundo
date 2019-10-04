@@ -10,9 +10,9 @@ class FotoReceita {
 
     function __construct($id = "", $receita = "", $path_foto = "", $usuario = "", $timestamp = "") {
         $this->id = $id;
-        $this->receita = $receita;
-        $this->path_foto = $path_foto;
-        $this->usuario = $usuario;
+        $this->receita =  addslashes($receita);
+        $this->path_foto = addslashes($path_foto);
+        $this->usuario =  addslashes($usuario);
         $this->timestamp = $timestamp;
     }
 
@@ -41,15 +41,15 @@ class FotoReceita {
     }
 
     function setReceita($receita) {
-        $this->receita = $receita;
+        $this->receita =  addslashes($receita);
     }
 
     function setPath_foto($path_foto) {
-        $this->path_foto = $path_foto;
+        $this->path_foto =  addslashes($path_foto);
     }
 
     function setUsuario($usuario) {
-        $this->usuario = $usuario;
+        $this->usuario =  addslashes($usuario);
     }
 
     function setTimestamp($timestamp) {

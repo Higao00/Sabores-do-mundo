@@ -9,9 +9,9 @@ class Ingrediente {
 
     function __construct($id = "", $nome = "", $medida = "", $timestamp = "") {
         $this->id = $id;
-        $this->nome = $nome;
-        $this->medida = $medida;
-        $this->timestamp = $timestamp;
+        $this->nome =  addslashes($nome);
+        $this->medida = addslashes($medida);
+        $this->timestamp =  $timestamp;
     }
 
     function getId() {
@@ -35,11 +35,11 @@ class Ingrediente {
     }
 
     function setNome($nome) {
-        $this->nome = $nome;
+        $this->nome =  addslashes($nome);
     }
 
     function setMedida($medida) {
-        $this->medida = $medida;
+        $this->medida =  addslashes($medida);
     }
 
     function setTimestamp($timestamp) {
