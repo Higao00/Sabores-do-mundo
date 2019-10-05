@@ -22,6 +22,14 @@
             p#icon_fade_mobile {
                 display: none;
             }
+
+            .suspenso{
+                display: inline-block!important;
+            }
+        }
+
+        .suspenso{
+            display: none;
         }
 
         form#form_principal {
@@ -38,8 +46,10 @@
             background-color: #e64a19 !important;
             border-color: #e64a19 !important;
         }
+    </style>
 
-        <style>.form-dark .font-small {
+    <style>
+        .form-dark .font-small {
             font-size: 0.8rem;
         }
 
@@ -123,8 +133,6 @@
         .modal-dialog.modal-notify.modal-info .modal-header {
             background-color: rgb(255, 46, 23);
         }
-
-        
     </style>
 </head>
 
@@ -151,20 +159,23 @@
 
                     <!-- Left -->
                     <ul class="navbar-nav mr-auto">
-                        <li class="nav-item active">
-                            <a class="nav-link waves-effect bold-1" href="#">Home
-                            </a>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link waves-effect bold-1">
+                            <i class="fas fa-star mr-3 suspenso"></i>Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link waves-effect bold-1" href="#" target="">Novas Receitas</a>
+                            <a href="#" class="nav-link waves-effect bold-1">
+                            <i class="fas fa-star mr-3 suspenso"></i>Melhores Receitas</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link waves-effect bold-1" href="#" target="">Mais Vistas</a>
+                            <a href="#" class="nav-link waves-effect bold-1">
+                            <i class="fas fa-star mr-3 suspenso"></i>Minhas Receitas</a>
                         </li>
                         <li class="nav-item">
                             <div class="dropdown">
                                 <a id="dropdownMenuButton" class="nav-link waves-effect bold-1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Receitas do Mundo
+                                    <i class="fas fa-star mr-3 suspenso"></i>
+                                    Receitas Estrangeiras 
                                 </a>
                                 <div class="dropdown-menu " aria-labelledby="dropdownMenuButton" id="paises">
                                     <a class="dropdown-item" href="#"><img src="images/icon_australia.png" alt="">Australia</a>
@@ -181,7 +192,29 @@
                             </div>
                         </li>
 
-
+                        <li class="nav-item suspenso">
+                            <a href="#" class="nav-link waves-effect bold-1">
+                            <i class="fas fa-star mr-3"></i>Receitas Favoritas</a>
+                        </li>
+                        <li class="nav-item suspenso">
+                            <a href="#" class="nav-link waves-effect bold-1">
+                                <i class="fas fa-user mr-3"></i>Perfil</a>
+                        </li>
+                        <li class="nav-item suspenso">
+                            <a href="#" class="nav-link waves-effect bold-1" data-toggle="modal" data-target="#configuracao">
+                                <i class="fas fa-cogs mr-3"></i>Notificações</a>
+                        </li> 
+                        <li class="nav-item suspenso">
+                            <a href="#" class="nav-link waves-effect bold-1" data-toggle="modal" data-target="#sair">
+                                <i class="fas fa-sign-out-alt mr-3"></i>Sair</a>
+                        </li>
+                        <li class="nav-item suspenso">
+                            <a href="" class="nav-link waves-effect bold-1" data-toggle="modal" data-target="#cadastro"><i class="fas fa-stream mr-3"></i>Cadastrar-se</a>
+                        </li>
+                       <li class="nav-item suspenso">
+                            <a href="" class="nav-link waves-effect bold-1" data-toggle="modal" data-target="#login"><i class="fas fa-stream mr-3"></i>Fazer Login</a>
+                           
+                       </li>
                     </ul>
 
 
@@ -214,19 +247,13 @@
             </a>
 
             <div class="list-group list-group-flush">
-                <a href="#" class="list-group-item active waves-effect">
-                    <i class="fas fa-stream mr-3"></i>Pagina Inicial
-                </a>
+
                 <a href="#" class="list-group-item list-group-item-action waves-effect">
                     <i class="fas fa-star mr-3"></i>Receitas Favoritas</a>
                 <a href="#" class="list-group-item list-group-item-action waves-effect">
                     <i class="fas fa-user mr-3"></i>Perfil</a>
                 <a href="#" class="list-group-item list-group-item-action waves-effect" data-toggle="modal" data-target="#configuracao">
                     <i class="fas fa-cogs mr-3"></i>Notificações</a>
-
-
-                <!-- Default switch -->
-
                 <a href="#" class="list-group-item list-group-item-action waves-effect" data-toggle="modal" data-target="#sair">
                     <i class="fas fa-sign-out-alt mr-3"></i>Sair</a>
                 <a href="" class="list-group-item list-group-item-action waves-effect" data-toggle="modal" data-target="#cadastro"><i class="fas fa-stream mr-3"></i>Cadastrar-se</a>
@@ -244,7 +271,7 @@
     <main class="pt-5 mx-lg-5">
         <div class="container-fluid mt-5">
             <!-- Modal -->
-            <div class="modal fade" id="cadastro" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal fade" id="cadastro" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria="true">
                 <div class="modal-dialog form-dark" role="document">
                     <!--Content-->
                     <div class="modal-content card card-image" style="background-image: url('images/pagina_principal2.jfif');">
@@ -253,7 +280,7 @@
                             <div class="modal-header text-center pb-4">
                                 <h3 class="modal-title w-100 white-text font-weight-bold" id="myModalLabel"><strong>Cadastro</strong></h3>
                                 <button type="button" class="close white-text" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
+                                    <span aria="true">&times;</span>
                                 </button>
                             </div>
                             <!--Body-->
@@ -310,7 +337,7 @@
 
 
         <div class="container">
-            <div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria="true">
                 <div class="modal-dialog form-dark" role="document">
                     <!--Content-->
                     <div class="modal-content card card-image" style="background-image: url('images/pagina_principal.jfif');">
@@ -319,7 +346,7 @@
                             <div class="modal-header text-center pb-4">
                                 <h3 class="modal-title w-100 white-text font-weight-bold" id="myModalLabel"><strong>Entrar</strong></h3>
                                 <button type="button" class="close white-text" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
+                                    <span aria="true">&times;</span>
                                 </button>
                             </div>
                             <!--Body-->
@@ -371,7 +398,7 @@
 
 
         <!--Modal: modalPush-->
-        <div class="modal fade " id="configuracao" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade " id="configuracao" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria="true">
             <div class="modal-dialog modal-notify modal-info" role="document">
                 <!--Content-->
                 <div class="modal-content text-center">
@@ -396,7 +423,7 @@
         </div>
         <!--Modal: modalPush-->
 
-        <div class="modal fade top" id="sair" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="true">
+        <div class="modal fade top" id="sair" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria="true" data-backdrop="true">
             <div class="modal-dialog modal-frame modal-top modal-notify modal-info" role="document">
                 <!--Content-->
                 <div class="modal-content">
