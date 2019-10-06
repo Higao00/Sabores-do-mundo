@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 04-Out-2019 às 05:41
+-- Generation Time: 06-Out-2019 às 23:28
 -- Versão do servidor: 10.1.16-MariaDB
 -- PHP Version: 5.5.38
 
@@ -226,7 +226,8 @@ CREATE TABLE `subscribers` (
   `endpoint` text COLLATE utf8_unicode_ci,
   `auth` text COLLATE utf8_unicode_ci,
   `p256dh` text COLLATE utf8_unicode_ci,
-  `usuario` int(11) NOT NULL
+  `usuario` int(11) NOT NULL,
+  `status` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -237,12 +238,12 @@ CREATE TABLE `subscribers` (
 
 CREATE TABLE `usuario` (
   `id` int(11) NOT NULL,
-  `nome` varchar(80) NOT NULL,
+  `nome` varchar(80) CHARACTER SET utf8 NOT NULL,
   `nascimento` date NOT NULL,
-  `email` varchar(80) NOT NULL,
-  `senha` varchar(80) NOT NULL,
+  `email` varchar(80) CHARACTER SET utf8 NOT NULL,
+  `senha` varchar(80) CHARACTER SET utf8 NOT NULL,
   `changelog` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `usuario`
@@ -281,7 +282,24 @@ INSERT INTO `usuario` (`id`, `nome`, `nascimento`, `email`, `senha`, `changelog`
 (30, 'JoÃ£o', '0000-00-00', 'JoÃ£o@joÃ£o.com', '1234', '2019-09-17 22:29:45'),
 (31, 'JosÃƒÂ©', '0000-00-00', 'JoÃƒÂ£o@joÃƒÂ£o.com', '1234', '2019-09-17 22:32:24'),
 (32, 'José', '0000-00-00', 'JoÃƒÂ£o@joÃƒÂ£o.com', '1234', '2019-09-17 22:33:29'),
-(33, 'José', '0000-00-00', 'João@joão.com', '1234', '2019-09-17 22:34:38');
+(33, 'José', '0000-00-00', 'João@joão.com', '1234', '2019-09-17 22:34:38'),
+(34, 'dasd', '2019-10-05', 'dasda@gmail.com', '8f4031bfc7640c5f267b11b6fe0c2507', '2019-10-05 03:12:17'),
+(35, 'lucas', '1998-11-20', 'lucas@alves.com', 'e10adc3949ba59abbe56e057f20f883e', '2019-10-05 03:13:02'),
+(36, 'jose', '1900-11-20', 'jose@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', '2019-10-05 03:13:52'),
+(37, 'joÃ£o', '0000-00-00', 'jose@mao.com', 'e10adc3949ba59abbe56e057f20f883e', '2019-10-05 03:16:33'),
+(38, 'zxczx', '0000-00-00', 'sad@dasd.com', 'adbf5a778175ee757c34d0eba4e932bc', '2019-10-05 03:19:49'),
+(39, 'josÃ©', '0000-00-00', 'sada@gma.com', 'adbf5a778175ee757c34d0eba4e932bc', '2019-10-05 03:20:00'),
+(40, 'josÃ©', '1111-11-10', 'asd@sdf.com', 'adbf5a778175ee757c34d0eba4e932bc', '2019-10-05 03:21:30'),
+(41, 'josÃ©', '0004-12-12', '12@dasd.com', '0acf03f408f90ea0dcba786d300620db', '2019-10-05 03:25:00'),
+(42, 'josé', '0000-00-00', 'dasd@gmail.com', '8f4031bfc7640c5f267b11b6fe0c2507', '2019-10-05 03:28:28'),
+(43, 'dasda', '2019-10-05', 'minhas@msd.com', '60390c7e429e38e8449519011a24f79d', '2019-10-06 01:17:35'),
+(44, 'dasda', '2019-10-05', 'minhas@msd.com', 'b01abf84324066bdb4eed4d5bf20f887', '2019-10-06 01:18:20'),
+(45, 'josé', '0000-00-00', 'hjose@hoas.com', '28dc0ef2b70634d0a45511fff4f68db7', '2019-10-06 01:47:11'),
+(46, 'josé', '0000-00-00', 'jose@jose.com', 'da345a145bfdc207f522165062a5d80d', '2019-10-06 19:27:59'),
+(47, 'jose', '0000-00-00', 'dadas@sfd.com', '425f8f73289dbbaec12b5186481022d4', '2019-10-06 19:42:11'),
+(48, 'Lucas Alves Freitas', '1998-11-20', 'lucas@gmail.com', '018114d402352b3d13568d3251015ea8', '2019-10-06 20:01:01'),
+(49, 'joséclineton', '0000-00-00', 'lucas1@gmail.com', '154e5c1eee08d38019511476cbd257ea', '2019-10-06 20:26:10'),
+(50, 'joão', '0000-00-00', 'lucas12@gmail.com', 'da345a145bfdc207f522165062a5d80d', '2019-10-06 20:32:19');
 
 --
 -- Indexes for dumped tables
@@ -400,7 +418,7 @@ ALTER TABLE `subscribers`
 -- AUTO_INCREMENT for table `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
