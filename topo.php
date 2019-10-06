@@ -179,15 +179,15 @@
                                 </a>
                                 <div class="dropdown-menu " aria-labelledby="dropdownMenuButton" id="paises">
                                     <a class="dropdown-item" href="#"><img src="images/icon_australia.png" alt="">Australia</a>
-                                    <a class="dropdown-item" href="#"><img src="images/icon_brasil.png" alt=""> Brasil</a>
-                                    <a class="dropdown-item" href="#"><img src="images/icon_china.png" alt=""> China</a>
-                                    <a class="dropdown-item" href="#"><img src="images/icon_espanha.png" alt=""> Espanha</a>
-                                    <a class="dropdown-item" href="#"><img src="images/icon_franca.png" alt=""> França</a>
-                                    <a class="dropdown-item" href="#"><img src="images/icon_inglaterra.png" alt=""> Inglaterra </a>
-                                    <a class="dropdown-item" href="#"><img src="images/icon_italia.png" alt=""> Italia</a>
-                                    <a class="dropdown-item" href="#"><img src="images/icon_japao.png" alt=""> Japão</a>
-                                    <a class="dropdown-item" href="#"><img src="images/icon_mexico.png" alt=""> Mexico</a>
-                                    <a class="dropdown-item" href="#"><img src="images/icon_tailandia.png" alt=""> Tailandia</a>
+                                    <a class="dropdown-item" href="#"><img src="images/icon_brasil.png" alt="">Brasil</a>
+                                    <a class="dropdown-item" href="#"><img src="images/icon_china.png" alt="">China</a>
+                                    <a class="dropdown-item" href="#"><img src="images/icon_espanha.png" alt="">Espanha</a>
+                                    <a class="dropdown-item" href="#"><img src="images/icon_franca.png" alt="">França</a>
+                                    <a class="dropdown-item" href="#"><img src="images/icon_inglaterra.png" alt="">Inglaterra </a>
+                                    <a class="dropdown-item" href="#"><img src="images/icon_italia.png" alt="">Italia</a>
+                                    <a class="dropdown-item" href="#"><img src="images/icon_japao.png" alt="">Japão</a>
+                                    <a class="dropdown-item" href="#"><img src="images/icon_mexico.png" alt="">Mexico</a>
+                                    <a class="dropdown-item" href="#"><img src="images/icon_tailandia.png" alt="">Tailandia</a>
                                 </div>
                             </div>
                         </li>
@@ -197,7 +197,7 @@
                             <i class="fas fa-star mr-3"></i>Receitas Favoritas</a>
                         </li>
                         <li class="nav-item suspenso">
-                            <a href="#" class="nav-link waves-effect bold-1">
+                            <a href="pefil.php" class="nav-link waves-effect bold-1">
                                 <i class="fas fa-user mr-3"></i>Perfil</a>
                         </li>
                         <li class="nav-item suspenso">
@@ -250,7 +250,7 @@
 
                 <a href="#" class="list-group-item list-group-item-action waves-effect">
                     <i class="fas fa-star mr-3"></i>Receitas Favoritas</a>
-                <a href="#" class="list-group-item list-group-item-action waves-effect">
+                <a href="perfil.php" class="list-group-item list-group-item-action waves-effect">
                     <i class="fas fa-user mr-3"></i>Perfil</a>
                 <a href="#" class="list-group-item list-group-item-action waves-effect" data-toggle="modal" data-target="#configuracao">
                     <i class="fas fa-cogs mr-3"></i>Notificações</a>
@@ -263,181 +263,9 @@
 
         </div>
         <!-- Sidebar -->
-
     </header>
     <!--Main Navigation-->
 
     <!--Main layout-->
     <main class="pt-5 mx-lg-5">
-        <div class="container-fluid mt-5">
-            <!-- Modal -->
-            <div class="modal fade" id="cadastro" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria="true">
-                <div class="modal-dialog form-dark" role="document">
-                    <!--Content-->
-                    <div class="modal-content card card-image" style="background-image: url('images/pagina_principal2.jfif');">
-                        <div class="text-white rgba-stylish-strong py-5 px-5 z-depth-4">
-                            <!--Header-->
-                            <div class="modal-header text-center pb-4">
-                                <h3 class="modal-title w-100 white-text font-weight-bold" id="myModalLabel"><strong>Cadastro</strong></h3>
-                                <button type="button" class="close white-text" data-dismiss="modal" aria-label="Close">
-                                    <span aria="true">&times;</span>
-                                </button>
-                            </div>
-                            <!--Body-->
-                            <div class="modal-body">
-                                <!--Body-->
-
-                                <div class="md-form mb-5">
-                                    <input type="email" id="Form-email5" class="form-control validate white-text">
-                                    <label data-error="wrong" data-success="right" for="Form-email5">Nome</label>
-                                </div>
-
-                                <div class="md-form mb-5">
-                                    <input type="email" id="Form-email5" class="form-control validate white-text">
-                                    <label data-error="wrong" data-success="right" for="Form-email5">E-mail</label>
-                                </div>
-
-                                <div class="md-form pb-3">
-                                    <input type="password" id="Form-pass5" class="form-control validate white-text">
-                                    <label data-error="wrong" data-success="right" for="Form-pass5">Senha</label>
-
-                                </div>
-
-                                <!--Grid row-->
-                                <div class="row d-flex align-items-center mb-4">
-
-                                    <!--Grid column-->
-                                    <div class="text-center mb-3 col-md-12">
-                                        <button type="button" class="btn btn-amber">Cadastrar</button>
-                                    </div>
-                                    <!--Grid column-->
-
-                                </div>
-                                <!--Grid row-->
-
-                                <!--Grid row-->
-                                <div class="row">
-
-                                    <!--Grid column-->
-                                    <div class="col-md-12">
-                                        <p class="font-small white-text d-flex justify-content-end">Já é cadastrado? <a href="#" class="orange-text ml-1 font-weight-bold">
-                                                Login</a></p>
-                                    </div>
-                                    <!--Grid column-->
-
-                                </div>
-                                <!--Grid row-->
-                            </div>
-                        </div>
-                    </div>
-                    <!--/.Content-->
-                </div>
-            </div>
-        </div>
-
-
-        <div class="container">
-            <div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria="true">
-                <div class="modal-dialog form-dark" role="document">
-                    <!--Content-->
-                    <div class="modal-content card card-image" style="background-image: url('images/pagina_principal.jfif');">
-                        <div class="text-white rgba-stylish-strong py-5 px-5 z-depth-4">
-                            <!--Header-->
-                            <div class="modal-header text-center pb-4">
-                                <h3 class="modal-title w-100 white-text font-weight-bold" id="myModalLabel"><strong>Entrar</strong></h3>
-                                <button type="button" class="close white-text" data-dismiss="modal" aria-label="Close">
-                                    <span aria="true">&times;</span>
-                                </button>
-                            </div>
-                            <!--Body-->
-                            <div class="modal-body">
-                                <!--Body-->
-                                <div class="md-form mb-5">
-                                    <input type="email" id="Form-email5" class="form-control validate white-text">
-                                    <label data-error="wrong" data-success="right" for="Form-email5">E-mail</label>
-                                </div>
-
-                                <div class="md-form pb-3">
-                                    <input type="password" id="Form-pass5" class="form-control validate white-text">
-                                    <label data-error="wrong" data-success="right" for="Form-pass5">Senha</label>
-
-                                </div>
-
-                                <!--Grid row-->
-                                <div class="row d-flex align-items-center mb-4">
-
-                                    <!--Grid column-->
-                                    <div class="text-center mb-3 col-md-12">
-                                        <button type="button" class="btn btn-amber">Entar</button>
-                                    </div>
-                                    <!--Grid column-->
-
-                                </div>
-                                <!--Grid row-->
-
-                                <!--Grid row-->
-                                <div class="row">
-
-                                    <!--Grid column-->
-                                    <div class="col-md-12">
-                                        <p class="font-small white-text d-flex justify-content-end">Não tem conta? <a href="#" class="orange-text ml-1 font-weight-bold">
-                                                Cadastre-se</a></p>
-                                    </div>
-                                    <!--Grid column-->
-
-                                </div>
-                                <!--Grid row-->
-
-                            </div>
-                        </div>
-                    </div>
-                    <!--/.Content-->
-                </div>
-            </div>
-        </div>
-
-
-        <!--Modal: modalPush-->
-        <div class="modal fade " id="configuracao" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria="true">
-            <div class="modal-dialog modal-notify modal-info" role="document">
-                <!--Content-->
-                <div class="modal-content text-center">
-                    <!--Header-->
-                    <div class="modal-header d-flex justify-content-center">
-                        <p class="heading">Deseja Receber Notificação</p>
-                    </div>
-
-                    <!--Body-->
-                    <div class="modal-body">
-                        <i class="fas fa-bell fa-4x animated rotateIn mb-4"></i>
-                    </div>
-                    <!--Footer-->
-
-                    <div class="modal-footer flex-center">
-                        <a type="button" class="btn btn-success ">Sim</a>
-                        <a type="button" class="btn btn-amber">Não</a>
-                    </div>
-                </div>
-                <!--/.Content-->
-            </div>
-        </div>
-        <!--Modal: modalPush-->
-
-        <div class="modal fade top" id="sair" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria="true" data-backdrop="true">
-            <div class="modal-dialog modal-frame modal-top modal-notify modal-info" role="document">
-                <!--Content-->
-                <div class="modal-content">
-                    <!--Body-->
-                    <div class="modal-body">
-                        <div class="row d-flex justify-content-center align-items-center">
-
-                            <b><p class="pt-3 pr-2">Certeza que deseja sair da sua conta</p></b>
-
-                            <a type="button" class="btn btn-amber">Cancelar</a>
-                            <a type="button" class="btn btn-danger">Ok</a>
-                        </div>
-                    </div>
-                </div>
-                <!--/.Content-->
-            </div>
-        </div>
+        
