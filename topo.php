@@ -14,7 +14,7 @@
     <link href="css/mdb.min.css" rel="stylesheet">
     <!-- Your custom styles (optional) -->
     <link href="css/style.min.css" rel="stylesheet">
-    <link rel="manifest" href="/SaboresDoMundo/saboresdomundo/manifest.json">
+    <link rel="manifest" href="/SaboresDoMundo/manifest.json">
 
 
     <style>
@@ -161,7 +161,7 @@
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
                             <a href="#" class="nav-link waves-effect bold-1">
-                            <i class="fas fa-star mr-3 suspenso"></i>Home</a>
+                            <i class="fas fa-home"></i>Home</a>
                         </li>
                         <li class="nav-item">
                             <a href="#" class="nav-link waves-effect bold-1">
@@ -169,12 +169,12 @@
                         </li>
                         <li class="nav-item">
                             <a href="#" class="nav-link waves-effect bold-1">
-                            <i class="fas fa-star mr-3 suspenso"></i>Minhas Receitas</a>
+                            <i class="fas fa-book-open"></i>Minhas Receitas</a>
                         </li>
                         <li class="nav-item">
                             <div class="dropdown">
                                 <a id="dropdownMenuButton" class="nav-link waves-effect bold-1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="fas fa-star mr-3 suspenso"></i>
+                                    <i class="fas fa-flag"></i>
                                     Receitas Estrangeiras 
                                 </a>
                                 <div class="dropdown-menu " aria-labelledby="dropdownMenuButton" id="paises">
@@ -194,7 +194,7 @@
 
                         <li class="nav-item suspenso">
                             <a href="#" class="nav-link waves-effect bold-1">
-                            <i class="fas fa-star mr-3"></i>Receitas Favoritas</a>
+                            <i class="fas fa-heart"></i>Receitas Favoritas</a>
                         </li>
                         <li class="nav-item suspenso">
                             <a href="pefil.php" class="nav-link waves-effect bold-1">
@@ -209,10 +209,10 @@
                                 <i class="fas fa-sign-out-alt mr-3"></i>Sair</a>
                         </li>
                         <li class="nav-item suspenso">
-                            <a href="" class="nav-link waves-effect bold-1" data-toggle="modal" data-target="#cadastro"><i class="fas fa-stream mr-3"></i>Cadastrar-se</a>
+                            <a href="" class="nav-link waves-effect bold-1" data-toggle="modal" data-target="#cadastro"><i class="fas fa-user-friends"></i>Cadastrar-se</a>
                         </li>
                        <li class="nav-item suspenso">
-                            <a href="" class="nav-link waves-effect bold-1" data-toggle="modal" data-target="#login"><i class="fas fa-stream mr-3"></i>Fazer Login</a>
+                            <a href="" class="nav-link waves-effect bold-1" data-toggle="modal" data-target="#login"><i class="fas fa-sign-in-alt"></i>Fazer Login</a>
                            
                        </li>
                     </ul>
