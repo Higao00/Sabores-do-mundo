@@ -29,7 +29,7 @@
     <link href="css/mdb.min.css" rel="stylesheet">
     <!-- Your custom styles (optional) -->
     <link href="css/style.min.css" rel="stylesheet">
-    <link rel="manifest" href="/SaboresDoMundo/manifest.json">
+    <link rel="manifest" href="/saboresdomundo/manifest.json">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@8.18.0/dist/sweetalert2.min.css">
 
 
