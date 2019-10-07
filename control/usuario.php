@@ -1,8 +1,8 @@
 
 <?php
 	
-    include("../src/conexao.php");
-    include("../src/usuario.php");
+    require("../src/conexao.php");
+    require("../src/usuario.php");
 
     // var_dump($_POST);
     // die();

@@ -2,7 +2,7 @@
 error_reporting(0);
 ini_set(“display_errors”, 0 );
 
-include 'topo.php';
+require 'topo.php';
 ?>
 
 <!-- INCLUIR OU CRIAR AQUI SEUS ESTILOS -->
@@ -23,5 +23,5 @@ include 'topo.php';
 </script>
 
 <?php
-include 'rodape.php';
+require 'rodape.php';
 ?>
