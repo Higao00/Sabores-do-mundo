@@ -4,8 +4,8 @@ self.addEventListener('install', function (event) {
   event.waitUntil(
     caches.open(CACHE_NAME).then(function (cache) {
       return cache.addAll([
-        './offline2.html',
-        './manifest.json',
+        '/saboresdomundo/index.php',
+        '/saboresdomundo/manifest.json',
       ]);
     })
   )

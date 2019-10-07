@@ -198,6 +198,7 @@
 <!-- MDB core JavaScript -->
 <script type="text/javascript" src="js/mdb.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8.18.0/dist/sweetalert2.all.min.js"></script>
+
 <!-- Initializations -->
 <script type="text/javascript">
 
@@ -233,6 +234,10 @@
 
 <!-- service Work -->
 <script>
+
+  var aspkey = "BJ5IxJBWdeqFDJTvrZ4wNRu7UY2XigDXjgiUBYEYVXDudxhEs0ReOJRBcBHsPYgZ5dyV8VjyqzbQKS8V7bUAglk";
+  var id_user = 1;
+  
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('sw.js')
     .then(function () {
@@ -243,19 +248,21 @@
     });
 }
 </script>
+<script src="js/main.js"></script>
+
 
 <!-- Charts -->
 <script>
     $(document).ready(function(){
-       $('footer').hide();
+     $('footer').hide();
 
-       if($(window).width() < 680){
+     if($(window).width() < 680){
           $('form#busca_principal').addClass('col-sm-12');
       }
 
-        	// console.log($(window).width());
-        });
-    </script>
+    	// console.log($(window).width());
+    });
+</script>
 
     
 </body>
