@@ -102,6 +102,9 @@
             <!--Header-->
             <div class="modal-header d-flex justify-content-center">
                 <p class="heading">Deseja Receber Notificação</p>
+                <button type="button" class="close white-text" data-dismiss="modal" aria-label="Close">
+                    <span aria="true">&times;</span>
+                </button>
             </div>
 
             <!--Body-->
@@ -111,8 +114,8 @@
             <!--Footer-->
 
             <div class="modal-footer flex-center">
-                <a type="button" class="btn btn-success ">Sim</a>
-                <a type="button" class="btn btn-amber">Não</a>
+                <a type="button" href="control/notificacao.php?action=unscriber" class="btn btn-success">Sim</a>
+                <a type="button" href="control/notificacao.php?action=subscriber" class="btn btn-danger">Não</a>
             </div>
         </div>
         <!--/.Content-->

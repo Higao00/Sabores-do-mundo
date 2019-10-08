@@ -28,7 +28,7 @@ function urlB64ToUint8Array(base64String) {
 if ('serviceWorker' in navigator && 'PushManager' in window) {
   console.log('Service Worker and Push is supported');
   //mysw.js has the push method and payload, mysw.js also has the eventhandler fr when the notification is clicked
-  navigator.serviceWorker.register('mysw.js') //this MUST be in the same directory as index.php
+  navigator.serviceWorker.register('sw.js') //this MUST be in the same directory as index.php
   .then(function(swReg) {
     console.log('Service Worker is registered', swReg);
 
@@ -66,15 +66,15 @@ function subscribeUser() {
 }
 
 function initialiseUI() {
-//   pushButton.addEventListener('click', function() {
-//     pushButton.disabled = true;
-//     if (isSubscribed) {
-//       unsubscribeUser();
-//     } else {
-//       subscribeUser();
-//     }
-//   });
-// Set the initial subscription value
+  //   pushButton.addEventListener('click', function() {
+  //     pushButton.disabled = true;
+  //     if (isSubscribed) {
+  //       unsubscribeUser();
+  //     } else {
+  //       subscribeUser();
+  //     }
+  //   });
+  // Set the initial subscription value
   swRegistration.pushManager.getSubscription()
   .then(function(subscription) {
     isSubscribed = !(subscription === null);
@@ -116,26 +116,38 @@ function updateSubscriptionOnServer(subscription) {
     const key = subscription.getKey('p256dh');
     const token = subscription.getKey('auth');
 
-    fetch('########PAGINA PHP REGISTRA AQUI #########.php', {
-      method: 'post',
-      headers: new Headers({
-        'Content-Type': 'application/json'
-      }),
-      body: JSON.stringify({
+    $.ajax({
+      method: "POST",
+      url: "control/notificacao.php",
+      data: {
         endpoint: subscription.endpoint,
         key: key ? btoa(String.fromCharCode.apply(null, new Uint8Array(subscription.getKey('p256dh')))) : null,
         token: token ? btoa(String.fromCharCode.apply(null, new Uint8Array(subscription.getKey('auth')))) : null,
         axn: 'subscribe',
         id_user : id_user_vdd
-      })
-    }).then(function(response) {
-      return response.text();
-    }).then(function(response) {
-      console.log(response);
-    }).catch(function(err) {
-      // Error :(
-      console.log('error');
+      }
     });
+
+    // fetch('control/notificacao.php', {
+    //   method: 'post',
+    //   headers: new Headers({
+    //     'Content-Type': 'application/json'
+    //   }),
+    //   body: JSON.stringify({
+    //     endpoint: subscription.endpoint,
+    //     key: key ? btoa(String.fromCharCode.apply(null, new Uint8Array(subscription.getKey('p256dh')))) : null,
+    //     token: token ? btoa(String.fromCharCode.apply(null, new Uint8Array(subscription.getKey('auth')))) : null,
+    //     axn: 'subscribe',
+    //     id_user : id_user_vdd
+    //   })
+    // }).then(function(response) {
+    //   return response.text();
+    // }).then(function(response) {
+    //   // console.log(response);
+    // }).catch(function(err) {
+    //   // Error :(
+    //   console.log('error');
+    // });
   } else {
     //subscriptionDetails.classList.add('is-invisible');
   }
@@ -147,7 +159,7 @@ function unsubscribeUser() {
     if (subscription) {
       const key = subscription.getKey('p256dh');
       const token = subscription.getKey('auth');
-      fetch('########PAGINA PHP REGISTRA AQUI #########.php', {
+      fetch('control/notificacao.php', {
           method: 'post',
           headers: new Headers({
             'Content-Type': 'application/json'

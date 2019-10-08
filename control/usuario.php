@@ -2,7 +2,7 @@
 <?php
 	
     require("../src/conexao.php");
-    require("../src/usuario.php");
+    require("../src/Usuario.php");
 
     // var_dump($_POST);
     // die();
@@ -28,7 +28,7 @@
                 $usuario->insertUser();
                 // $usuario->selectUserId($usuario->getId());
 
-                if(!empty($_SESSION)){
+                if(isset($_SESSION) || !empty($_SESSION)){
                     session_destroy();
                     session_start();
 
@@ -37,7 +37,6 @@
                     $_SESSION['id_user'] = $usuario->getId();
                     $_SESSION['login'] = $today;
                 }else{
-                    session_destroy();
                     session_start();
 
                     $today = date('d-m-Y h:i:s');
@@ -51,6 +50,16 @@
                 header('Location: ../index.php?status=1');
                 die();
             }else{
+                if(isset($_SESSION) || !empty($_SESSION)){
+                    session_destroy();
+                    session_start();
+                    $today = date('d-m-Y h:i:s');
+                    $_SESSION['login'] = $today;
+                }else{
+                    session_start();
+                    $today = date('d-m-Y h:i:s');
+                    $_SESSION['login'] = $today;
+                }
                 session_destroy();
                 session_start();
 
@@ -65,9 +74,7 @@
         }
     }elseif(isset($_POST['sair'])){
 
-    	session_start();
-
-    	if(isset($_SESSION['id_user'])){
+    	if(isset($_SESSION) ){
 	    	session_destroy(); 
     	}
 
@@ -91,7 +98,7 @@
 
     	    	$usuario = $aux[0];
 
-    	    	if(!empty($_SESSION)){	
+    	    	if(isset($_SESSION) || !empty($_SESSION)){	
 
     	    		session_destroy(); 
     	    		session_start();
@@ -101,20 +108,28 @@
     	    		$_SESSION['id_user'] = $usuario->getId();
     	    		$_SESSION['login'] = $today;
     	    	}else{
-                    session_destroy(); 
     	    		session_start();
-
     	    		$today = date('d-m-Y h:i:s');
-
-    	    		$_SESSION['id_user'] = $usuario->getId();
+                    $_SESSION['id_user'] = $usuario->getId();
     	    		$_SESSION['login'] = $today;
     	    	}
 
     	    	header('Location: ../index.php');
     	    	die();
     	    }else{
-                session_destroy(); 
-                session_start();
+
+                if(isset($_SESSION) || !empty($_SESSION)){  
+
+                    session_destroy(); 
+                    session_start();
+
+                    $today = date('d-m-Y h:i:s');
+                    $_SESSION['login'] = $today;
+                }else{
+                    session_start();
+                    $today = date('d-m-Y h:i:s');
+                    $_SESSION['login'] = $today;
+                }
 
     	    	$_SESSION['msg'] = 'E-mail ou Senha invalido!';
 
@@ -123,8 +138,6 @@
     	    }
     	}
     }elseif(isset($_POST['update-usuario'])){
-
-        session_start();
 
         //Rotina para fazer o Update de um usuario e iniciar a sua sessão
         if(isset($_POST['nome']) && isset($_POST['email']) && isset($_POST['senha']) && isset($_POST['id_user'])){

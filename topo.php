@@ -1,5 +1,5 @@
 <?php 
-    if(isset($_SESSION['id_user'])){
+    if(isset($_SESSION) && isset($_SESSION['id_user'])){
         $logado = 1; 
     }else{
         session_start();
