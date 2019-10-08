@@ -1,9 +1,10 @@
 'use strict';
-if(!window.top.aspkey){
-  throw new Error('missing a public key');
-}
-const applicationServerPublicKey = window.top.aspkey;
-const id_user_vdd = window.top.id_user;
+
+var aspkey = "BJ5IxJBWdeqFDJTvrZ4wNRu7UY2XigDXjgiUBYEYVXDudxhEs0ReOJRBcBHsPYgZ5dyV8VjyqzbQKS8V7bUAglk";
+var id_user = 1;
+
+const applicationServerPublicKey = aspkey;
+const id_user_vdd = id_user;
 
 //const pushButton = document.querySelector('.pushtoglbtn');
 
