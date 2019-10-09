@@ -1,9 +1,10 @@
 'use strict';
-if(!window.top.aspkey){
-  throw new Error('missing a public key');
-}
-const applicationServerPublicKey = window.top.aspkey;
-const id_user_vdd = window.top.id_user;
+
+var aspkey = "BJ5IxJBWdeqFDJTvrZ4wNRu7UY2XigDXjgiUBYEYVXDudxhEs0ReOJRBcBHsPYgZ5dyV8VjyqzbQKS8V7bUAglk";
+var id_user = 1;
+
+const applicationServerPublicKey = aspkey;
+const id_user_vdd = id_user;
 
 //const pushButton = document.querySelector('.pushtoglbtn');
 
@@ -23,25 +24,6 @@ function urlB64ToUint8Array(base64String) {
     outputArray[i] = rawData.charCodeAt(i);
   }
   return outputArray;
-}
-
-if ('serviceWorker' in navigator && 'PushManager' in window) {
-  console.log('Service Worker and Push is supported');
-  //mysw.js has the push method and payload, mysw.js also has the eventhandler fr when the notification is clicked
-  navigator.serviceWorker.register('sw.js') //this MUST be in the same directory as index.php
-  .then(function(swReg) {
-    console.log('Service Worker is registered', swReg);
-
-    swRegistration = swReg;
-    initialiseUI();
-
-  })
-  .catch(function(error) {
-    console.error('Service Worker Error', error);
-  });
-} else {
-  console.warn('Push messaging is not supported');
-   //pushButton.textContent = 'Push Not Supported';
 }
 
 function subscribeUser() {
@@ -91,24 +73,6 @@ function initialiseUI() {
     //updateBtn();
   });
 }
-
-// function updateBtn() {
-//   if (Notification.permission === 'denied') {
-//     pushButton.textContent = 'Push Messaging Blocked.';
-//     pushButton.disabled = true;
-//     updateSubscriptionOnServer(null);
-//     return;
-//   }
-
-//   if (isSubscribed) {
-//     pushButton.textContent = 'Disable Push Messaging';
-//   } else {
-//     pushButton.textContent = 'Enable Push Messaging';
-//   }
-
-//   pushButton.disabled = false;
-
-// }
 
 function updateSubscriptionOnServer(subscription) {
   // TODO: Send subscription to application server
@@ -193,3 +157,24 @@ function unsubscribeUser() {
     //updateBtn();
   });
 }
+
+if ('serviceWorker' in navigator && 'PushManager' in window) {
+  console.log('Service Worker and Push is supported');
+  //mysw.js has the push method and payload, mysw.js also has the eventhandler fr when the notification is clicked
+  navigator.serviceWorker.register('sw.js') //this MUST be in the same directory as index.php
+  .then(function(swReg) {
+    console.log('Service Worker is registered', swReg);
+
+    swRegistration = swReg;
+    initialiseUI();
+
+  })
+  .catch(function(error) {
+    console.error('Service Worker Error', error);
+  });
+} else {
+  console.warn('Push messaging is not supported');
+   //pushButton.textContent = 'Push Not Supported';
+}
+
+// window.location.href="https://descomplicasms.com";

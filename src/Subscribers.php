@@ -135,7 +135,7 @@ class Subscribers {
 
             foreach ($connect as $key => $value) {
                 if (isset($value->id) && isset($value->endpoint) && isset($value->auth) && isset($value->usuario) && isset($value->p256dh) && isset($value->status)) {
-                    $aux = new Subscribers($value->id, $value->endpoint, $value->auth, $value->usuario, $value->p256dh, $value->p256dh);
+                    $aux = new Subscribers($value->id, $value->endpoint, $value->auth, $value->p256dh, $value->usuario, $value->status);
                     $subscribers[] = $aux;
                 }
             }

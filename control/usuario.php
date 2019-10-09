@@ -3,6 +3,7 @@
 	
     require("../src/conexao.php");
     require("../src/Usuario.php");
+    error_reporting(E_ALL);
 
     // var_dump($_POST);
     // die();
@@ -76,7 +77,11 @@
 
     	if(isset($_SESSION) ){
 	    	session_destroy(); 
-    	}
+    	}else{
+            session_start();
+            session_destroy();
+        }
+
 
         //echo $_SERVER['HTTP_REFERER'].'status=0';
         header('Location: ../index.php');
@@ -97,8 +102,9 @@
     	    if(count($aux) > 0){
 
     	    	$usuario = $aux[0];
+                session_start();
 
-    	    	if(isset($_SESSION) || !empty($_SESSION)){	
+    	    	if(isset($_SESSION) || !isset($_SESSION['id_user'])){	
 
     	    		session_destroy(); 
     	    		session_start();
@@ -106,11 +112,6 @@
     	    		$today = date('d-m-Y h:i:s');
 
     	    		$_SESSION['id_user'] = $usuario->getId();
-    	    		$_SESSION['login'] = $today;
-    	    	}else{
-    	    		session_start();
-    	    		$today = date('d-m-Y h:i:s');
-                    $_SESSION['id_user'] = $usuario->getId();
     	    		$_SESSION['login'] = $today;
     	    	}
 

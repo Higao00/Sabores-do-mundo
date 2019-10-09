@@ -235,22 +235,6 @@
     });
 </script>
 
-<!-- service Work -->
-<script>
-
-  var aspkey = "BJ5IxJBWdeqFDJTvrZ4wNRu7UY2XigDXjgiUBYEYVXDudxhEs0ReOJRBcBHsPYgZ5dyV8VjyqzbQKS8V7bUAglk";
-  var id_user = 1;
-  
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('sw.js')
-    .then(function () {
-        console.log('service worker registered');
-    })
-    .catch(function () {
-        console.warn('service worker failed');
-    });
-}
-</script>
 <script src="js/main.js"></script>
 
 
