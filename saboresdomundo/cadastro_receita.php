@@ -10,14 +10,16 @@ include 'topo.php';
 
   #arquivo {
     background-color: #d6d6d6;
-    height: 20%;
+    height: 200px;
     width: 100%;
   }
 
   #icon_mais {
-    position: relative;
-    margin-top: 10%;
-    margin-left: 50%;
+    margin-top: 5%;
+    margin-left: 45%;
+  }
+  #icon_arquivo{
+    
   }
   
 </style>
@@ -28,7 +30,7 @@ include 'topo.php';
   <div class="card-body ">
     <div class="card">
       <div class="custom-file" id="arquivo">
-        <i class="fas fa-plus fa-2x" id="icon_mais"><input type="file" class="custom-file-input" id="acon_put"></i>
+       <input type="file" class="custom-file-input" id="icon_arquivo"><i class="fas fa-plus fa-2x" id="icon_mais"></i>
       </div>
     </div>
   </div>
