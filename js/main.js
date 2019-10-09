@@ -1,10 +1,10 @@
+'use strict';
 
 var aspkey = "BJ5IxJBWdeqFDJTvrZ4wNRu7UY2XigDXjgiUBYEYVXDudxhEs0ReOJRBcBHsPYgZ5dyV8VjyqzbQKS8V7bUAglk";
 var id_user = 1;
 
-
-const applicationServerPublicKey = "BJ5IxJBWdeqFDJTvrZ4wNRu7UY2XigDXjgiUBYEYVXDudxhEs0ReOJRBcBHsPYgZ5dyV8VjyqzbQKS8V7bUAglk";
-const id_user_vdd = "1";
+const applicationServerPublicKey = aspkey;
+const id_user_vdd = id_user;
 
 //const pushButton = document.querySelector('.pushtoglbtn');
 
