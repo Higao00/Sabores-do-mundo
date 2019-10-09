@@ -138,7 +138,7 @@
             max-height: 400px;
         }
         img#logo{
-            height: 80%!important;
+            width: 100%!important;
         }
 
         .modal-dialog.modal-notify.modal-info .fab,
@@ -292,9 +292,7 @@
         <!-- Sidebar -->
         <div class="sidebar-fixed position-fixed">
 
-            <a class="logo-wrapper waves-effect">
-                <img src="images/logo.png" id="logo">
-            </a>
+            <img src="images/logo.png" id="logo">
 
             <div class="list-group list-group-flush">
 
