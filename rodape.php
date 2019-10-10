@@ -207,6 +207,12 @@
 
     $(document).ready(function(){
 
+        $('footer').hide();
+
+        if($(window).width() < 680){
+             $('form#busca_principal').addClass('col-sm-12');
+         }
+
         <?php 
             if(isset($_GET['status']) && $_GET['status'] == 1){
 
@@ -236,21 +242,6 @@
 </script>
 
 <script src="js/main.js"></script>
-
-
-<!-- Charts -->
-<script>
-    $(document).ready(function(){
-     $('footer').hide();
-
-     if($(window).width() < 680){
-          $('form#busca_principal').addClass('col-sm-12');
-      }
-
-    	// console.log($(window).width());
-    });
-</script>
-
     
 </body>
 
