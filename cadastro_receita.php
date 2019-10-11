@@ -49,15 +49,11 @@ include 'topo.php';
 		}
 	}
 
-	#cadastro {
-		float: right;
-	}
 </style>
 
 <!-- CRIAR AQUI O HTML DA SUA PAGINA -->
 <!-- Card -->
 <div class="container">
-	<<<<<<< HEAD
 
 	<p class="page-title" id="titulo-page">CADASTRO DE RECEITA  <i class="fas fa-utensils mr-3"></i></p>
 
@@ -182,47 +178,6 @@ include 'topo.php';
 		
 	</form>
 
-	=======
-	<div class="row">
-		<div class="col-lg-12">
-			<div class="card-body ">
-				<div class="card">
-					<form class="text-center border border-light p-5" action="#!">
-						<input type="text" id="exampleForm2" class="form-control" placeholder="Nome da Receita">
-						<div class="card-body">
-							<div id="table" class="table-editable" style="overflow:scroll;height:400px;width:100%;overflow:auto">
-								<span class="table-add float-right mb-3 mr-2"><a href="#!" class="text-success"><i class="fas fa-plus fa-2x" aria-hidden="true"></i></a></span>
-								<table class="table table-bordered table-responsive-md table-striped text-center" id="table">
-									<thead>
-										<tr>
-											<th class="text-center">Ingrediente</th>
-											<th class="text-center">Quantidade</th>
-											<th class="text-center">Excluir</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr class="hidden" id="hidden">
-											<td class="pt-3-half" contenteditable="true"></td>
-											<td class="pt-3-half" contenteditable="true"></td>
-											<td>
-												<span class="table-remove"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0">Remove</button></span>
-											</td>
-										</tr>
-									</tbody>
-								</table>
-								<div class="form-group">
-									<textarea class="form-control rounded-0" id="exampleFormControlTextarea2" rows="3" placeholder="Modo de preparo"></textarea>
-								</div>
-							</div>
-						</div>
-						<button type="button" class="btn btn-outline-success waves-effect" id="cadastro">Cadastrar</button>
-					</form>
-					<!-- Editable table -->
-				</div>
-			</div>
-		</div>
-	</div>
-	>>>>>>> origin/master
 </div>
 
 
@@ -240,11 +195,11 @@ include 'rodape.php';
 		  maxFilesize: 2, // MB
 
 		  accept: function(file, done) {
-		  	console.log(file);
-		  	if (file.type != "image/jpeg") {
-		  		done("Error! Files of this type are not accepted");
-		  	}
-		  	else { done(); }
+		    console.log(file);
+            if (file.type != "image/jpeg") {
+                done("Error! Files of this type are not accepted");
+            }
+            else { done(); }
 		  }
 		};
 		
