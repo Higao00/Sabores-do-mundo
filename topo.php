@@ -44,6 +44,10 @@ if(isset($_SESSION) && isset($_SESSION['id_user'])){
 			.fab{
 				display: block!important;
 			}
+
+			img#icon-mobile{
+				display: block;
+			}
 		}
 
 		.suspenso{
@@ -201,6 +205,10 @@ if(isset($_SESSION) && isset($_SESSION['id_user'])){
 			content: '+';
 		}
 
+		img#icon-mobile{
+			display: none;
+		}
+
 	</style>
 </head>
 
@@ -214,6 +222,7 @@ if(isset($_SESSION) && isset($_SESSION['id_user'])){
 			<div class="container-fluid">
 
 				<a class="navbar-brand waves-effect" href="#">
+					<img src="images/icons/icon-96x96.png" style="width: 45px;" id="icon-mobile">
 					<strong class="bold-1" style="color: #f4511e;">Sabores do Mundo</strong>
 				</a>
 
