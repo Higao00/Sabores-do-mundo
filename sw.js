@@ -4,8 +4,16 @@ self.addEventListener('install', function (event) {
   event.waitUntil(
     caches.open(CACHE_NAME).then(function (cache) {
       return cache.addAll([
+        '/saboresdomundo/js/bootstrap.min.js',
+        '/saboresdomundo/js/popper.min.js',
+        '/saboresdomundo/js/jquery-3.4.1.min.js',
+        '/saboresdomundo/css/style.min.css',
+        '/saboresdomundo/css/mdb.min.css',
+        '/saboresdomundo/css/bootstrap.min.css',
         '/saboresdomundo/index.php',
         '/saboresdomundo/manifest.json',
+        '/saboresdomundo/css/dropzone.min.css',
+        '/saboresdomundo/js/dropzone.min.js',
       ]);
     })
   )

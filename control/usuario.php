@@ -1,4 +1,3 @@
-
 <?php
 	
     require("../src/conexao.php");
@@ -48,7 +47,7 @@
 
                 //echo $_SERVER['HTTP_REFERER'].'status=1';
                 $_SESSION['msg'] = 'Usuario Cadastrado com Sucesso!';
-                header('Location: ../index.php?status=1');
+                header('Location: ../home.php?status=1');
                 die();
             }else{
                 if(isset($_SESSION) || !empty($_SESSION)){
@@ -65,12 +64,12 @@
                 session_start();
 
                 $_SESSION['msg'] = 'Usuario já Cadastrado!';
-                header('Location: ../index.php?status=0');
+                header('Location: ../home.php?status=0');
                 die();
             }
             
         }else{
-            header('Location: ../index.php');
+            header('Location: ../home.php');
             die();
         }
     }elseif(isset($_POST['sair'])){
@@ -84,7 +83,7 @@
 
 
         //echo $_SERVER['HTTP_REFERER'].'status=0';
-        header('Location: ../index.php');
+        header('Location: ../home.php');
         die();
     }elseif(isset($_POST['login'])){
 
@@ -115,7 +114,7 @@
     	    		$_SESSION['login'] = $today;
     	    	}
 
-    	    	header('Location: ../index.php');
+    	    	header('Location: ../home.php');
     	    	die();
     	    }else{
 
@@ -134,7 +133,7 @@
 
     	    	$_SESSION['msg'] = 'E-mail ou Senha invalido!';
 
-    	    	header('Location: ../index.php?status=0');
+    	    	header('Location: ../home.php?status=0');
     	    	die();
     	    }
     	}

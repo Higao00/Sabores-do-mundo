@@ -21,12 +21,12 @@
 
 	}elseif(isset($_POST['axn']) && $_POST['axn'] == 'unsubscribe' ){
 
-	}elseif(isset($_POST['send_notification']) && isset($_POST['id_user']) && isset($_POST['msg'])){
+	}elseif(isset($_POST['send_notification']) && isset($_POST['msg'])){
 
 		include('../envia_notificacao.php');
 
 		$notificacao = new Subscribers();
-		$aux = $notificacao->executeQuery("SELECT * FROM `subscribers` WHERE `usuario` = ".$_POST['id_user']);
+		$aux = $notificacao->executeQuery("SELECT * FROM `subscribers` ");
 
 		$notificacoes = [];
 		$notifica_linha;
@@ -66,6 +66,5 @@
 
 		header('Location: ../index.php?status=1');
 		die();
-
 	}
 ?>

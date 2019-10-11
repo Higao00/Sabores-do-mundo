@@ -1,351 +1,400 @@
 <?php 
-    if(isset($_SESSION) && isset($_SESSION['id_user'])){
-        $logado = 1; 
-    }else{
-        session_start();
+if(isset($_SESSION) && isset($_SESSION['id_user'])){
+	$logado = 1; 
+}else{
+	session_start();
 
-        if(isset($_SESSION['id_user'])){
-            $logado = 1; 
-        }else{
-            $logado = 0; 
-        }
-    }
-
+	if(isset($_SESSION['id_user'])){
+		$logado = 1; 
+	}else{
+		$logado = 0; 
+	}
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Sabores do Mundo</title>
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
-    <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <!-- Material Design Bootstrap -->
-    <link href="css/mdb.min.css" rel="stylesheet">
-    <!-- Your custom styles (optional) -->
-    <link href="css/style.min.css" rel="stylesheet">
-    <link rel="manifest" href="/saboresdomundo/manifest.json">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@8.18.0/dist/sweetalert2.min.css">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<title>Sabores do Mundo</title>
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+	<!-- Bootstrap core CSS -->
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<!-- Material Design Bootstrap -->
+	<link href="css/mdb.min.css" rel="stylesheet">
+	<!-- Your custom styles (optional) -->
+	<link href="css/style.min.css" rel="stylesheet">
+	<link rel="manifest" href="/saboresdomundo/manifest.json">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@8.18.0/dist/sweetalert2.min.css">
+	<link href="css/dropzone.min.css" rel="stylesheet" />
+
+	<style>
+		@media only screen and (max-width: 450px) {
+			p#icon_fade_mobile {
+				display: none;
+			}
+
+			.suspenso{
+				display: inline-block!important;
+			}
+
+			.fab{
+				display: block!important;
+			}
+		}
+
+		.suspenso{
+			display: none;
+		}
+
+		form#form_principal {
+			margin: 2% !important;
+			margin-left: 0px !important;
+			margin-right: 0px !important;
+		}
+
+		.bold-1 {
+			font-weight: 500;
+		}
+
+		.list-group-item.active {
+			background-color: #e64a19 !important;
+			border-color: #e64a19 !important;
+		}
 
 
-    <style>
-        @media only screen and (max-width: 600px) {
-            p#icon_fade_mobile {
-                display: none;
-            }
+	</style>
 
-            .suspenso{
-                display: inline-block!important;
-            }
-        }
+	<style>
+		.form-dark .font-small {
+			font-size: 0.8rem;
+		}
 
-        .suspenso{
-            display: none;
-        }
+		.form-dark .md-form label {
+			color: #fff;
+		}
 
-        form#form_principal {
-            margin: 2% !important;
-            margin-left: 0px !important;
-            margin-right: 0px !important;
-        }
+		.form-dark input[type=email]:focus:not([readonly]) {
+			border-bottom: 1px solid #FF8C00;
+			-webkit-box-shadow: 0 1px 0 0 #FF8C00;
+			box-shadow: 0 1px 0 0 #FF8C00;
+		}
 
-        .bold-1 {
-            font-weight: 500;
-        }
+		.form-dark input[type=email]:focus:not([readonly])+label {
+			color: #fff;
+		}
 
-        .list-group-item.active {
-            background-color: #e64a19 !important;
-            border-color: #e64a19 !important;
-        }
-    </style>
+		.form-dark input[type=password]:focus:not([readonly]) {
+			border-bottom: 1px solid #FF8C00;
+			-webkit-box-shadow: 0 1px 0 0 #FF8C00;
+			box-shadow: 0 1px 0 0 #FF8C00;
+		}
 
-    <style>
-        .form-dark .font-small {
-            font-size: 0.8rem;
-        }
+		.form-dark input[type=password]:focus:not([readonly])+label {
+			color: #fff;
+		}
 
-        .form-dark .md-form label {
-            color: #fff;
-        }
+		.form-dark .modal-header {
+			border-bottom: none;
+		}
 
-        .form-dark input[type=email]:focus:not([readonly]) {
-            border-bottom: 1px solid #FF8C00;
-            -webkit-box-shadow: 0 1px 0 0 #FF8C00;
-            box-shadow: 0 1px 0 0 #FF8C00;
-        }
+		#login {
+			color: #FF8C00;
+		}
 
-        .form-dark input[type=email]:focus:not([readonly])+label {
-            color: #fff;
-        }
+		.form-dark .font-small {
+			font-size: 0.8rem;
+		}
 
-        .form-dark input[type=password]:focus:not([readonly]) {
-            border-bottom: 1px solid #FF8C00;
-            -webkit-box-shadow: 0 1px 0 0 #FF8C00;
-            box-shadow: 0 1px 0 0 #FF8C00;
-        }
+		.form-dark .md-form label {
+			color: #fff;
+		}
 
-        .form-dark input[type=password]:focus:not([readonly])+label {
-            color: #fff;
-        }
+		.form-dark input[type=email]:focus:not([readonly]) {
+			border-bottom: 1px solid #FF8C00;
+			-webkit-box-shadow: 0 1px 0 0 #FF8C00;
+			box-shadow: 0 1px 0 0 #FF8C00;
+		}
 
-        .form-dark .modal-header {
-            border-bottom: none;
-        }
+		.form-dark input[type=email]:focus:not([readonly])+label {
+			color: #fff;
+		}
 
-        #login {
-            color: #FF8C00;
-        }
+		.form-dark input[type=password]:focus:not([readonly]) {
+			border-bottom: 1px solid #FF8C00;
+			-webkit-box-shadow: 0 1px 0 0 #FF8C00;
+			box-shadow: 0 1px 0 0 #FF8C00;
+		}
 
-        .form-dark .font-small {
-            font-size: 0.8rem;
-        }
+		.form-dark input[type=password]:focus:not([readonly])+label {
+			color: #fff;
+		}
 
-        .form-dark .md-form label {
-            color: #fff;
-        }
+		.form-dark .modal-header {
+			border-bottom: none;
+		}
 
-        .form-dark input[type=email]:focus:not([readonly]) {
-            border-bottom: 1px solid #FF8C00;
-            -webkit-box-shadow: 0 1px 0 0 #FF8C00;
-            box-shadow: 0 1px 0 0 #FF8C00;
-        }
+		#paises {
+			background-color: #ffde75;
+			overflow-y: scroll;
+			max-height: 400px;
+		}
+		img#logo{
+			width: 100%!important;
+		}
 
-        .form-dark input[type=email]:focus:not([readonly])+label {
-            color: #fff;
-        }
+		.modal-dialog.modal-notify.modal-info .fab,
+		.modal-dialog.modal-notify.modal-info .far,
+		.modal-dialog.modal-notify.modal-info .fas {
+			color: rgb(255, 46, 23);
+		}
 
-        .form-dark input[type=password]:focus:not([readonly]) {
-            border-bottom: 1px solid #FF8C00;
-            -webkit-box-shadow: 0 1px 0 0 #FF8C00;
-            box-shadow: 0 1px 0 0 #FF8C00;
-        }
+		.modal-dialog.modal-notify.modal-info .badge,
+		.modal-dialog.modal-notify.modal-info .modal-header {
+			background-color: rgb(255, 46, 23);
+		}
 
-        .form-dark input[type=password]:focus:not([readonly])+label {
-            color: #fff;
-        }
+		a.list-group-item{
+			font-size: 17px!important;
+			font-weight: bold;
+		}
 
-        .form-dark .modal-header {
-            border-bottom: none;
-        }
+		/*Botao Flutuante*/
+		.fab{
+			display: none;
+			position: fixed;
+			bottom:10px;
+			right:10px;
+		}
 
-        #paises {
-            background-color: #ffde75;
-            overflow-y: scroll;
-            max-height: 400px;
-        }
-        img#logo{
-            width: 100%!important;
-        }
+		.fab button{
+			cursor: pointer;
+			width: 48px;
+			height: 48px;
+			border-radius: 30px;
+			background-color: #cb60b3;
+			border: none;
+			box-shadow: 0 1px 5px rgba(0,0,0,.4);
+			font-size: 24px;
+			color: white;
 
-        .modal-dialog.modal-notify.modal-info .fab,
-        .modal-dialog.modal-notify.modal-info .far,
-        .modal-dialog.modal-notify.modal-info .fas {
-            color: rgb(255, 46, 23);
-        }
+			-webkit-transition: .2s ease-out;
+			-moz-transition: .2s ease-out;
+			transition: .2s ease-out;
+		}
 
-        .modal-dialog.modal-notify.modal-info .badge,
-        .modal-dialog.modal-notify.modal-info .modal-header {
-            background-color: rgb(255, 46, 23);
-        }
-    </style>
+		.fab button.main{
+			position: absolute;
+			width: 60px;
+			height: 60px;
+			border-radius: 30px;
+			background-color: #b30000;
+			right: 0;
+			bottom: 0;
+			z-index: 20;
+		}
+
+		.fab button.main:before{
+			content: '+';
+		}
+
+	</style>
 </head>
 
 <body class="grey lighten-3">
 
-    <!--Main Navigation-->
-    <header>
+	<!--Main Navigation-->
+	<header>
 
-        <!-- Navbar -->
-        <nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar">
-            <div class="container-fluid">
+		<!-- Navbar -->
+		<nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar">
+			<div class="container-fluid">
 
-                <a class="navbar-brand waves-effect" href="#">
-                    <strong class="bold-1" style="color: #f4511e;">Sabores do Mundo</strong>
-                </a>
+				<a class="navbar-brand waves-effect" href="#">
+					<strong class="bold-1" style="color: #f4511e;">Sabores do Mundo</strong>
+				</a>
 
-                <!-- Collapse -->
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+				<!-- Collapse -->
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
 
-                <!-- Links -->
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<!-- Links -->
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
 
-                    <!-- Left -->
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item">
-                            <a href="#" class="nav-link waves-effect bold-1">
-                            <i class="fas fa-home mr-3 suspenso"></i>Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link waves-effect bold-1">
-                            <i class="fas fa-star mr-3 suspenso"></i>Melhores Receitas</a>
-                        </li>
+					<!-- Left -->
+					<ul class="navbar-nav mr-auto">
+						<li class="nav-item">
+							<a href="home.php" class="nav-link waves-effect bold-1">
+								<i class="fas fa-home mr-3 suspenso"></i>Home</a>
+							</li>
+							<li class="nav-item">
+								<a href="#" class="nav-link waves-effect bold-1">
+									<i class="fas fa-star mr-3 suspenso"></i>Melhores Receitas</a>
+								</li>
 
-                        <?php 
-                            if($logado == 1){
-                                ?>
-                                <li class="nav-item">
-                                    <a href="#" class="nav-link waves-effect bold-1">
-                                    <i class="fas fa-book-open mr-3 suspenso"></i>Minhas Receitas</a>
-                                </li>
-                                <?php
-                            }
-                        ?>
-                        
-                        <li class="nav-item">
-                            <a href="#" id="dropdownMenuButton" class="nav-link waves-effect bold-1" data-toggle="modal" data-target="#pais">
-                            <i class="fas fa-flag mr-3 suspenso"></i>
-                                Receitas Estrangeiras 
-                            </a>
-                        </li>
+								<?php 
+								if($logado == 1){
+									?>
+									<li class="nav-item">
+										<a href="#" class="nav-link waves-effect bold-1">
+											<i class="fas fa-book-open mr-3 suspenso"></i>Minhas Receitas</a>
+										</li>
+										<?php
+									}
+									?>
 
-                        <?php 
-                            if($logado == 1){
-                                ?>
-                                <li class="nav-item suspenso">
-                                    <a href="#" class="nav-link waves-effect bold-1">
-                                    <i class="fas fa-heart mr-3"></i>Receitas Favoritas</a>
-                                </li>
-                                <?php
-                            }
-                        ?>
+									<li class="nav-item">
+										<a href="#" id="dropdownMenuButton" class="nav-link waves-effect bold-1" data-toggle="modal" data-target="#pais">
+											<i class="fas fa-flag mr-3 suspenso"></i>
+											Receitas Estrangeiras 
+										</a>
+									</li>
 
-                        <?php 
-                            if($logado == 1){
-                                ?>
-                                <li class="nav-item suspenso">
-                            		<a href="pefil.php" class="nav-link waves-effect bold-1">
-                            			<i class="fas fa-user mr-3"></i>Perfil
-                            		</a>
-                            	</li>
-                                <?php
-                            }
-                        ?>
+									<?php 
+									if($logado == 1){
+										?>
+										<li class="nav-item suspenso">
+											<a href="#" class="nav-link waves-effect bold-1">
+												<i class="fas fa-heart mr-3"></i>Receitas Favoritas</a>
+											</li>
+											<?php
+										}
+										?>
 
-                        
-                       
-                        <li class="nav-item suspenso">
-                            <a href="#" class="nav-link waves-effect bold-1" data-toggle="modal" data-target="#configuracao">
-                            <i class="fas fa-cogs mr-3"></i>Notificações</a>
-                        </li> 
-
-                        <?php 
-                            if($logado == 1){
-                                ?>
-                                <li class="nav-item suspenso">
-                                    <a href="#" class="nav-link waves-effect bold-1" data-toggle="modal" data-target="#sair">
-                                    <i class="fas fa-sign-out-alt mr-3"></i>Sair</a>
-                                </li>
-                                <?php
-                            }
-                        ?>
-
-                        <?php 
-                            if($logado != 1){
-                                ?>
-                                <li class="nav-item suspenso">
-                                    <a href="#" class="nav-link waves-effect bold-1" data-toggle="modal" data-target="#cadastro"><i class="fas mr-3 fa-user-friends"></i>Cadastrar-se</a>
-                                </li>
-                                <?php
-                            }
-                        ?>
-
-                        <?php 
-                            if($logado != 1){
-                                ?>
-                                <li class="nav-item suspenso">
-		                            <a href="#" class="nav-link waves-effect bold-1" data-toggle="modal" data-target="#login"><i class="fas mr-3 fa-sign-in-alt"></i>Fazer Login</a>
-		                           
-		                       </li>
-                                <?php
-                            }
-                        ?>
-                       
-                    </ul>
+										<?php 
+										if($logado == 1){
+											?>
+											<li class="nav-item suspenso">
+												<a href="pefil.php" class="nav-link waves-effect bold-1">
+													<i class="fas fa-user mr-3"></i>Perfil
+												</a>
+											</li>
+											<?php
+										}
+										?>
 
 
-                </div>
 
-                <form class="form-inline" id="busca_principal" style="padding: 0px!important;">
-                    <input class="form-control" id="busca_principal" type="text" placeholder="Pesquise Aqui" aria-label="Pesquise Aqui">
-                </form>
+										<li class="nav-item suspenso">
+											<a href="#" class="nav-link waves-effect bold-1" data-toggle="modal" data-target="#configuracao">
+												<i class="fas fa-cogs mr-3"></i>Notificações</a>
+											</li> 
 
-                <div class="collapse navbar-collapse" align="right">
-                    <!-- Right -->
-                    <ul class="navbar-nav nav-flex-icons">
-                        <li class="nav-item">
-                            <a href="#" class="nav-link waves-effect" target="">
-                                <i class="fab fa-facebook-f"></i>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-        <!-- Navbar -->
+											<?php 
+											if($logado == 1){
+												?>
+												<li class="nav-item suspenso">
+													<a href="#" class="nav-link waves-effect bold-1" data-toggle="modal" data-target="#sair">
+														<i class="fas fa-sign-out-alt mr-3"></i>Sair</a>
+													</li>
+													<?php
+												}
+												?>
 
-        <!-- Sidebar -->
-        <div class="sidebar-fixed position-fixed">
+												<?php 
+												if($logado != 1){
+													?>
+													<li class="nav-item suspenso">
+														<a href="#" class="nav-link waves-effect bold-1" data-toggle="modal" data-target="#cadastro"><i class="fas mr-3 fa-user-friends"></i>Cadastrar-se</a>
+													</li>
+													<?php
+												}
+												?>
 
-            <img src="images/logo.png" id="logo">
+												<?php 
+												if($logado != 1){
+													?>
+													<li class="nav-item suspenso">
+														<a href="#" class="nav-link waves-effect bold-1" data-toggle="modal" data-target="#login"><i class="fas mr-3 fa-sign-in-alt"></i>Fazer Login</a>
 
-            <div class="list-group list-group-flush">
+													</li>
+													<?php
+												}
+												?>
 
-            	<?php 
-            	    if($logado == 1){
-            	        ?>
-            	        <a href="#" class="list-group-item list-group-item-action waves-effect">
-                    	<i class="fas fa-star mr-3"></i>Receitas Favoritas</a>
-            	        <?php
-            	    }
-            	?>
-            	<?php 
-            	    if($logado == 1){
-            	        ?>
-            	        <a href="perfil.php" class="list-group-item list-group-item-action waves-effect">
-                    	<i class="fas fa-user mr-3"></i>Perfil</a>
-            	        <?php
-            	    }
-            	?>
-            	<?php 
-            	    if($logado == 1){
-            	        ?>
-            	        <a href="#" class="list-group-item list-group-item-action waves-effect" data-toggle="modal" data-target="#sair">
-                    	<i class="fas fa-sign-out-alt mr-3"></i>Sair</a>
-            	        <?php
-            	    }
-            	?>
-            	<?php 
-            	    if($logado != 1){
-            	        ?>
-            	        <a href="" class="list-group-item list-group-item-action waves-effect" data-toggle="modal" data-target="#cadastro"><i class="fas fa-user-plus mr-3"></i>Cadastrar-se</a>
-            	        <?php
-            	    }
-            	?>
-            	<?php 
-            	    if($logado != 1){
-            	        ?>
-            	        <a href="" class="list-group-item list-group-item-action waves-effect" data-toggle="modal" data-target="#login"><i class="fas fa-sign-in-alt mr-3"></i>Fazer Login</a>
-            	        <?php
-            	    }
-            	?>
-                
-                
-                <a href="#" class="list-group-item list-group-item-action waves-effect" data-toggle="modal" data-target="#configuracao">
-                    <i class="fas fa-cogs mr-3"></i>Notificações</a>
-                
-            </div>
+											</ul>
 
-        </div>
-        <!-- Sidebar -->
-    </header>
-    <!--Main Navigation-->
 
-    <!--Main layout-->
-    <main class="pt-5 mx-lg-5">
-        
+										</div>
+
+										<form class="form-inline" id="busca_principal" style="padding: 0px!important;">
+											<input class="form-control" id="busca_principal" type="text" placeholder="Pesquise Aqui" aria-label="Pesquise Aqui">
+										</form>
+
+									</div>
+								</nav>
+								<!-- Navbar -->
+
+								<!-- Sidebar -->
+								<div class="sidebar-fixed position-fixed">
+
+									<img src="images/logo.png" id="logo">
+
+									<div class="list-group list-group-flush">
+
+										<?php 
+											if($logado == 1){
+											?>
+												<a href="cadastro_receita.php" class="list-group-item list-group-item-action waves-effect">
+													<i class="fas fa-utensils mr-3"></i>Nova Receita</a>
+													<?php
+												}
+											?>
+
+											<?php 
+											if($logado == 1){
+											?>
+												<a href="#" class="list-group-item list-group-item-action waves-effect">
+													<i class="fas fa-star mr-3"></i>Receitas Favoritas</a>
+													<?php
+												}
+											?>
+
+											<?php 
+											if($logado == 1){
+												?>
+												<a href="perfil.php" class="list-group-item list-group-item-action waves-effect">
+													<i class="fas fa-user mr-3"></i>Perfil</a>
+													<?php
+												}
+												?>
+												<?php 
+												if($logado == 1){
+													?>
+													<a href="#" class="list-group-item list-group-item-action waves-effect" data-toggle="modal" data-target="#sair">
+														<i class="fas fa-sign-out-alt mr-3"></i>Sair</a>
+														<?php
+													}
+													?>
+													<?php 
+													if($logado != 1){
+														?>
+														<a href="" class="list-group-item list-group-item-action waves-effect" data-toggle="modal" data-target="#cadastro"><i class="fas fa-user-plus mr-3"></i>Cadastrar-se</a>
+														<?php
+													}
+													?>
+													<?php 
+													if($logado != 1){
+														?>
+														<a href="" class="list-group-item list-group-item-action waves-effect" data-toggle="modal" data-target="#login"><i class="fas fa-sign-in-alt mr-3"></i>Fazer Login</a>
+														<?php
+													}
+													?>
+
+
+													<a href="#" class="list-group-item list-group-item-action waves-effect" data-toggle="modal" data-target="#configuracao">
+														<i class="fas fa-cogs mr-3"></i>Notificações</a>
+
+													</div>
+
+												</div>
+												<!-- Sidebar -->
+											</header>
+											<!--Main Navigation-->
+
+											<!--Main layout-->
+											<main class="pt-5 mx-lg-5">

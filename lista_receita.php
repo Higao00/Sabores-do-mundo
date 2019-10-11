@@ -10,9 +10,10 @@ include 'topo.php';
 <!-- CRIAR AQUI O HTML DA SUA PAGINA -->
 <!-- Card -->
 <div class="container">
-    <div class="card">
+
+    <div class="card" style="margin-top: 45px;">
         <!-- Card content -->
-        <div class="card-body ">
+        <div class="card-body">
             <!--Carousel Wrapper-->
             <div id="carousel-example-1z" class="carousel slide carousel-fade" data-ride="carousel">
                 <!--Indicators-->

@@ -117,6 +117,10 @@ if(isset($_SESSION['id_user'])){
     <!-- FAZER AQUI A INCLUSAO DE SCRIPTS OU SEUS PROPIOS SCRIPTS -->
     <script>
 
+        $(document).ready(function(){
+            $('a[href="perfil.php"]').addClass('active');
+        });
+
     </script>
 
 </div>
