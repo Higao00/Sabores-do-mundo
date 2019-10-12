@@ -59,7 +59,7 @@ include 'topo.php';
 
 	<div style="margin-top: 30px;">
 
-		<form action="control/receita.php" id="DropZoneFiddle" class="dropzone" >
+		<form action="control/images.php" id="DropZoneFiddle" class="dropzone" >
 			<div class="dz-message">
 				<span style="font-size: 20px; font-weight: 500;">Clique Aqui para adicionar Fotos. <i class="fas fa-cloud-upload-alt"></i></span><br>
 			</div>
@@ -70,7 +70,7 @@ include 'topo.php';
 		<div class="card list-margin">
 			<div class="card-body" align="center">
 				<label style="font-size: 24px; font-weight: bold;">Titulo</label>
-				<input type="text" class="form-control" name="titulo-receita" placeholder="Digite aqui o Titulo da Receita">
+				<input type="text" class="form-control" required name="titulo-receita" placeholder="Digite aqui o Titulo da Receita">
 			</div>
 		</div>
 
@@ -85,45 +85,56 @@ include 'topo.php';
 					<table class="table table-bordered table-responsive-md table-striped text-center list-margin" id="ingrediente">
 						<thead>
 							<tr>
-								<th class="text-center">Ingrediente</th>
 								<th class="text-center">Quantidade</th>
+								<th class="text-center">Medida</th>
+								<th class="text-center">Ingrediente</th>
 								<th class="text-center">Excluir</th>
 							</tr>
 						</thead>
 						<tbody>
 							<tr class="hide">
-								<td class="pt-3-half"><input class="form-control" type="text" name="ingrediente[]" placeholder="Digite Aqui o Nome do Ingrediente"></td>
 								<td class="pt-3-half"><input class="form-control" type="number" name="quantidade[]" placeholder="Digite Aqui a Quantidade"></td>
+								<td class="pt-3-half"><input class="form-control" type="text" name="medida[]" placeholder="Digite Aqui a Medida"></td>
+								<td class="pt-3-half"><input class="form-control" type="text" name="ingrediente[]" placeholder="Digite Aqui o Nome do Ingrediente"></td>
 								<td>
 									<span class="table-remove"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0">Remove</button></span>
 								</td>
 							</tr>
 							<tr>
-								<td class="pt-3-half"><input required class="form-control" type="text" name="ingrediente[]" placeholder="Digite Aqui o Nome do Ingrediente"></td>
 								<td class="pt-3-half"><input required class="form-control" type="number" name="quantidade[]" placeholder="Digite Aqui a Quantidade"></td>
+								<td class="pt-3-half"><input required class="form-control" type="text" name="medida[]" placeholder="Digite Aqui a Medida"></td>
+								<td class="pt-3-half"><input required class="form-control" type="text" name="ingrediente[]" placeholder="Digite Aqui o Nome do Ingrediente"></td>
 								<td>
 									<span class="table-remove"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0">Remove</button></span>
 								</td>
 							</tr>
 							<tr>
-								<td class="pt-3-half"><input required class="form-control" type="text" name="ingrediente[]" placeholder="Digite Aqui o Nome do Ingrediente"></td>
 								<td class="pt-3-half"><input required class="form-control" type="number" name="quantidade[]" placeholder="Digite Aqui a Quantidade"></td>
+								<td class="pt-3-half"><input required class="form-control" type="text" name="medida[]" placeholder="Digite Aqui a Medida"></td>
+								<td class="pt-3-half"><input required class="form-control" type="text" name="ingrediente[]" placeholder="Digite Aqui o Nome do Ingrediente"></td>
 								<td>
 									<span class="table-remove"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0">Remove</button></span>
 								</td>
 							</tr>
 							<tr>
-								<td class="pt-3-half"><input required class="form-control" type="text" name="ingrediente[]" placeholder="Digite Aqui o Nome do Ingrediente"></td>
 								<td class="pt-3-half"><input required class="form-control" type="number" name="quantidade[]" placeholder="Digite Aqui a Quantidade"></td>
+								<td class="pt-3-half"><input required class="form-control" type="text" name="medida[]" placeholder="Digite Aqui a Medida"></td>
+								<td class="pt-3-half"><input required class="form-control" type="text" name="ingrediente[]" placeholder="Digite Aqui o Nome do Ingrediente"></td>
 								<td>
 									<span class="table-remove"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0">Remove</button></span>
 								</td>
 							</tr>
 
+							
+
 						</tbody>
 					</table>
 				</div>
 			</div>
+		</div>
+
+		<div id="fotos-id" style="display: none;">
+			
 		</div>
 
 		<div class="card list-margin">
@@ -175,7 +186,6 @@ include 'topo.php';
 				</div>
 			</div>
 		</div>
-
 		
 	</form>
 
@@ -188,37 +198,19 @@ include 'rodape.php';
 <!-- FAZER AQUI A INCLUSAO DE SCRIPTS OU SEUS PROPIOS SCRIPTS -->
 <script>
 	Dropzone.options.DropZoneFiddle = {
-	  paramName: "file", // The name that will be used to transfer the file
-	  maxFilesize: 2, // MB
+	  paramName: "foto-receita", // The name that will be used to transfer the file
+	  maxFilesize: 1, // MB
 	  maxFiles: 5,
 	  acceptedFiles:"image/*",
-	  accept: function(file, done) {
-	    if (file.name == "justinbieber.jpg") {
-	      done("Naha, you don't.");
-	    }
-	    else { done(); }
+	  resizeWidth: 1024,
+	  success: function(file, response){
+	  	$('div#fotos-id').append('<input name="ft-id[]" value="'+response+'">');
 	  }
 	};
+
 	$(document).ready(function() {
 
 		$('a[href="cadastro_receita.php"]').addClass('active');
-
-		
-
-		// Dropzone.autoDiscover = false;
-
-		// var dzoptions = {
-		//   paramName: "alindo",
-		//   maxFilesize: 10,
-		//   url: 'UploadImages',
-		//   uploadMultiple: true,
-		//   parallelUploads: 1,
-		//   maxFiles: 1,
-		// };
-
-		// var myDropzone1 = new Dropzone("form#dropzone", dzoptions);
-
-		// console.log(myDropzone1);
 
 		const $tableID = $('.table');
 
@@ -229,7 +221,7 @@ include 'rodape.php';
 
 			var $clone = tabela.find('> tbody > tr.hide').clone(true).removeClass('hide');
 
-			tabela.find('input').each(function(){
+			$clone.find('input').each(function(){
 				$(this).attr('required', 'true');
 			});
 
