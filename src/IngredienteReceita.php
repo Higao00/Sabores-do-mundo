@@ -10,9 +10,9 @@ class IngredienteReceita {
 
     function __construct($id = "", $ingrediente = "", $quantidade = "", $receita = "", $timestamp = "") {
         $this->id = $id;
-        $this->ingrediente =  addslashes($ingrediente);
-        $this->quantidade =  addslashes($quantidade);
-        $this->receita =  addslashes($receita);
+        $this->ingrediente =  utf8_decode(addslashes($ingrediente));
+        $this->quantidade =  utf8_decode(addslashes($quantidade));
+        $this->receita =  utf8_decode(addslashes($receita));
         $this->timestamp =  $timestamp;
     }
 
@@ -21,15 +21,15 @@ class IngredienteReceita {
     }
 
     function getIngrediente() {
-        return $this->ingrediente;
+        return utf8_encode($this->ingrediente);
     }
 
     function getQuantidade() {
-        return $this->quantidade;
+        return utf8_encode($this->quantidade);
     }
 
     function getReceita() {
-        return $this->receita;
+        return utf8_encode($this->receita);
     }
 
     function getTimestamp() {
@@ -41,15 +41,15 @@ class IngredienteReceita {
     }
 
     function setIngrediente($ingrediente) {
-        $this->ingrediente =  addslashes($ingrediente);
+        $this->ingrediente =  utf8_decode(addslashes($ingrediente));
     }
 
     function setQuantidade($quantidade) {
-        $this->quantidade =  addslashes($quantidade);
+        $this->quantidade =  utf8_decode(addslashes($quantidade));
     }
 
     function setReceita($receita) {
-        $this->receita =  addslashes($receita);
+        $this->receita =  utf8_decode(addslashes($receita));
     }
 
     function setTimestamp($timestamp) {

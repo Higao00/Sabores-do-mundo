@@ -9,8 +9,8 @@ class Pais {
 
     function __construct($id = "", $nome = "", $localidade = "", $timestamp = "") {
         $this->id = $id;
-        $this->nome =  addslashes($nome);
-        $this->localidade =  addslashes($localidade);
+        $this->nome =  utf8_decode(addslashes($nome));
+        $this->localidade =  utf8_decode(addslashes($localidade));
         $this->timestamp = $timestamp;
     }
 
@@ -19,11 +19,11 @@ class Pais {
     }
 
     function getNome() {
-        return $this->nome;
+        return utf8_encode($this->nome);
     }
 
     function getLocalidade() {
-        return $this->localidade;
+        return utf8_encode($this->localidade);
     }
 
     function getTimestamp() {
@@ -35,11 +35,11 @@ class Pais {
     }
 
     function setNome($nome) {
-        $this->nome =  addslashes($nome);
+        $this->nome =  utf8_decode(addslashes($nome));
     }
 
     function setLocalidade($localidade) {
-        $this->localidade =  addslashes($localidade);
+        $this->localidade =  utf8_decode(addslashes($localidade));
     }
 
     function setTimestamp($timestamp) {

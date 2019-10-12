@@ -9,8 +9,8 @@ class ReceitaFavorita{
     
     function __construct($id="", $receita="", $usuario="", $timestamp="") {
         $this->id = $id;
-        $this->receita =  addslashes($receita);
-        $this->usuario =  addslashes($usuario);
+        $this->receita =  utf8_decode(addslashes($receita));
+        $this->usuario =  utf8_decode(addslashes($usuario));
         $this->timestamp = $timestamp;
     }
     
@@ -19,11 +19,11 @@ class ReceitaFavorita{
     }
 
     function getReceita() {
-        return $this->receita;
+        return utf8_encode($this->receita);
     }
 
     function getUsuario() {
-        return $this->usuario;
+        return utf8_encode($this->usuario);
     }
 
     function getTimestamp() {
@@ -35,11 +35,11 @@ class ReceitaFavorita{
     }
 
     function setReceita($receita) {
-        $this->receita =  addslashes($receita);
+        $this->receita =  utf8_decode(addslashes($receita));
     }
 
     function setUsuario($usuario) {
-        $this->usuario =  addslashes($usuario);
+        $this->usuario =  utf8_decode(addslashes($usuario));
     }
 
     function setTimestamp($timestamp) {
