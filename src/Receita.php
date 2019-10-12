@@ -9,9 +9,9 @@ class Receita{
     
     function __construct($id="", $titulo="", $modo_preparo="", $usuario="", $timestamp="") {
         $this->id = $id;
-        $this->titulo =  addslashes($titulo);
-        $this->modo_preparo =  addslashes($modo_preparo);
-        $this->usuario =  addslashes($usuario);
+        $this->titulo =  utf8_decode(addslashes($titulo));
+        $this->modo_preparo =  utf8_decode(addslashes($modo_preparo));
+        $this->usuario =  utf8_decode(addslashes($usuario));
         $this->timestamp = $timestamp;
     }
     
@@ -20,11 +20,11 @@ class Receita{
     }
 
     function getTitulo() {
-        return $this->titulo;
+        return utf8_encode($this->titulo);
     }
 
     function getModo_preparo() {
-        return $this->modo_preparo;
+        return utf8_encode($this->modo_preparo);
     }
 
     function getUsuario() {
@@ -40,15 +40,15 @@ class Receita{
     }
 
     function setTitulo($titulo) {
-        $this->titulo =  addslashes($titulo);
+        $this->titulo =  utf8_decode(addslashes($titulo));
     }
 
     function setModo_preparo($modo_preparo) {
-        $this->modo_preparo =  addslashes($modo_preparo);
+        $this->modo_preparo =  utf8_decode(addslashes($modo_preparo));
     }
 
     function setUsuario($usuario) {
-        $this->usuario =  addslashes($usuario);
+        $this->usuario =  utf8_decode(addslashes($usuario));
     }
 
     function setTimestamp($timestamp) {
