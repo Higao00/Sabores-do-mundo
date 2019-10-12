@@ -28,7 +28,7 @@ class Receita{
     }
 
     function getUsuario() {
-        return $this->usuario;
+        return utf8_encode($this->usuario);
     }
 
     function getTimestamp() {
