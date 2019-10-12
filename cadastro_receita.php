@@ -57,9 +57,10 @@ include 'topo.php';
 
 	<p class="page-title" id="titulo-page">CADASTRO DE RECEITA  <i class="fas fa-utensils mr-3"></i></p>
 
-	<div id="dropzone" style="margin-top: 30px;">
-		<form action="control/receita.php" class="dropzone needsclick" >
-			<div class="dz-message needsclick">
+	<div style="margin-top: 30px;">
+
+		<form action="control/receita.php" id="DropZoneFiddle" class="dropzone" >
+			<div class="dz-message">
 				<span style="font-size: 20px; font-weight: 500;">Clique Aqui para adicionar Fotos. <i class="fas fa-cloud-upload-alt"></i></span><br>
 			</div>
 		</form>
@@ -186,23 +187,38 @@ include 'rodape.php';
 ?>
 <!-- FAZER AQUI A INCLUSAO DE SCRIPTS OU SEUS PROPIOS SCRIPTS -->
 <script>
+	Dropzone.options.DropZoneFiddle = {
+	  paramName: "file", // The name that will be used to transfer the file
+	  maxFilesize: 2, // MB
+	  maxFiles: 5,
+	  acceptedFiles:"image/*",
+	  accept: function(file, done) {
+	    if (file.name == "justinbieber.jpg") {
+	      done("Naha, you don't.");
+	    }
+	    else { done(); }
+	  }
+	};
 	$(document).ready(function() {
 
 		$('a[href="cadastro_receita.php"]').addClass('active');
 
-		Dropzone.options.myAwesomeDropzone = {
-		  paramName: "file", // The name that will be used to transfer the file
-		  maxFilesize: 2, // MB
-
-		  accept: function(file, done) {
-		    console.log(file);
-            if (file.type != "image/jpeg") {
-                done("Error! Files of this type are not accepted");
-            }
-            else { done(); }
-		  }
-		};
 		
+
+		// Dropzone.autoDiscover = false;
+
+		// var dzoptions = {
+		//   paramName: "alindo",
+		//   maxFilesize: 10,
+		//   url: 'UploadImages',
+		//   uploadMultiple: true,
+		//   parallelUploads: 1,
+		//   maxFiles: 1,
+		// };
+
+		// var myDropzone1 = new Dropzone("form#dropzone", dzoptions);
+
+		// console.log(myDropzone1);
 
 		const $tableID = $('.table');
 

@@ -32,26 +32,10 @@ if(isset($_SESSION) && isset($_SESSION['id_user'])){
 	<link href="css/dropzone.min.css" rel="stylesheet" />
 
 	<style>
-		@media only screen and (max-width: 450px) {
-			p#icon_fade_mobile {
-				display: none;
-			}
-
-			.suspenso{
-				display: inline-block!important;
-			}
-
-			.fab{
-				display: block!important;
-			}
-
-			img#icon-mobile{
-				display: block;
-			}
-		}
+		
 
 		.suspenso{
-			display: none;
+			display: none!important;
 		}
 
 		form#form_principal {
@@ -209,6 +193,36 @@ if(isset($_SESSION) && isset($_SESSION['id_user'])){
 			display: none;
 		}
 
+		strong#titulo-mobile{
+			font-size: 20px!important;
+			font-weight: bold!important;
+			text-transform: uppercase!important;
+		}
+
+		.list-group-item{
+			color: #000;
+		}
+
+	</style>
+
+	<style type="text/css">
+		@media only screen and (max-width: 450px) {
+			p#icon_fade_mobile {
+				display: none;
+			}
+
+			.suspenso{
+				display: inline-block!important;
+			}
+
+			.fab{
+				display: block!important;
+			}
+
+			img#icon-mobile{
+				display: inline-block!important;
+			}
+		}
 	</style>
 </head>
 
@@ -223,7 +237,7 @@ if(isset($_SESSION) && isset($_SESSION['id_user'])){
 
 				<a class="navbar-brand waves-effect" href="#">
 					<img src="images/icons/icon-96x96.png" style="width: 45px;" id="icon-mobile">
-					<strong class="bold-1" style="color: #f4511e;">Sabores do Mundo</strong>
+					<strong class="bold-1" style="color: #ca0303;" id="titulo-mobile">Sabores do Mundo</strong>
 				</a>
 
 				<!-- Collapse -->
@@ -237,173 +251,191 @@ if(isset($_SESSION) && isset($_SESSION['id_user'])){
 					<!-- Left -->
 					<ul class="navbar-nav mr-auto">
 						<li class="nav-item">
-							<a href="home.php" class="nav-link waves-effect bold-1">
-								<i class="fas fa-home mr-3 suspenso"></i>Home</a>
-							</li>
+							<a href="home.php" class="nav-link waves-effect bold-1 suspenso">
+								<i class="fas fa-home mr-3 suspenso"></i>Home
+							</a>
+						</li>
+						<li class="nav-item">
+							<a href="#" class="nav-link waves-effect bold-1">
+								<i class="fas fa-star mr-3 suspenso"></i>Melhores Receitas
+							</a>
+						</li>
+
+						<?php 
+						if($logado == 1){
+							?>
 							<li class="nav-item">
 								<a href="#" class="nav-link waves-effect bold-1">
-									<i class="fas fa-star mr-3 suspenso"></i>Melhores Receitas</a>
-								</li>
+									<i class="fas fa-book-open mr-3 suspenso"></i>Minhas Receitas
+								</a>
+							</li>
+							<?php
+						}
+						?>
 
-								<?php 
-								if($logado == 1){
-									?>
-									<li class="nav-item">
-										<a href="#" class="nav-link waves-effect bold-1">
-											<i class="fas fa-book-open mr-3 suspenso"></i>Minhas Receitas</a>
-										</li>
-										<?php
-									}
-									?>
+						<li class="nav-item">
+							<a href="#" id="dropdownMenuButton" class="nav-link waves-effect bold-1" data-toggle="modal" data-target="#pais">
+								<i class="fas fa-flag mr-3 suspenso"></i>
+								Receitas Estrangeiras 
+							</a>
+						</li>
 
-									<li class="nav-item">
-										<a href="#" id="dropdownMenuButton" class="nav-link waves-effect bold-1" data-toggle="modal" data-target="#pais">
-											<i class="fas fa-flag mr-3 suspenso"></i>
-											Receitas Estrangeiras 
-										</a>
-									</li>
+						<?php 
+						if($logado == 1){
+							?>
+							<li class="nav-item suspenso">
+								<a href="#" class="nav-link waves-effect bold-1">
+									<i class="fas fa-heart mr-3"></i>Receitas Favoritas
+								</a>
+							</li>
+							<?php
+						}
+						?>
 
-									<?php 
-									if($logado == 1){
-										?>
-										<li class="nav-item suspenso">
-											<a href="#" class="nav-link waves-effect bold-1">
-												<i class="fas fa-heart mr-3"></i>Receitas Favoritas</a>
-											</li>
-											<?php
-										}
-										?>
-
-										<?php 
-										if($logado == 1){
-											?>
-											<li class="nav-item suspenso">
-												<a href="pefil.php" class="nav-link waves-effect bold-1">
-													<i class="fas fa-user mr-3"></i>Perfil
-												</a>
-											</li>
-											<?php
-										}
-										?>
+						<?php 
+						if($logado == 1){
+							?>
+							<li class="nav-item suspenso">
+								<a href="perfil.php" class="nav-link waves-effect bold-1">
+									<i class="fas fa-user mr-3"></i>Perfil
+								</a>
+							</li>
+							<?php
+						}
+						?>
 
 
 
-										<li class="nav-item suspenso">
-											<a href="#" class="nav-link waves-effect bold-1" data-toggle="modal" data-target="#configuracao">
-												<i class="fas fa-cogs mr-3"></i>Notificações</a>
-											</li> 
+						<li class="nav-item suspenso">
+							<a href="#" class="nav-link waves-effect bold-1" data-toggle="modal" data-target="#configuracao">
+								<i class="fas fa-cogs mr-3"></i>Notificações
+							</a>
+						</li> 
 
-											<?php 
-											if($logado == 1){
-												?>
-												<li class="nav-item suspenso">
-													<a href="#" class="nav-link waves-effect bold-1" data-toggle="modal" data-target="#sair">
-														<i class="fas fa-sign-out-alt mr-3"></i>Sair</a>
-													</li>
-													<?php
-												}
-												?>
+						<?php 
+						if($logado == 1){
+							?>
+							<li class="nav-item suspenso">
+								<a href="#" class="nav-link waves-effect bold-1" data-toggle="modal" data-target="#sair">
+									<i class="fas fa-sign-out-alt mr-3"></i>Sair
+								</a>
+							</li>
+							<?php
+						}
+						?>
 
-												<?php 
-												if($logado != 1){
-													?>
-													<li class="nav-item suspenso">
-														<a href="#" class="nav-link waves-effect bold-1" data-toggle="modal" data-target="#cadastro"><i class="fas mr-3 fa-user-friends"></i>Cadastrar-se</a>
-													</li>
-													<?php
-												}
-												?>
+						<?php 
+						if($logado != 1){
+							?>
+							<li class="nav-item suspenso">
+								<a href="#" class="nav-link waves-effect bold-1" data-toggle="modal" data-target="#cadastro"><i class="fas mr-3 fa-user-friends"></i>Cadastrar-se
+								</a>
+							</li>
+							<?php
+						}
+						?>
 
-												<?php 
-												if($logado != 1){
-													?>
-													<li class="nav-item suspenso">
-														<a href="#" class="nav-link waves-effect bold-1" data-toggle="modal" data-target="#login"><i class="fas mr-3 fa-sign-in-alt"></i>Fazer Login</a>
+						<?php 
+						if($logado != 1){
+							?>
+							<li class="nav-item suspenso">
+								<a href="#" class="nav-link waves-effect bold-1" data-toggle="modal" data-target="#login"><i class="fas mr-3 fa-sign-in-alt"></i>Fazer Login
+								</a>
 
-													</li>
-													<?php
-												}
-												?>
+							</li>
+							<?php
+						}
+						?>
 
-											</ul>
-
-
-										</div>
-
-										<form class="form-inline" id="busca_principal" style="padding: 0px!important;">
-											<input class="form-control" id="busca_principal" type="text" placeholder="Pesquise Aqui" aria-label="Pesquise Aqui">
-										</form>
-
-									</div>
-								</nav>
-								<!-- Navbar -->
-
-								<!-- Sidebar -->
-								<div class="sidebar-fixed position-fixed">
-
-									<img src="images/logo.png" id="logo">
-
-									<div class="list-group list-group-flush">
-
-										<?php 
-											if($logado == 1){
-											?>
-												<a href="cadastro_receita.php" class="list-group-item list-group-item-action waves-effect">
-													<i class="fas fa-utensils mr-3"></i>Nova Receita</a>
-													<?php
-												}
-											?>
-
-											<?php 
-											if($logado == 1){
-											?>
-												<a href="#" class="list-group-item list-group-item-action waves-effect">
-													<i class="fas fa-star mr-3"></i>Receitas Favoritas</a>
-													<?php
-												}
-											?>
-
-											<?php 
-											if($logado == 1){
-												?>
-												<a href="perfil.php" class="list-group-item list-group-item-action waves-effect">
-													<i class="fas fa-user mr-3"></i>Perfil</a>
-													<?php
-												}
-												?>
-												<?php 
-												if($logado == 1){
-													?>
-													<a href="#" class="list-group-item list-group-item-action waves-effect" data-toggle="modal" data-target="#sair">
-														<i class="fas fa-sign-out-alt mr-3"></i>Sair</a>
-														<?php
-													}
-													?>
-													<?php 
-													if($logado != 1){
-														?>
-														<a href="" class="list-group-item list-group-item-action waves-effect" data-toggle="modal" data-target="#cadastro"><i class="fas fa-user-plus mr-3"></i>Cadastrar-se</a>
-														<?php
-													}
-													?>
-													<?php 
-													if($logado != 1){
-														?>
-														<a href="" class="list-group-item list-group-item-action waves-effect" data-toggle="modal" data-target="#login"><i class="fas fa-sign-in-alt mr-3"></i>Fazer Login</a>
-														<?php
-													}
-													?>
+					</ul>
 
 
-													<a href="#" class="list-group-item list-group-item-action waves-effect" data-toggle="modal" data-target="#configuracao">
-														<i class="fas fa-cogs mr-3"></i>Notificações</a>
+				</div>
 
-													</div>
+				<form class="form-inline" id="busca_principal" style="padding: 0px!important;">
+					<input class="form-control" id="busca_principal" type="text" placeholder="Pesquise Aqui" aria-label="Pesquise Aqui">
+				</form>
 
-												</div>
-												<!-- Sidebar -->
-											</header>
-											<!--Main Navigation-->
+			</div>
+		</nav>
+		<!-- Navbar -->
 
-											<!--Main layout-->
-											<main class="pt-5 mx-lg-5">
+		<!-- Sidebar -->
+		<div class="sidebar-fixed position-fixed">
+
+			<img src="images/logo.png" id="logo">
+
+			<div class="list-group list-group-flush">
+
+				<a href="home.php" class="list-group-item list-group-item-action waves-effect">
+					<i class="fas fa-home mr-3"></i>Home</a>
+
+					<?php 
+					if($logado == 1){
+						?>
+						<a href="cadastro_receita.php" class="list-group-item list-group-item-action waves-effect">
+							<i class="fas fa-utensils mr-3"></i>Nova Receita
+						</a>
+						<?php
+					}
+					?>
+
+					<?php 
+					if($logado == 1){
+						?>
+						<a href="#" class="list-group-item list-group-item-action waves-effect">
+							<i class="fas fa-star mr-3"></i>Receitas Favoritas
+						</a>
+						<?php
+					}
+					?>
+
+					<?php 
+					if($logado == 1){
+						?>
+						<a href="perfil.php" class="list-group-item list-group-item-action waves-effect">
+							<i class="fas fa-user mr-3"></i>Perfil
+						</a>
+						<?php
+					}
+					?>
+					<?php 
+					if($logado == 1){
+						?>
+						<a href="#" class="list-group-item list-group-item-action waves-effect" data-toggle="modal" data-target="#sair">
+							<i class="fas fa-sign-out-alt mr-3"></i>Sair
+						</a>
+						<?php
+					}
+					?>
+					<?php 
+					if($logado != 1){
+						?>
+						<a href="" class="list-group-item list-group-item-action waves-effect" data-toggle="modal" data-target="#cadastro"><i class="fas fa-user-plus mr-3"></i>Cadastrar-se
+						</a>
+						<?php
+					}
+					?>
+					<?php 
+					if($logado != 1){
+						?>
+						<a href="" class="list-group-item list-group-item-action waves-effect" data-toggle="modal" data-target="#login"><i class="fas fa-sign-in-alt mr-3"></i>Fazer Login
+						</a>
+						<?php
+					}
+					?>
+
+
+					<a href="#" class="list-group-item list-group-item-action waves-effect" data-toggle="modal" data-target="#configuracao">
+						<i class="fas fa-cogs mr-3"></i>Notificações
+					</a>
+
+				</div>
+
+			</div>
+			<!-- Sidebar -->
+		</header>
+		<!--Main Navigation-->
+
+		<!--Main layout-->
+		<main class="pt-5 mx-lg-5">
