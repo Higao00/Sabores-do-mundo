@@ -9,9 +9,9 @@ class Receita{
     
     function __construct($id="", $titulo="", $modo_preparo="", $usuario="", $timestamp="") {
         $this->id = $id;
-        $this->titulo =  utf8_decode(addslashes($titulo));
-        $this->modo_preparo =  utf8_decode(addslashes($modo_preparo));
-        $this->usuario =  utf8_decode(addslashes($usuario));
+        $this->titulo =  (addslashes($titulo));
+        $this->modo_preparo =  (addslashes($modo_preparo));
+        $this->usuario =  (addslashes($usuario));
         $this->timestamp = $timestamp;
     }
     
@@ -79,7 +79,7 @@ class Receita{
             $connect = $conexao->selectDB("SELECT * FROM `receita` WHERE `id` = " . $id);
 
             $this->id = $connect[0]->id;
-            $this->receita = $connect[0]->receita;
+            $this->titulo = $connect[0]->titulo;
             $this->modo_preparo = $connect[0]->modo_preparo;
             $this->usuario = $connect[0]->usuario;
             $this->timestamp = $connect[0]->timestamp;
@@ -124,7 +124,15 @@ class Receita{
 
             foreach ($connect as $key => $value) {
                 if (isset($value->id) && isset($value->titulo) && isset($value->modo_preparo) && isset($value->usuario) && isset($value->timestamp)) {
-                    $aux = new Receita($value->id, $value->titulo, $value->modo_preparo, $value->usuario, $$value->timestamp);
+                    $aux = new Receita($value->id, $value->titulo, $value->modo_preparo, $value->usuario, $value->timestamp);
+                    // $aux = new Receita();
+
+                    // $aux->setId($value->id);
+                    // $aux->setTitulo($value->titulo);
+                    // $aux->setModo_preparo($value->modo_preparo);
+                    // $aux->setUsuario($value->usuario);
+                    // $aux->setTimestamp($value->timestamp);
+
                     $receita[] = $aux;
                 }
             }
