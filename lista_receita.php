@@ -1,4 +1,21 @@
 <?php
+
+error_reporting(0);
+ini_set(“display_errors”, 0 );
+
+if(isset($_SESSION['id_user'])){
+    $logado = 1; 
+}else{
+    session_start();
+
+    if(!isset($_SESSION['id_user'])){
+        header('Location: home.php');
+        die();
+    }
+}
+?>
+
+<?php
 include 'topo.php';
 ?>
 
@@ -32,7 +49,7 @@ include 'topo.php';
         if (count($aux) > 0) {
             foreach ($aux as $key => $value) {
                 ?>
-                <div class="card" style="margin-top: 45px;">
+                <div class="card" style="margin-top: 45px;" onclick="location.href='exibe_receita.php?id_receita=<?php echo($value->getId()); ?>'">
                     <!-- Card content -->
                     <div class="card-body">
                         <!--Carousel Wrapper-->
