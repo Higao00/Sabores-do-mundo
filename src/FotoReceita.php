@@ -81,7 +81,7 @@ class FotoReceita {
 
             $this->id = $connect[0]->id;
             $this->receita = $connect[0]->receita;
-            $this->avaliacao = $connect[0]->path_foto;
+            $this->path_foto = $connect[0]->path_foto;
             $this->usuario = $connect[0]->usuario;
             $this->timestamp = $connect[0]->timestamp;
         } catch (Exception $ex) {
@@ -139,4 +139,3 @@ class FotoReceita {
 
 }
 ?>
-

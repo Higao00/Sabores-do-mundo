@@ -203,6 +203,7 @@ include 'rodape.php';
 	  maxFiles: 5,
 	  acceptedFiles:"image/*",
 	  resizeWidth: 1024,
+      resizeHeight: 720,
 	  success: function(file, response){
 	  	$('div#fotos-id').append('<input name="ft-id[]" value="'+response+'">');
 	  }

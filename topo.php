@@ -18,7 +18,10 @@ if(isset($_SESSION) && isset($_SESSION['id_user'])){
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name="theme-color" content="#ff2e17">
 	<title>Sabores do Mundo</title>
+	<link rel="apple-touch-icon" href="images/icons/icon-192x192.png">
+	<link rel="shortcut icon" href="images/icons/icon-72x72.ico" />
 	<!-- Font Awesome -->
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
 	<!-- Bootstrap core CSS -->
@@ -28,7 +31,7 @@ if(isset($_SESSION) && isset($_SESSION['id_user'])){
 	<!-- Your custom styles (optional) -->
 	<link href="css/style.min.css" rel="stylesheet">
 	<link rel="manifest" href="/saboresdomundo/manifest.json">
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@8.18.0/dist/sweetalert2.min.css">
+	<link rel="stylesheet" href="css/sweetalert2.min.css">
 	<link href="css/dropzone.min.css" rel="stylesheet" />
 
 	<style>
@@ -203,6 +206,14 @@ if(isset($_SESSION) && isset($_SESSION['id_user'])){
 			color: #000;
 		}
 
+		li.ativo{
+			border-radius: 5px!important;
+			background: #F84A35!important;
+		}
+		li.ativo > a{
+			color: #FFF!important;
+		}
+
 	</style>
 
 	<style type="text/css">
@@ -265,7 +276,7 @@ if(isset($_SESSION) && isset($_SESSION['id_user'])){
 						if($logado == 1){
 							?>
 							<li class="nav-item">
-								<a href="#" class="nav-link waves-effect bold-1">
+								<a href="lista_receita.php" class="nav-link waves-effect bold-1">
 									<i class="fas fa-book-open mr-3 suspenso"></i>Minhas Receitas
 								</a>
 							</li>
@@ -348,14 +359,7 @@ if(isset($_SESSION) && isset($_SESSION['id_user'])){
 						?>
 
 					</ul>
-
-
 				</div>
-
-				<form class="form-inline" id="busca_principal" style="padding: 0px!important;">
-					<input class="form-control" id="busca_principal" type="text" placeholder="Pesquise Aqui" aria-label="Pesquise Aqui">
-				</form>
-
 			</div>
 		</nav>
 		<!-- Navbar -->

@@ -2,6 +2,7 @@
 
 include "../src/conexao.php";
 include "../src/Util.php";
+include "../src/SimpleImage.php";
 
 if (!empty($_FILES['foto-receita'])) {
 
@@ -10,19 +11,20 @@ if (!empty($_FILES['foto-receita'])) {
 	session_start();
 	isset($_SESSION['id_user']) ? $user = $_SESSION['id_user'] : $user = -1;
 
-	$upArquivo = new Upload;
+	$image_name = uniqid().".jpg";
+	$imgObj = new Image();
 
-	$extension = explode('.', $_FILES["foto-receita"]["name"]);
-	$_FILES["foto-receita"]["name"] = md5(date('d-m-YH:i:s')).'.'.$extension[1];
+	$img = new SimpleImage($_FILES['foto-receita']['tmp_name']);
 
-	if($upArquivo->UploadArquivo($_FILES["foto-receita"], "../foto_receita/")){   
+	$img->resize(720, 480);
+	$img->toFile('../foto_receita/'.$image_name);
 
-		$path = explode('../', $upArquivo->nome);
-		$ftreceita = new FotoReceita('', '', $path[1], $user);
-		$ftreceita->selectFotoReceitaId($ftreceita->insertFotoReceita());
+	$path = 'foto_receita/'.$image_name;
+	$ftreceita = new FotoReceita('', '', $path, $user);
+	$ftreceita->selectFotoReceitaId($ftreceita->insertFotoReceita());
 
-		echo $ftreceita->getId();
-	}
+	echo $ftreceita->getId();
+	
 }
 
 ?>

@@ -2,6 +2,7 @@
 	
 	require("../src/conexao.php");
 	require("../src/Subscribers.php");
+	include('../src/Util.php');
 
 
 	if(isset($_POST['axn']) && $_POST['axn'] == 'subscribe' ){
@@ -22,8 +23,6 @@
 	}elseif(isset($_POST['axn']) && $_POST['axn'] == 'unsubscribe' ){
 
 	}elseif(isset($_POST['send_notification']) && isset($_POST['msg'])){
-
-		include('../envia_notificacao.php');
 
 		$notificacao = new Subscribers();
 		$aux = $notificacao->executeQuery("SELECT * FROM `subscribers` ");

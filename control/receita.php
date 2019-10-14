@@ -6,6 +6,11 @@
 	include '../src/Ingrediente.php'; 
 	include '../src/IngredienteReceita.php'; 
 
+	// echo "<pre>";
+	// print_r($_POST);
+	// echo "</pre>";
+	// die();
+
 	if(isset($_POST['titulo-receita'])) {
 
 		session_start();
@@ -14,6 +19,7 @@
 		$titulo = $_POST['titulo-receita'];
 		$ingreceita = [];
 
+		//Foreach para montar os ingredientes
 		foreach ($_POST['quantidade'] as $key => $value) {
 			
 			if($key > 0){
@@ -37,19 +43,35 @@
 		}
 
 		$modoPreparo = '';
-
+		//Foreach para montar o modo de preparo
 		foreach ($_POST['modo-preparo'] as $key => $value) {
-			$modoPreparo += $value;
+			if ($key > 0) {
+				$modoPreparo .= '<br>'.($key).' : '.$value;
+			}
 		}
 
 		$receita = new Receita('', $_POST['titulo-receita'], $modoPreparo, $user);
 
 		$idReceita = $receita->insertReceita();
 
+		//Foreach para montar as fotos da receita
+		foreach ($_POST['ft-id'] as $key => $value) {
+
+			$ft_receita = new FotoReceita();
+			$ft_receita->selectFotoReceitaId($value);
+
+			$ft_receita->setReceita($idReceita);
+			$ft_receita->updateFotoReceita();
+		}
+
 		foreach ($ingreceita as $key => $value) {
 			$value->setReceita($idReceita);
 			$value->insertIngredienteReceita();
 		}
+
+		$_SESSION['msg'] = 'Sucesso ao Cadastrar Receita!';
+		header('Location: ../lista_receita.php?status=1');
+		die();
 	}
 
 	$receita->selectReceitaId($idReceita);

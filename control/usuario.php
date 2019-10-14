@@ -142,8 +142,6 @@
         //Rotina para fazer o Update de um usuario e iniciar a sua sessão
         if(isset($_POST['nome']) && isset($_POST['email']) && isset($_POST['senha']) && isset($_POST['id_user'])){
 
-            $_POST['senha'] = ($_POST['senha']);
-
             $senha = md5($_POST['senha']);
             $nome = ($_POST['nome']);
             $email = ($_POST['email']);
@@ -160,7 +158,8 @@
                 $user->setNome($nome);
                 $user->setEmail($email);
                 $user->setNascimento($data_nasc);
-                $user->setSenha($senha);
+
+                $_POST['senha'] != '' ? $user->setSenha($senha) : '';            
 
                 $user->updateUser();
 

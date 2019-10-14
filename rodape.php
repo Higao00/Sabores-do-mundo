@@ -179,17 +179,19 @@
 </div>
 
 <div class="modal fade top" id="sair" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria="true" data-backdrop="true">
-	<div class="modal-dialog modal-frame modal-top modal-notify modal-info" role="document">
+	<div class="modal-dialog modal-notify modal-info" role="document">
 		<!--Content-->
 		<div class="modal-content">
 			<!--Body-->
 			<div class="modal-body">
-				<div class="row d-flex justify-content-center align-items-center">
+				<div class="row d-flex justify-content-center align-items-center" align="center">
 					<form action="control/usuario.php" method="POST">
-						<b><p class="pt-3 pr-2">Certeza que deseja sair da sua conta ?</p></b>
 
-						<button type="button" class="btn btn-warning" data-dismiss="modal" aria-label="Close">Cancelar</button> 
-						<button type="submit" name="sair" class="btn btn-danger">Ok</button> 
+						<p class="pt-3 pr-2" style="font-size: 18px; text-transform: uppercase; font-weight: bold; color: #000;">
+						<i class="fas fa-sign-out-alt" style="color: #000!important;"></i> Deseja sair da sua conta ?</p>
+
+						<button type="button" class="btn btn-success" data-dismiss="modal" aria-label="Close">Não</button> 
+						<button type="submit" name="sair" class="btn btn-danger">Sim</button> 
 					</form>
 				</div>
 			</div>
@@ -207,7 +209,7 @@
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
 <!-- MDB core JavaScript -->
 <script type="text/javascript" src="js/mdb.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8.18.0/dist/sweetalert2.all.min.js"></script>
+<script src="js/sweetalert2.min.js"></script>
 <script src="js/dropzone.min.js"></script>
 
 <!-- Initializations -->

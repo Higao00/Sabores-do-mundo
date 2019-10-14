@@ -20,11 +20,11 @@ class Receita{
     }
 
     function getTitulo() {
-        return utf8_encode($this->titulo);
+        return ($this->titulo);
     }
 
     function getModo_preparo() {
-        return utf8_encode($this->modo_preparo);
+        return ($this->modo_preparo);
     }
 
     function getUsuario() {
@@ -40,11 +40,11 @@ class Receita{
     }
 
     function setTitulo($titulo) {
-        $this->titulo =  utf8_decode(addslashes($titulo));
+        $this->titulo =  (addslashes($titulo));
     }
 
     function setModo_preparo($modo_preparo) {
-        $this->modo_preparo =  utf8_decode(addslashes($modo_preparo));
+        $this->modo_preparo =  (addslashes($modo_preparo));
     }
 
     function setUsuario($usuario) {
@@ -147,4 +147,3 @@ class Receita{
 }
 
 ?>
-
