@@ -77,7 +77,7 @@ if(isset($_SESSION['id_user'])){
 
                         <!-- Material input text -->
                         <div class="md-form">
-                            <i class="fa fa-user prefix grey-text"></i>
+                            <i class="fa fa-calendar-alt prefix grey-text"></i>
                             <input type="date" id="data-nascimento" required name="data-nascimento" class="form-control" value="<?php echo $user->getNascimento(); ?>">
                         </div>
 
