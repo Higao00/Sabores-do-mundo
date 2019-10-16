@@ -14,6 +14,10 @@ self.addEventListener('install', function (event) {
         '/saboresdomundo/manifest.json',
         '/saboresdomundo/css/dropzone.min.css',
         '/saboresdomundo/js/dropzone.min.js',
+        '/saboresdomundo/images/pagina_principal.jpg',
+        '/saboresdomundo/images/pagina_principal2.jpg',
+        '/saboresdomundo/images/logo.png',
+        
       ]);
     })
   )
