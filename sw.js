@@ -4,6 +4,7 @@ self.addEventListener('install', function (event) {
   event.waitUntil(
     caches.open(CACHE_NAME).then(function (cache) {
       return cache.addAll([
+        '/saboresdomundo/images/icons/icon-72x72.ico',
         '/saboresdomundo/js/bootstrap.min.js',
         '/saboresdomundo/js/popper.min.js',
         '/saboresdomundo/js/jquery-3.4.1.min.js',
@@ -17,7 +18,11 @@ self.addEventListener('install', function (event) {
         '/saboresdomundo/images/pagina_principal.jpg',
         '/saboresdomundo/images/pagina_principal2.jpg',
         '/saboresdomundo/images/logo.png',
-        
+        '/saboresdomundo/js/mdb.min.js',
+        '/saboresdomundo/images/logo.png',
+        '/saboresdomundo/js/sweetalert2.min.js',
+        '/saboresdomundo/css/sweetalert2.min.css',
+        '/saboresdomundo/js/main.js',
       ]);
     })
   )

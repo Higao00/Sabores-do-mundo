@@ -10,9 +10,9 @@ class FotoReceita {
 
     function __construct($id = "", $receita = "", $path_foto = "", $usuario = "", $timestamp = "") {
         $this->id = $id;
-        $this->receita =  addslashes($receita);
-        $this->path_foto = addslashes($path_foto);
-        $this->usuario =  addslashes($usuario);
+        $this->receita =  utf8_decode(addslashes($receita));
+        $this->path_foto = utf8_decode(addslashes($path_foto));
+        $this->usuario =  utf8_decode(addslashes($usuario));
         $this->timestamp = $timestamp;
     }
 
@@ -21,15 +21,15 @@ class FotoReceita {
     }
 
     function getReceita() {
-        return $this->receita;
+        return utf8_encode($this->receita);
     }
 
     function getPath_foto() {
-        return $this->path_foto;
+        return utf8_encode($this->path_foto);
     }
 
     function getUsuario() {
-        return $this->usuario;
+        return utf8_encode($this->usuario);
     }
 
     function getTimestamp() {
@@ -41,15 +41,15 @@ class FotoReceita {
     }
 
     function setReceita($receita) {
-        $this->receita =  addslashes($receita);
+        $this->receita =  utf8_decode(addslashes($receita));
     }
 
     function setPath_foto($path_foto) {
-        $this->path_foto =  addslashes($path_foto);
+        $this->path_foto =  utf8_decode(addslashes($path_foto));
     }
 
     function setUsuario($usuario) {
-        $this->usuario =  addslashes($usuario);
+        $this->usuario =  utf8_decode(addslashes($usuario));
     }
 
     function setTimestamp($timestamp) {
@@ -81,7 +81,7 @@ class FotoReceita {
 
             $this->id = $connect[0]->id;
             $this->receita = $connect[0]->receita;
-            $this->avaliacao = $connect[0]->path_foto;
+            $this->path_foto = $connect[0]->path_foto;
             $this->usuario = $connect[0]->usuario;
             $this->timestamp = $connect[0]->timestamp;
         } catch (Exception $ex) {
@@ -139,4 +139,3 @@ class FotoReceita {
 
 }
 ?>
-

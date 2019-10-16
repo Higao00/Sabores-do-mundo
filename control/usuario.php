@@ -2,7 +2,7 @@
 	
     require("../src/conexao.php");
     require("../src/Usuario.php");
-    error_reporting(E_ALL);
+    // error_reporting(E_ALL);
 
     // var_dump($_POST);
     // die();
@@ -12,11 +12,11 @@
     	//Rotina para fazer o cadastro de um usuario e iniciar a sua sessão
         if(isset($_POST['nome']) && isset($_POST['email']) && isset($_POST['senha'])){
 
-        	$_POST['senha'] = utf8_decode($_POST['senha']);
+        	$_POST['senha'] = ($_POST['senha']);
 
             $senha = md5($_POST['senha']);
-            $nome = utf8_decode($_POST['nome']);
-            $email = utf8_decode($_POST['email']);
+            $nome = ($_POST['nome']);
+            $email = ($_POST['email']);
 
             $user_aux = new Usuario();
 
@@ -89,10 +89,10 @@
 
     	if(isset($_POST['email']) && isset($_POST['senha'])){
 
-    		$_POST['senha'] = utf8_decode($_POST['senha']);
+    		$_POST['senha'] = ($_POST['senha']);
 
     	    $senha = md5($_POST['senha']);
-    	    $email = utf8_decode($_POST['email']);
+    	    $email = ($_POST['email']);
 
     	    $usuario = new Usuario();  
 
@@ -142,11 +142,9 @@
         //Rotina para fazer o Update de um usuario e iniciar a sua sessão
         if(isset($_POST['nome']) && isset($_POST['email']) && isset($_POST['senha']) && isset($_POST['id_user'])){
 
-            $_POST['senha'] = utf8_decode($_POST['senha']);
-
             $senha = md5($_POST['senha']);
-            $nome = utf8_decode($_POST['nome']);
-            $email = utf8_decode($_POST['email']);
+            $nome = ($_POST['nome']);
+            $email = ($_POST['email']);
             $id = $_POST['id_user'];
             
             isset($_POST['data-nascimento']) ? $data_nasc = $_POST['data-nascimento'] : $data_nasc = '';
@@ -160,7 +158,8 @@
                 $user->setNome($nome);
                 $user->setEmail($email);
                 $user->setNascimento($data_nasc);
-                $user->setSenha($senha);
+
+                $_POST['senha'] != '' ? $user->setSenha($senha) : '';            
 
                 $user->updateUser();
 

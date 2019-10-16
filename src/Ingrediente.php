@@ -9,8 +9,8 @@ class Ingrediente {
 
     function __construct($id = "", $nome = "", $medida = "", $timestamp = "") {
         $this->id = $id;
-        $this->nome =  addslashes($nome);
-        $this->medida = addslashes($medida);
+        $this->nome =  utf8_decode(addslashes($nome));
+        $this->medida = utf8_decode(addslashes($medida));
         $this->timestamp =  $timestamp;
     }
 
@@ -19,11 +19,11 @@ class Ingrediente {
     }
 
     function getNome() {
-        return $this->nome;
+        return utf8_encode($this->nome);
     }
 
     function getMedida() {
-        return $this->medida;
+        return utf8_encode($this->medida);
     }
 
     function getTimestamp() {
@@ -35,11 +35,11 @@ class Ingrediente {
     }
 
     function setNome($nome) {
-        $this->nome =  addslashes($nome);
+        $this->nome =  utf8_decode(addslashes($nome));
     }
 
     function setMedida($medida) {
-        $this->medida =  addslashes($medida);
+        $this->medida =  utf8_decode(addslashes($medida));
     }
 
     function setTimestamp($timestamp) {
@@ -129,4 +129,3 @@ class Ingrediente {
     
 }
 ?>
-

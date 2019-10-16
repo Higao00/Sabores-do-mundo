@@ -57,7 +57,7 @@ if(isset($_SESSION['id_user'])){
         <!-- Content -->
         <div class="card-body">
             <!-- Name -->
-            <h4 class="card-title"><?php echo utf8_encode($user->getNome()); ?></h4>
+            <h4 class="card-title"><?php echo ($user->getNome()); ?></h4>
             <hr>
             <!-- Card -->
             <div class="card">
@@ -71,13 +71,13 @@ if(isset($_SESSION['id_user'])){
                         <!-- Material input text -->
                         <div class="md-form">
                             <i class="fa fa-user prefix grey-text"></i>
-                            <input type="text" id="nome" required name="nome" class="form-control" value="<?php echo utf8_encode($user->getNome()); ?>">
+                            <input type="text" id="nome" required name="nome" class="form-control" value="<?php echo ($user->getNome()); ?>">
                             <label for="nome" class="font-weight-light">Seu Nome</label>
                         </div>
 
                         <!-- Material input text -->
                         <div class="md-form">
-                            <i class="fa fa-user prefix grey-text"></i>
+                            <i class="fa fa-calendar-alt prefix grey-text"></i>
                             <input type="date" id="data-nascimento" required name="data-nascimento" class="form-control" value="<?php echo $user->getNascimento(); ?>">
                         </div>
 

@@ -36,7 +36,7 @@
 						</div>
 
 						<div class="md-form mb-5">
-							<input type="password" required id="senha_cad"  name="senha" class="form-control validate white-text">
+							<input type="password" required id="senha_cad" name="senha" class="form-control validate white-text">
 							<label for="senha_cad">Senha</label>
 						</div>
 
@@ -140,36 +140,39 @@
 
 			<!--Body-->
 			<div class="modal-body">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close" id="botao_paises">
+					<span aria-hidden="true">&times;</span>
+				</button>
 				<ul class="navbar-nav">
 					<li class="nav-item">
-						<a class="dropdown-item" href="#"><img src="images/icon_australia.png" >Australia</a>
+						<a class="dropdown-item" href="#"><img src="images/icon_australia.png" class="img_paises">Australia</a>
 					</li>
 					<li class="nav-item">
-						<a class="dropdown-item" href="#"><img src="images/icon_brasil.png" >Brasil</a>
+						<a class="dropdown-item" href="#"><img src="images/icon_brasil.png" id="img_paises2">Brasil</a>
 					</li>
 					<li class="nav-item">
-						<a class="dropdown-item" href="#"><img src="images/icon_china.png" >China</a>
+						<a class="dropdown-item" href="#"><img src="images/icon_china.png" id="img_paises3">China</a>
 					</li>
 					<li class="nav-item">
-						<a class="dropdown-item" href="#"><img src="images/icon_espanha.png" >Espanha</a>
+						<a class="dropdown-item" href="#"><img src="images/icon_espanha.png" id="img_paises4">Espanha</a>
 					</li>
 					<li class="nav-item">
-						<a class="dropdown-item" href="#"><img src="images/icon_franca.png" >França</a>
+						<a class="dropdown-item" href="#"><img src="images/icon_franca.png" id="img_paises5">França</a>
 					</li>
 					<li class="nav-item">
-						<a class="dropdown-item" href="#"><img src="images/icon_inglaterra.png">Inglaterra</a>
+						<a class="dropdown-item" href="#"><img src="images/icon_inglaterra.png" id="img_paises6">Inglaterra</a>
 					</li>
 					<li class="nav-item">
-						<a class="dropdown-item" href="#"><img src="images/icon_italia.png" >Italia</a>
+						<a class="dropdown-item" href="#"><img src="images/icon_italia.png" id="img_paises7">Italia</a>
 					</li>
 					<li class="nav-item">
-						<a class="dropdown-item" href="#"><img src="images/icon_japao.png" >Japão</a>
+						<a class="dropdown-item" href="#"><img src="images/icon_japao.png" id="img_paises8">Japão</a>
 					</li>
 					<li class="nav-item">
-						<a class="dropdown-item" href="#"><img src="images/icon_mexico.png" >Mexico</a>
+						<a class="dropdown-item" href="#"><img src="images/icon_mexico.png" id="img_paises9">Mexico</a>
 					</li>
 					<li class="nav-item">
-						<a class="dropdown-item" href="#"><img src="images/icon_tailandia.png" >Tailandia</a>
+						<a class="dropdown-item" href="#"><img src="images/icon_tailandia.png" id="img_paises10" >Tailandia</a>
 					</li>
 				</ul>
 			</div>
@@ -179,17 +182,19 @@
 </div>
 
 <div class="modal fade top" id="sair" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria="true" data-backdrop="true">
-	<div class="modal-dialog modal-frame modal-top modal-notify modal-info" role="document">
+	<div class="modal-dialog modal-notify modal-info" role="document">
 		<!--Content-->
 		<div class="modal-content">
 			<!--Body-->
 			<div class="modal-body">
-				<div class="row d-flex justify-content-center align-items-center">
+				<div class="row d-flex justify-content-center align-items-center" align="center">
 					<form action="control/usuario.php" method="POST">
-						<b><p class="pt-3 pr-2">Certeza que deseja sair da sua conta ?</p></b>
 
-						<button type="button" class="btn btn-warning" data-dismiss="modal" aria-label="Close">Cancelar</button> 
-						<button type="submit" name="sair" class="btn btn-danger">Ok</button> 
+						<p class="pt-3 pr-2" style="font-size: 18px; text-transform: uppercase; font-weight: bold; color: #000;">
+							<i class="fas fa-sign-out-alt" style="color: #000!important;"></i> Deseja sair da sua conta ?</p>
+
+						<button type="button" class="btn btn-success" data-dismiss="modal" aria-label="Close">Não</button>
+						<button type="submit" name="sair" class="btn btn-danger">Sim</button>
 					</form>
 				</div>
 			</div>
@@ -207,41 +212,40 @@
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
 <!-- MDB core JavaScript -->
 <script type="text/javascript" src="js/mdb.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8.18.0/dist/sweetalert2.all.min.js"></script>
+<script src="js/sweetalert2.min.js"></script>
 <script src="js/dropzone.min.js"></script>
 
 <!-- Initializations -->
 <script type="text/javascript">
-
-	$(document).ready(function(){
+	$(document).ready(function() {
 
 		$('footer').hide();
 
-		if($(window).width() < 680){
+		if ($(window).width() < 680) {
 			$('form#busca_principal').addClass('col-sm-12');
 		}
 
-		<?php 
-		if(isset($_GET['status']) && $_GET['status'] == 1){
+		<?php
+		if (isset($_GET['status']) && $_GET['status'] == 1) {
 
 			isset($_SESSION['msg']) ? $msg = $_SESSION['msg'] : $msg = '';
 			?>
 			Swal.fire(
-				'<?php echo($msg); ?>',
+				'<?php echo ($msg); ?>',
 				'',
 				'success'
-				);
-			<?php
-		}elseif(isset($_GET['status']) && $_GET['status'] == 0){
+			);
+		<?php
+		} elseif (isset($_GET['status']) && $_GET['status'] == 0) {
 
 			isset($_SESSION['msg']) ? $msg = $_SESSION['msg'] : $msg = '';
 			?>
 			Swal.fire(
-				'<?php echo($msg); ?>',
+				'<?php echo ($msg); ?>',
 				'',
 				'error'
-				);
-			<?php
+			);
+		<?php
 		}
 
 		?>

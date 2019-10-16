@@ -11,10 +11,10 @@ class Usuario {
 
     function __construct($id='', $nome='', $nascimento='', $email='', $senha='', $timestamp='') {
         $this->id = $id;
-        $this->nome =  addslashes($nome);
-        $this->nascimento =  addslashes($nascimento);
-        $this->email =  addslashes($email);
-        $this->senha =  addslashes($senha);
+        $this->nome =  utf8_decode(addslashes($nome));
+        $this->nascimento =  utf8_decode(addslashes($nascimento));
+        $this->email =  utf8_decode(addslashes($email));
+        $this->senha =  utf8_decode(addslashes($senha));
         $this->timestamp = $timestamp;
     }
     
@@ -23,19 +23,19 @@ class Usuario {
     }
 
     function getNome() {
-        return $this->nome;
+        return utf8_encode($this->nome);
     }
 
     function getNascimento() {
-        return $this->nascimento;
+        return utf8_encode($this->nascimento);
     }
 
     function getEmail() {
-        return $this->email;
+        return utf8_encode($this->email);
     }
 
     function getSenha() {
-        return $this->senha;
+        return utf8_encode($this->senha);
     }
 
     function getTimestamp() {
@@ -47,19 +47,19 @@ class Usuario {
     }
 
     function setNome($nome) {
-        $this->nome =  addslashes($nome);
+        $this->nome =  utf8_decode(addslashes($nome));
     }
 
     function setNascimento($nascimento) {
-        $this->nascimento =  addslashes($nascimento);
+        $this->nascimento =  utf8_decode(addslashes($nascimento));
     }
 
     function setEmail($email) {
-        $this->email =  addslashes($email);
+        $this->email =  utf8_decode(addslashes($email));
     }
 
     function setSenha($senha) {
-        $this->senha =  addslashes($senha);
+        $this->senha =  utf8_decode(addslashes($senha));
     }
 
     function setTimestamp($timestamp) {

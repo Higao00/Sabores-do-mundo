@@ -10,26 +10,26 @@ class Avaliacao {
 
     function __construct($id = "", $receita = "", $avaliacao = "", $usuario = "", $timestamp = "") {
         $this->id = $id;
-        $this->receita = addslashes($receita);
-        $this->avaliacao = addslashes($avaliacao);
-        $this->usuario =  addslashes($usuario);
+        $this->receita = utf8_decode(addslashes($receita));
+        $this->avaliacao = utf8_decode(addslashes($avaliacao));
+        $this->usuario =  utf8_decode(addslashes($usuario));
         $this->timestamp = $timestamp;
     }
 
     function getId() {
-        return $this->id;
+        return ($this->id);
     }
 
     function getReceita() {
-        return $this->receita;
+        return utf8_encode($this->receita);
     }
 
     function getAvaliacao() {
-        return $this->avaliacao;
+        return utf8_encode($this->avaliacao);
     }
 
     function getUsuario() {
-        return $this->usuario;
+        return utf8_encode($this->usuario);
     }
 
     function getTimestamp() {
@@ -41,15 +41,15 @@ class Avaliacao {
     }
 
     function setReceita($receita) {
-        $this->receita = addslashes($receita);
+        $this->receita = utf8_decode(addslashes($receita));
     }
 
     function setAvaliacao($avaliacao) {
-        $this->avaliacao = addslashes($avaliacao);
+        $this->avaliacao = utf8_decode(addslashes($avaliacao));
     }
 
     function setUsuario($usuario) {
-        $this->usuario =  addslashes($usuario);
+        $this->usuario =  utf8_decode(addslashes($usuario));
     }
 
     function setTimestamp($timestamp) {

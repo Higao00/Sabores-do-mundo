@@ -63,6 +63,9 @@ function initialiseUI() {
 
     if (isSubscribed) {
       console.log('User IS subscribed.');
+      // METODO PARA PEGAR AS CHAVES PARA AUTENTICACAO POSTERIOR
+      // console.log(btoa(String.fromCharCode.apply(null, new Uint8Array(subscription.getKey('p256dh')))));
+      // console.log(btoa(String.fromCharCode.apply(null, new Uint8Array(subscription.getKey('auth')))));
     } else {
       console.log('User is NOT subscribed.');
     }

@@ -5,12 +5,14 @@ class Pais {
     private $id;
     private $nome;
     private $localidade;
+    private $path_icon;
     private $timestamp;
 
-    function __construct($id = "", $nome = "", $localidade = "", $timestamp = "") {
+    function __construct($id = "", $nome = "", $localidade = "", $path_icon = "", $timestamp = "") {
         $this->id = $id;
-        $this->nome =  addslashes($nome);
-        $this->localidade =  addslashes($localidade);
+        $this->nome =  (addslashes($nome));
+        $this->localidade =  (addslashes($localidade));
+        $this->path_icon = $path_icon;
         $this->timestamp = $timestamp;
     }
 
@@ -19,11 +21,15 @@ class Pais {
     }
 
     function getNome() {
-        return $this->nome;
+        return ($this->nome);
     }
 
     function getLocalidade() {
-        return $this->localidade;
+        return ($this->localidade);
+    }
+
+    function getPath_icon() {
+        return ($this->path_icon);
     }
 
     function getTimestamp() {
@@ -35,11 +41,15 @@ class Pais {
     }
 
     function setNome($nome) {
-        $this->nome =  addslashes($nome);
+        $this->nome =  (addslashes($nome));
     }
 
     function setLocalidade($localidade) {
-        $this->localidade =  addslashes($localidade);
+        $this->localidade =  (addslashes($localidade));
+    }
+
+    function setPath_icon($icon) {
+        $this->path_icon =  (addslashes($path_icon));
     }
 
     function setTimestamp($timestamp) {
@@ -51,8 +61,8 @@ class Pais {
         if (empty($this->id)) {
             $conexao = new conexao();
             try {
-                $connect = $conexao->insertDB("INSERT INTO `pais`(`nome`, `localidade`) "
-                        . "VALUES ('" . $this->nome . "', '" . $this->localidade . "')");
+                $connect = $conexao->insertDB("INSERT INTO `pais`(`nome`, `localidade`, `path_icon`) "
+                        . "VALUES ('" . $this->nome . "', '" . $this->localidade . "', '" . $this->path_icon . "')");
                 $this->id = $connect;
 
                 return $connect;
@@ -72,6 +82,7 @@ class Pais {
             $this->id = $connect[0]->id;
             $this->nome = $connect[0]->nome;
             $this->localidade = $connect[0]->localidade;
+            $this->path_icon = $connect[0]->path_icon;
             $this->timestamp = $connect[0]->timestamp;
         } catch (Exception $ex) {
             var_dump($ex);
@@ -86,7 +97,7 @@ class Pais {
             $pais = [];
 
             foreach ($connect as $key => $value) {
-                $pais[] = new Pais($value->id, $value->nome, $value->localidade, $value->timestamp);
+                $pais[] = new Pais($value->id, $value->nome, $value->localidade, $value->path_icon, $value->timestamp);
             }
             return $pais;
         } catch (Exception $ex) {
@@ -97,7 +108,7 @@ class Pais {
     function updatePais() {
         $conexao = new conexao();
         try {
-            $connect = $conexao->updateDB("UPDATE `pais` SET `nome`= '$this->nome', `localidade`= '$this->localidade', `timestamp`= '$this->timestamp' WHERE `id` = $this->id");
+            $connect = $conexao->updateDB("UPDATE `pais` SET `nome`= '$this->nome', `localidade`= '$this->localidade', `path_icon`= '$this->path_icon', `timestamp`= '$this->timestamp' WHERE `id` = $this->id");
             return $connect;
         } catch (Exception $ex) {
             var_dump($ex);
@@ -113,8 +124,8 @@ class Pais {
             $pais = [];
 
             foreach ($connect as $key => $value) {
-                if (isset($value->id) && isset($value->nome) && isset($value->localidade) && isset($value->timestamp)) {
-                    $aux = new Pais($value->id, $value->nome, $value->localidade, $$value->timestamp);
+                if (isset($value->id) && isset($value->nome) && isset($value->localidade) && isset($value->path_icon) && isset($value->timestamp)) {
+                    $aux = new Pais($value->id, $value->nome, $value->localidade, $value->path_icon , $$value->timestamp);
                     $pais[] = $aux;
                 }
             }
@@ -128,4 +139,3 @@ class Pais {
 
 }
 ?>
-

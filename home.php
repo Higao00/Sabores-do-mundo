@@ -28,14 +28,16 @@ require 'topo.php';
 	</form>
 </div>
 
-
-
 </div>
-<!-- FAZER AQUI A INCLUSAO DE SCRIPTS OU SEUS PROPIOS SCRIPTS -->
-<script>
-
-</script>
 
 <?php
 require 'rodape.php';
 ?>
+
+<!-- FAZER AQUI A INCLUSAO DE SCRIPTS OU SEUS PROPIOS SCRIPTS -->
+<script>
+
+	$(document).ready(function(){
+		$('a[href="home.php"]').addClass('active');
+	});
+</script>
