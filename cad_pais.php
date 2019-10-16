@@ -94,8 +94,8 @@ if(isset($_SESSION['id_user'])){
                                 <tr class="hide">
                                     <form class="text-center" action="control/pais.php" method="POST" enctype="multipart/form-data" id="<?php echo($randomic);?>"></form>
                                     <input class="hide" type="text" name="id-pais" value="-1" form="<?php echo($randomic);?>">
-                                    <td class="pt-3-half"><input class="form-control" type="text" name="localidade" form="<?php echo($randomic);?>"  placeholder="Nome do Pais"></td>
-                                    <td class="pt-3-half"><input class="form-control" type="text" name="pais" form="<?php echo($randomic);?>"  placeholder="Localidade"></td>
+                                    <td class="pt-3-half"><input class="form-control" type="text" name="pais" form="<?php echo($randomic);?>"  placeholder="Nome do Pais"></td>
+                                    <td class="pt-3-half"><input class="form-control" type="text" name="localidade" form="<?php echo($randomic);?>"  placeholder="Localidade"></td>
                                     <td class="pt-3-half"> <input type="file" name="icone_pais" accept="image/*" form="<?php echo($randomic);?>"></td>
                                     <td>
                                         <span class="table-change hide"><input type="button"class="btn btn-warning btn-rounded btn-sm my-0" value="Alterar"></span>
@@ -121,7 +121,7 @@ if(isset($_SESSION['id_user'])){
                                         <input class="hide" type="text" name="id-pais" value="<?php echo($value->getId());  ?>" form="<?php echo($randomic);?>">
                                         <td class="pt-3-half"><input disabled class="form-control" required type="text" name="pais" form="<?php echo($randomic);?>" placeholder="Nome do Pais" value="<?php echo($value->getNome());  ?>"></td>
                                         <td class="pt-3-half"><input disabled class="form-control" required type="text" name="localidade" form="<?php echo($randomic);?>"  placeholder="Localidade" value="<?php echo($value->getLocalidade());  ?>"></td>
-                                        <td class="pt-3-half"> <input type="file" name="icone_pais" required accept="image/*" form="<?php echo($randomic);?>"></td>
+                                        <td class="pt-3-half"> <input type="file" name="icone_pais" accept="image/*" form="<?php echo($randomic);?>"></td>
                                         <td>
                                             <span class="table-change"><input type="button"class="btn btn-warning btn-rounded btn-sm my-0" value="Alterar"></span>
                                             <span class="table-save hide"><input type="submit" name="action" class="btn btn-success btn-rounded btn-sm my-0" value="Salvar" form="<?php echo($randomic);?>"></span>
@@ -155,6 +155,10 @@ if(isset($_SESSION['id_user'])){
 
         $(document).ready(function(){
             $('a[href="cad_pais.php"]').addClass('active');
+
+            $(document).ready(function(){
+                $('a[href="cad_pais.php"]').parents('li').addClass('ativo');
+            });
 
             const $tableID = $('.table');
 

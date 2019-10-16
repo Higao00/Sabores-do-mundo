@@ -47,7 +47,7 @@
 					$pais->updatePais();
 				}else{
 
-					$pais = new Pais('',$_POST['pais'], $_POST['localidade'], $path);
+					$pais = new Pais('',$_POST['pais'], $_POST['localidade'], $path, '');
 					$pais->insertPais();
 
 				}

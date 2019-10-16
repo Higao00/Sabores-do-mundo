@@ -117,7 +117,7 @@ if(isset($_SESSION['id_user'])){
                                         <form class="text-center" action="control/categoria.php" method="POST" enctype="multipart/form-data" id="<?php echo($randomic);?>"></form>
                                         <input class="hide" type="text" name="id-categoria" value="<?php echo($value->getId());  ?>" form="<?php echo($randomic);?>">
                                         <td class="pt-3-half"><input disabled class="form-control" required type="text" name="nome" form="<?php echo($randomic);?>" placeholder="Nome da Categoria" value="<?php echo($value->getTitulo());  ?>"></td>
-                                        <td class="pt-3-half"> <input type="file" name="icone_categoria" required accept="image/*" form="<?php echo($randomic);?>"></td>
+                                        <td class="pt-3-half"> <input type="file" name="icone_categoria" accept="image/*" form="<?php echo($randomic);?>"></td>
                                         <td>
                                             <span class="table-change"><input type="button"class="btn btn-warning btn-rounded btn-sm my-0" value="Alterar"></span>
                                             <span class="table-save hide"><input type="submit" name="action" class="btn btn-success btn-rounded btn-sm my-0" value="Salvar" form="<?php echo($randomic);?>"></span>

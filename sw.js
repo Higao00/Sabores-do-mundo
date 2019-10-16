@@ -19,7 +19,6 @@ self.addEventListener('install', function (event) {
         '/saboresdomundo/images/pagina_principal2.jpg',
         '/saboresdomundo/images/logo.png',
         '/saboresdomundo/js/mdb.min.js',
-        '/saboresdomundo/images/logo.png',
         '/saboresdomundo/js/sweetalert2.min.js',
         '/saboresdomundo/css/sweetalert2.min.css',
         '/saboresdomundo/js/main.js',

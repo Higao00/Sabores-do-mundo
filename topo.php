@@ -320,7 +320,7 @@ if(isset($_SESSION) && isset($_SESSION['id_user'])){
 							?>
 							<li class="nav-item suspenso">
 								<a href="cad_pais.php" class="nav-link waves-effect bold-1">
-									<i class="fas fa-heart mr-3"></i>Cadastrar Pais
+									<i class="fas fa-plus mr-3"></i>Cadastrar Pais
 								</a>
 							</li>
 							<?php
@@ -332,7 +332,7 @@ if(isset($_SESSION) && isset($_SESSION['id_user'])){
 							?>
 							<li class="nav-item suspenso">
 								<a href="cad_categoria.php" class="nav-link waves-effect bold-1">
-									<i class="fas fa-heart mr-3"></i>Cadastrar Categoria
+									<i class="fas fa-plus mr-3"></i>Cadastrar Categoria
 								</a>
 							</li>
 							<?php

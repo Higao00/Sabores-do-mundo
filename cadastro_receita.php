@@ -48,7 +48,6 @@ include 'topo.php';
 			margin-top: 50px;
 		}
 	}
-
 </style>
 
 <!-- CRIAR AQUI O HTML DA SUA PAGINA -->
@@ -57,8 +56,11 @@ include 'topo.php';
 
 	<p class="page-title" id="titulo-page">CADASTRO DE RECEITA  <i class="fas fa-utensils mr-3"></i></p>
 
-	<div style="margin-top: 30px;">
+	<select class=" custom-select">
+		<option>Selecione</option>
+	</select>
 
+	<div style="margin-top: 30px;">
 		<form action="control/images.php" id="DropZoneFiddle" class="dropzone" >
 			<div class="dz-message">
 				<span style="font-size: 20px; font-weight: 500;">Clique Aqui para adicionar Fotos. <i class="fas fa-cloud-upload-alt"></i></span><br>

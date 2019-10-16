@@ -51,7 +51,7 @@
 
 				}
 
-				$_SESSION['msg'] = "Sucesso ao Cadastrar o categoria!";
+				$_SESSION['msg'] = "Sucesso ao Cadastrar a Categoria!";
 
 				header('Location: ../cad_categoria.php?status=1');
 				die();

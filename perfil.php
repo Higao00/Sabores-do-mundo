@@ -121,6 +121,10 @@ if(isset($_SESSION['id_user'])){
             $('a[href="perfil.php"]').addClass('active');
         });
 
+        $(document).ready(function(){
+            $('a[href="perfil.php"]').parents('li').addClass('ativo');
+        });
+
     </script>
 
 </div>
