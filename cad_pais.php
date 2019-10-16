@@ -21,6 +21,11 @@ if(isset($_SESSION['id_user'])){
         die();
     }
 }
+
+// if($_SESSION['id_user'] != 1){
+//     header('Location: home.php');
+//     die();
+// }
 ?>
 
 <?php 
@@ -44,6 +49,7 @@ if(isset($_SESSION['id_user'])){
     .hide{
         display: none;
     }
+
 </style>
 
 <!-- CRIAR AQUI O HTML DA SUA PAGINA -->
@@ -69,56 +75,68 @@ if(isset($_SESSION['id_user'])){
                         </span> -->
                         <a class="table-add text-success float-right fas fa-plus fa-2x" aria-hidden="true" tabela="modo-preparo"></a>
 
-                        <form class="form list-margin" action="control/receita.php" name="cad-receita" method="POST">
-                            <input type="text" name="id-pais" class="hide">
-                            <table class="table table-bordered table-responsive-md table-striped text-center" id="modo-preparo">
-                                <thead>
-                                    <tr>
-                                        <th class="text-center">Pais</th>
-                                        <th class="text-center">Localidade</th>
-                                        <th class="text-center">Icone</th>
-                                        <th class="text-center">Alterar</th>
-                                        <th class="text-center">Excluir</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
+                        <input type="text" name="id-pais" class="hide">
+                        <table class="table table-bordered table-responsive-md table-striped text-center" id="modo-preparo">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">Pais</th>
+                                    <th class="text-center">Localidade</th>
+                                    <th class="text-center">Icone</th>
+                                    <th class="text-center">Ação</th>
+                                    <th class="text-center">Excluir</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php 
+                                    $randomic = rand(11111,99999);
+                                ?>
 
-                                    <?php 
+                                <tr class="hide">
+                                    <form class="text-center" action="control/pais.php" method="POST" enctype="multipart/form-data" id="<?php echo($randomic);?>"></form>
+                                    <input class="hide" type="text" name="id-pais" value="-1" form="<?php echo($randomic);?>">
+                                    <td class="pt-3-half"><input class="form-control" type="text" name="localidade" form="<?php echo($randomic);?>"  placeholder="Nome do Pais"></td>
+                                    <td class="pt-3-half"><input class="form-control" type="text" name="pais" form="<?php echo($randomic);?>"  placeholder="Localidade"></td>
+                                    <td class="pt-3-half"> <input type="file" name="icone_pais" accept="image/*" form="<?php echo($randomic);?>"></td>
+                                    <td>
+                                        <span class="table-change hide"><input type="button"class="btn btn-warning btn-rounded btn-sm my-0" value="Alterar"></span>
+                                        <span class="table-save"><input type="submit" name="action" form="<?php echo($randomic);?>" class="btn btn-success btn-rounded btn-sm my-0" value="Salvar"></span>
+                                    </td>
+                                    <td>
+                                        <span><input type="submit" form="<?php echo($randomic);?>" name="action" class="btn btn-danger btn-rounded btn-sm my-0" value="Remove"></span>
+                                    </td>
+                                </tr>
 
-                                    $pais = new Pais();
+                                <?php 
 
-                                    $paises = $pais->
+                                $pais = new Pais();
 
+                                $paises = $pais->selectAll();
+
+                                foreach ($paises as $key => $value) {
+
+                                    $randomic = rand(11111,99999);
                                     ?>
-                                    <tr class="hide">
-                                        <td class="pt-3-half"><input class="form-control" type="text" name="pais[]"  placeholder="Nome do Pais"></td>
-                                        <td class="pt-3-half"><input class="form-control" type="text" name="localidade[]"  placeholder="Localidade"></td>
-                                        <td class="pt-3-half"> <input type="file" name="icone_pais" accept="image/*"></td>
-                                        <td>
-                                            <span class="table-change"><button type="button" class="btn btn-warning btn-rounded btn-sm my-0">Alterar</button></span>
-                                            <span class="table-save hide"><button type="button" class="btn btn-success btn-rounded btn-sm my-0">Salvar</button></span>
-                                        </td>
-                                        <td>
-                                            <span class="table-remove"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0">Remove</button></span>
-                                        </td>
-                                    </tr>
-
                                     <tr>
-                                        <td class="pt-3-half"><input class="form-control" required type="text" name="localidade[]"  placeholder="Nome do Pais"></td>
-                                        <td class="pt-3-half"><input class="form-control" required type="text" name="pais[]"  placeholder="Localidade"></td>
-                                        <td class="pt-3-half"> <input type="file" name="icone_pais" required accept="image/*"></td>
+                                        <form class="text-center" action="control/pais.php" method="POST" enctype="multipart/form-data" id="<?php echo($randomic);?>"></form>
+                                        <input class="hide" type="text" name="id-pais" value="<?php echo($value->getId());  ?>" form="<?php echo($randomic);?>">
+                                        <td class="pt-3-half"><input disabled class="form-control" required type="text" name="pais" form="<?php echo($randomic);?>" placeholder="Nome do Pais" value="<?php echo($value->getNome());  ?>"></td>
+                                        <td class="pt-3-half"><input disabled class="form-control" required type="text" name="localidade" form="<?php echo($randomic);?>"  placeholder="Localidade" value="<?php echo($value->getLocalidade());  ?>"></td>
+                                        <td class="pt-3-half"> <input type="file" name="icone_pais" required accept="image/*" form="<?php echo($randomic);?>"></td>
                                         <td>
-                                            <span class="table-change hide"><button type="button" class="btn btn-warning btn-rounded btn-sm my-0">Alterar</button></span>
-                                            <span class="table-save"><button type="button" class="btn btn-success btn-rounded btn-sm my-0">Salvar</button></span>
+                                            <span class="table-change"><input type="button"class="btn btn-warning btn-rounded btn-sm my-0" value="Alterar"></span>
+                                            <span class="table-save hide"><input type="submit" name="action" class="btn btn-success btn-rounded btn-sm my-0" value="Salvar" form="<?php echo($randomic);?>"></span>
                                         </td>
                                         <td>
-                                            <span class="table-remove"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0">Remove</button></span>
+                                            <span><input type="submit" name="action" class="btn btn-danger btn-rounded btn-sm my-0" value="Remove" form="<?php echo($randomic);?>"></span>
                                         </td>
                                     </tr>
-                                    
-                                </tbody>
-                            </table>
-                        </form>
+                                    <?php
+                                }
+
+                                ?>
+                                
+                            </tbody>
+                        </table>
                     </div>
                 </div>
                 <!-- Card -->
@@ -140,6 +158,16 @@ if(isset($_SESSION['id_user'])){
 
             const $tableID = $('.table');
 
+            $(document).on('click', 'span.table-change', function(){
+
+                $(this).addClass('hide');
+                $(this).parents('td').find('> span.table-save').removeClass('hide');
+
+                $(this).parents('tr').find('input[disabled]').each(function(){
+                    $(this).removeAttr('disabled');
+                });
+            });
+
             $(document).on('click', 'a.table-add', function(){
 
                 var table = $(this).attr('tabela');
@@ -157,9 +185,35 @@ if(isset($_SESSION['id_user'])){
             $tableID.on('click', '.table-remove', function() {
                 $(this).parents('tr').detach();
             });
+
+            <?php
+            if (isset($_GET['status']) && $_GET['status'] == 1) {
+
+                isset($_SESSION['msg']) ? $msg = $_SESSION['msg'] : $msg = '';
+                ?>
+                Swal.fire(
+                    '<?php echo ($msg); ?>',
+                    '',
+                    'success'
+                );
+            <?php
+            } elseif (isset($_GET['status']) && $_GET['status'] == 0) {
+
+                isset($_SESSION['msg']) ? $msg = $_SESSION['msg'] : $msg = '';
+                ?>
+                Swal.fire(
+                    '<?php echo ($msg); ?>',
+                    '',
+                    'error'
+                );
+            <?php
+            }
+
+            ?>
         });
 
     </script>
+</div>
 
 </div>
 <!--Main layout-->

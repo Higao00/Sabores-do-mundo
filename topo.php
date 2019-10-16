@@ -315,7 +315,29 @@ if(isset($_SESSION) && isset($_SESSION['id_user'])){
 						}
 						?>
 
+						<?php 
+						if(isset($_SESSION['id_user']) && $_SESSION['id_user'] == 1){
+							?>
+							<li class="nav-item suspenso">
+								<a href="cad_pais.php" class="nav-link waves-effect bold-1">
+									<i class="fas fa-heart mr-3"></i>Cadastrar Pais
+								</a>
+							</li>
+							<?php
+						}
+						?>
 
+						<?php 
+						if(isset($_SESSION['id_user']) && $_SESSION['id_user'] == 1){
+							?>
+							<li class="nav-item suspenso">
+								<a href="cad_categoria.php" class="nav-link waves-effect bold-1">
+									<i class="fas fa-heart mr-3"></i>Cadastrar Categoria
+								</a>
+							</li>
+							<?php
+						}
+						?>
 
 						<li class="nav-item suspenso">
 							<a href="#" class="nav-link waves-effect bold-1" data-toggle="modal" data-target="#configuracao">
@@ -403,6 +425,27 @@ if(isset($_SESSION) && isset($_SESSION['id_user'])){
 						<?php
 					}
 					?>
+
+					<?php 
+					if(isset($_SESSION['id_user']) && $_SESSION['id_user'] == 1){
+						?>
+						<a href="cad_pais.php" class="list-group-item list-group-item-action waves-effect">
+							<i class="fas fa-plus mr-3"></i>Cadastrar Pais
+						</a>
+						<?php
+					}
+					?>
+
+					<?php 
+					if(isset($_SESSION['id_user']) && $_SESSION['id_user'] == 1){
+						?>
+						<a href="cad_categoria.php" class="list-group-item list-group-item-action waves-effect" style="font-size: 14px!important;">
+							<i class="fas fa-plus mr-3" style="font-size: 18px!important;"></i>Cadastrar Categoria
+						</a>
+						<?php
+					}
+					?>
+
 					<?php 
 					if($logado == 1){
 						?>

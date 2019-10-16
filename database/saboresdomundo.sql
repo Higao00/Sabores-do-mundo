@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 06-Out-2019 às 23:28
+-- Generation Time: 16-Out-2019 às 12:38
 -- Versão do servidor: 10.1.16-MariaDB
 -- PHP Version: 5.5.38
 
@@ -57,6 +57,7 @@ INSERT INTO `avaliacao` (`id`, `receita`, `avaliacao`, `usuario`, `timestamp`) V
 CREATE TABLE `categoria` (
   `id` int(11) NOT NULL,
   `titulo` varchar(50) CHARACTER SET latin1 NOT NULL,
+  `path_icon` varchar(80) NOT NULL,
   `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -64,37 +65,8 @@ CREATE TABLE `categoria` (
 -- Extraindo dados da tabela `categoria`
 --
 
-INSERT INTO `categoria` (`id`, `titulo`, `timestamp`) VALUES
-(1, 'Carnes', '2019-09-18 00:31:45'),
-(2, 'Massas', '2019-09-25 02:24:00'),
-(3, 'Massas', '2019-09-25 02:49:27'),
-(4, 'Massas', '2019-09-25 03:30:43'),
-(5, 'Frango Assado', '2019-10-02 02:13:37'),
-(6, 'Frango Assado', '2019-10-02 02:14:09'),
-(7, 'Frango Assado', '2019-10-02 02:14:13'),
-(8, 'SalomÃƒÂ£o Assado', '2019-10-02 02:15:29'),
-(9, 'SalomÃƒÂ£o Assado', '2019-10-02 02:17:59'),
-(10, 'SalomÃƒÂ£o Assado', '2019-10-02 02:18:00'),
-(11, 'SalomÃ£o Assado', '2019-10-02 02:19:10'),
-(12, 'SalomÃ£o Assado', '2019-10-02 02:19:11'),
-(13, 'SalomÃ£o Assado', '2019-10-02 02:19:12'),
-(14, 'SalomÃ£o Assado', '2019-10-02 02:19:12'),
-(15, 'SalomÃ£o Assado', '2019-10-02 02:19:12'),
-(16, 'SalomÃ£o Assado', '2019-10-02 02:19:13'),
-(17, 'SalomÃ£o Assado', '2019-10-02 02:20:04'),
-(18, 'SalomÃ£o Assado', '2019-10-02 02:20:04'),
-(19, 'SalomÃ£o Assado', '2019-10-02 02:20:36'),
-(20, 'SalomÃ£o Assado', '2019-10-02 02:20:36'),
-(21, 'SalomÃ£o Assado', '2019-10-02 02:20:37'),
-(22, 'SalomÃ£o Assado', '2019-10-02 02:20:37'),
-(23, 'SalomÃ£o Assado', '2019-10-02 02:21:56'),
-(24, 'SalomÃ£o Assado', '2019-10-02 02:21:56'),
-(25, 'SalomÃ£o Assado', '2019-10-02 02:23:13'),
-(26, 'SalomÃ£o Assado', '2019-10-02 02:23:14'),
-(27, 'SalomÃ£o Assado', '2019-10-02 02:23:14'),
-(28, 'SalomÃ£o Assado', '2019-10-02 02:23:36'),
-(29, 'SalomÃ£o Assado', '2019-10-02 02:53:35'),
-(30, 'SalomÃ£o Assado', '2019-10-03 00:58:37');
+INSERT INTO `categoria` (`id`, `titulo`, `path_icon`, `timestamp`) VALUES
+(1, 'Carnes', 'images/icon-categoria/5da65f33e30e3.jpg', '2019-10-16 00:07:15');
 
 -- --------------------------------------------------------
 
@@ -105,10 +77,21 @@ INSERT INTO `categoria` (`id`, `titulo`, `timestamp`) VALUES
 CREATE TABLE `foto_receita` (
   `id` int(11) NOT NULL,
   `receita` int(11) NOT NULL,
-  `path_foto` int(11) NOT NULL,
+  `path_foto` varchar(255) NOT NULL,
   `usuario` int(11) NOT NULL,
   `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Extraindo dados da tabela `foto_receita`
+--
+
+INSERT INTO `foto_receita` (`id`, `receita`, `path_foto`, `usuario`, `timestamp`) VALUES
+(1, 1, 'foto_receita/5da35775dda9c.jpg', 57, '2019-10-13 16:57:26'),
+(2, 1, 'foto_receita/5da35776366d8.jpg', 57, '2019-10-13 16:57:26'),
+(3, 1, 'foto_receita/5da3577693d02.jpg', 57, '2019-10-13 16:57:26'),
+(4, 2, 'foto_receita/5da3c46b35a34.jpg', 57, '2019-10-14 00:42:19'),
+(5, 2, 'foto_receita/5da3c46bb0ee4.jpg', 57, '2019-10-14 00:42:19');
 
 -- --------------------------------------------------------
 
@@ -128,8 +111,8 @@ CREATE TABLE `ingrediente` (
 --
 
 INSERT INTO `ingrediente` (`id`, `nome`, `medida`, `timestamp`) VALUES
-(1, 'ovo', 'unidade', '2019-09-25 02:13:50'),
-(2, 'ovo', 'unidade', '2019-09-25 02:15:01');
+(1, 'Igrediente 1', 'unídade', '2019-10-13 16:57:49'),
+(2, 'café', 'unídade', '2019-10-14 00:43:02');
 
 -- --------------------------------------------------------
 
@@ -150,7 +133,8 @@ CREATE TABLE `ingrediente_receita` (
 --
 
 INSERT INTO `ingrediente_receita` (`id`, `ingrediente`, `quantidade`, `receita`, `timestamp`) VALUES
-(1, 5, 15, 7, '2019-10-01 00:56:43');
+(1, 1, 20, 1, '2019-10-13 16:57:50'),
+(2, 2, 20, 2, '2019-10-14 00:43:03');
 
 -- --------------------------------------------------------
 
@@ -162,6 +146,7 @@ CREATE TABLE `pais` (
   `id` int(11) NOT NULL,
   `nome` varchar(50) NOT NULL,
   `localidade` varchar(50) NOT NULL,
+  `path_icon` varchar(80) NOT NULL,
   `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -169,10 +154,11 @@ CREATE TABLE `pais` (
 -- Extraindo dados da tabela `pais`
 --
 
-INSERT INTO `pais` (`id`, `nome`, `localidade`, `timestamp`) VALUES
-(1, 'Brasil', 'Ameria Latina', '2019-09-25 02:04:41'),
-(2, 'Brasil', 'Ameria Latina', '2019-09-25 02:05:36'),
-(3, 'Brasil', 'Ameria Latina', '2019-09-25 02:05:52');
+INSERT INTO `pais` (`id`, `nome`, `localidade`, `path_icon`, `timestamp`) VALUES
+(2, 'Brasil', 'Ameria Latina', '', '2019-09-25 02:05:36'),
+(6, 'Africa', 'Angola', 'images/icon-pais/5da658d8c8d09.jpg', '2019-10-15 23:40:08'),
+(7, 'Europa', 'FranÃ§a', 'images/icon-pais/5da65b009bebd.jpg', '2019-10-15 23:49:20'),
+(8, 'Alonso', 'Alindo', 'images/icon-pais/5da65b58c9579.jpg', '2019-10-15 23:50:48');
 
 -- --------------------------------------------------------
 
@@ -185,15 +171,19 @@ CREATE TABLE `receita` (
   `titulo` varchar(50) NOT NULL,
   `modo_preparo` text NOT NULL,
   `usuario` int(11) NOT NULL,
-  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `categoria` int(11) NOT NULL,
+  `pais` int(11) NOT NULL,
+  `tempo_preparo` varchar(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Extraindo dados da tabela `receita`
 --
 
-INSERT INTO `receita` (`id`, `titulo`, `modo_preparo`, `usuario`, `timestamp`) VALUES
-(1, 'Minha Primeira Receita', 'Adiciona tudo no fogo e deixa rolar', 5, '2019-09-25 01:48:50');
+INSERT INTO `receita` (`id`, `titulo`, `modo_preparo`, `usuario`, `timestamp`, `categoria`, `pais`, `tempo_preparo`) VALUES
+(1, 'Minha Primeira Receita', '<br>1 : depois sirva a quem quiser sercir', 57, '2019-10-13 16:57:49', 0, 0, ''),
+(2, 'Minha segunda ReceÃ­ta', '<br>1 : Primeira Leve ao Fogo por Meia Hora<br>2 : depois sirva a quem quiser sercir', 57, '2019-10-14 00:43:03', 0, 0, '');
 
 -- --------------------------------------------------------
 
@@ -230,6 +220,24 @@ CREATE TABLE `subscribers` (
   `status` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Extraindo dados da tabela `subscribers`
+--
+
+INSERT INTO `subscribers` (`id`, `endpoint`, `auth`, `p256dh`, `usuario`, `status`) VALUES
+(1, 'https://fcm.googleapis.com/fcm/send/dWOmpjVA44Q:APA91bGK9ARS4uwVwwyK2rccWe9qJOo35MdgaXb-hF2fHz4Y7fJcMgBwDfiMJ6odbJbjuYipu0wCWhxRQS9u6WbKk59IDodUNT8Mwcdfpn5ybnf4OtVxYtn6w9llS_jPK8BzGsYI1z39', 'P75allqOs0IbbPg7vwqLMQ==', 'BJcEKjrRTqE30RbfW/jO/CMsoYFsVBeOX1pgQXdFipoyge1dt3nizQJbww2AJITpO0aDUa2/r/6B+9sTaPCLmMg=', 0, 1),
+(2, 'https://fcm.googleapis.com/fcm/send/cgC960H0DBo:APA91bHy8iuGag8ZMiIaKhaR1xfQiOnwFSoqqAp9Ms0M4SHScJCcI4e0j46hLa5UzsdeLA_fSpkmI4NzrI7N9lS5nudND3yxNRppKrp0kbeRaNSzi4p1GGLM-hcQmVoIsSPR9aaUa5QG', '5wJeVuZ+vAW1lZmHUwrUlA==', 'BN3J62AorvX6q2hBPXyBAK8DIp+WjHjmgt1cIH8+oLl11Fd3unYFGlu9CTseYgZOIoXlufZ/PRIQGjUDK4NQUkY=', 0, 1),
+(3, 'https://fcm.googleapis.com/fcm/send/dUehZXtCIW4:APA91bHEDNft-kmoH7CqMRGtDe5t958KapWgxHXMDwZeOX7MnPjh_4yD0NQOuXREhTx4dWuZJZ6SxxF-9JxtCYUGXvRPpCj6giVRNWMySZzbmlUv1iuJ0OjSUjJfQjSt3CnvHT0IweHK', 'gSQaf1xuh8gjuKtEjYoLCw==', 'BEfEO7xtg2af3HM25ebaZ+D9O4GA9t2/He3sbSYOgdgCzulUG1RotIbe9ROBGrmfaNkLQaS46oD9ZQVlGdPYqOc=', 0, 1),
+(4, 'https://fcm.googleapis.com/fcm/send/c5FKV2giiq4:APA91bG3WM34-O4ip3Bi6D80qha6pA5QoWQb7mCfdKFVNJTUpKz0qPOvCltM1VW7OnA5AZhPicXWG_UhgHcGZ7s8jBcfH2lvMdj8MQrUD_mk9BDahkJx1TaVFr4e4Y7IyjaKMHdvT98M', 'CeQn/Ct9r3Ywx6q6nVeT2w==', 'BJKXh04ZpN8pnW27L2DW5ALxEFVj7fc1RwunPHiEX6riGKlEobvvmwIYQwN5iVDbj1jOBPfMLAnQA11dwribjuk=', 0, 1),
+(5, 'https://fcm.googleapis.com/fcm/send/dNKhRX-hoto:APA91bFIa7uQxaWbyQFu9AS6w7AFJqZgOgk0lui8DiT_A_Y0RDmX-p8ZUGYRTAzUg9g61O-T6P7bX6mY0bwCVRnMtVV--ZYIO67qM_KsE8ejbGJXUF1t95eIrsSasdAeq_CgdoVgTtMj', 'RfBzQIKLChOZ3YnohTU4TA==', 'BHF69L8MoTfe8CiVQkUNRV+ZI4aHU1mnbEinEpdokzdNtkaHAL6hUyDOwfJf8i5aIpVPGVHjDGPs7+g+JrQsVZo=', 0, 1),
+(6, 'https://fcm.googleapis.com/fcm/send/dVp9KEyl4Hs:APA91bFLvwLFWN2dvOEm_i6W7NT_V94rv6iBxl5i8wj2d25Ou3vEdoqWFtV4vbM15eIxz_q81ywY_BPG6kOX40Cq8Dc6WzOWjsRXqtHHQlayBGCZgH0j5Yo9HuZv7pkPNZHT2xDrtk46', 'NQLauguNMrms2xNn9FZxkQ==', 'BEWT9bPj+/OFrBR6WYuen1ApwDW8mZ8YANkKqn/wkos0/09mXlOExCOjP9k4mqFSdhDIpD0xVegjmkvC1iXZM/A=', 55, 1),
+(7, 'https://fcm.googleapis.com/fcm/send/dwyqhnretZs:APA91bGo2p-DNewrNpvQF6FDcUHz_II7UyY4YJxDIi9xcTNgiA5BgMQamUHlduRauKPFpVcy7SnBqLNpxqakeH2Y9otY-XXOrZHYbfQuwNDQDGRZO9hsXa4HVzV9A7niyw6qeCuei3Hn', 'Mu3gOXlygmpobTidGuJy2Q==', 'BMl37rb5zWAwRdaGI+lZ81NTKzU3BwFXGgCfQaQebEdsEnU30tn/DRG1WoVxxTe6f60oJvlpW5Ju4dE8cTFZrjg=', 55, 1),
+(8, 'https://fcm.googleapis.com/fcm/send/feVU8i5s5Vg:APA91bEdNgKV9LY-YTDHjYuVK_fNvK1q4DGJCt5ZGYlwE_eYBxZAqMqLQVoSLlF0c2guCtkA-7kLvbbBmcJb1RLKC2kHC6VViL2gt1TYLhgzYyym0EKUBXj-FgINycaYJwYGxu2RL1xI', 'qGhnOsnVKp9J+fDBfyJ5Qw==', 'BPa53EDmJCtoBS44h/6U4mEj2vvqBGKYKyovNSqxnO6EmND1YDhhBpNAyhrTDSVKiA7yjCs8+1soRMeX97QMRVU=', 55, 1),
+(9, 'https://fcm.googleapis.com/fcm/send/dKqyCsNpiy8:APA91bGtjYaQPrL91eBWcjl8esiQc5INkxSf4ukCNiJg5s7SWmD3WAIPClSfkk1jKSkxcjR-SCjQ6ICMv3_wJzmoTaR-9h5NEU3-1tjCwFv6e-yONBX8V2KqZB-Af5da_0THLonqKgl1', 'Ny8r+31GlqLwrwjXW6tlPQ==', 'BIJeSEIF3Ht3RU1ALpiA2HuqIrXmCBxDsH+tdIt6qACgQ3o+aZd4HA3Wna/SqzzjCq8MrQfLkTpDhu01ZfOCctA=', 0, 1),
+(10, 'https://fcm.googleapis.com/fcm/send/fu34rTnLBhs:APA91bHClPtQIvEn2fNd8gzXD1EJ1C502hnyB_8Yw_b6XWBAyOrssKv9yHW0kxKdWExJeRdwOm0ieFdCzPZF41w0KF3KVqZwfUZLepqOQJR_rQOQIb0Yk_oCXFI-7qb9hJzUWmOoaA28', 'DNz80vEt9xTTQTDmaq1E1A==', 'BIHNA3+vvPJf0hTixIQTxljV6RbtcgyaLIYWwyDtVTfk3SmyugL8zrDfKkA+ZM0zGcm5dpLXhr+tG7LtVtmzBDo=', 57, 1),
+(11, 'https://fcm.googleapis.com/fcm/send/fAtUrr522Qc:APA91bFQb8o7gCMlJiJAYtQdERZz4tCk0Z2sysiEdif4d0Q4XyqHP_5l5cCYhVGs5RyGJnQCXiS3MARkbJnptIPqGc9_Mp3ZjR35KfKYhpRh4Bl6CoGLGIsjRRf4Ci-bVwBUoopj1n_l', 'pr3znlWbslZl4r6wwTo2Bg==', 'BPwtVuI6b+UCozj65fTcPjtQVrp0HO7wfrZf0AKbPkj3eUeBUyjTweMjZ+hfJmsOhCP9b37sCtyQXPWJOhLdLFk=', 57, 1),
+(12, 'https://fcm.googleapis.com/fcm/send/eMgfjwICGIQ:APA91bFJbTpqRWDEYtwecmjyrAn_xhzdVR9o6qyJUFyb0y0lq1XD-B7MtjXnd82TXFylPMM1exCkm_FaePV_gEMBiATJTPR5FWeTiAGDEY2IINGnJwWpB57YqcUBMxRK1FMQGvKw3tF2', 'rvURRYpZK9c2kTaJ9TP5sg==', 'BBOQBpNGNR6ojHWZLu52vXm0gCeC2KzFA+qQZYq3kFHi8pvHtERD4e54Qh2WSBcpP97DXrmF3ICiSQhrKfldA8I=', 0, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -250,56 +258,7 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`id`, `nome`, `nascimento`, `email`, `senha`, `changelog`) VALUES
-(1, 'Higor', '0000-00-00', 'gg@gmail.com', '1234', '2019-09-13 00:18:19'),
-(2, 'Higor', '0000-00-00', 'gg@gmail.com', '1234', '2019-09-13 00:20:56'),
-(3, 'Higor', '0000-00-00', 'gg@gmail.com', '1234', '2019-09-13 00:20:57'),
-(4, 'Higor', '0000-00-00', 'gg@gmail.com', '1234', '2019-09-13 00:20:57'),
-(5, 'Higor', '0000-00-00', 'gg@gmail.com', '1234', '2019-09-13 00:20:58'),
-(6, 'Higor', '0000-00-00', 'gg@gmail.com', '1234', '2019-09-13 00:20:58'),
-(7, 'Higor', '0000-00-00', 'gg@gmail.com', '1234', '2019-09-13 00:20:58'),
-(8, 'Higor', '0000-00-00', 'gg@gmail.com', '1234', '2019-09-13 00:20:59'),
-(9, 'alinson', '0000-00-00', 'gg@gmail.com', '987', '2019-09-13 00:45:38'),
-(10, 'Nivaldo', '2018-11-20', 'gg@gmail.com', '1234', '2019-09-13 00:21:00'),
-(11, 'Higor', '0000-00-00', 'gg@gmail.com', '1234', '2019-09-13 00:21:00'),
-(12, 'Higor', '0000-00-00', 'gg@gmail.com', '1234', '2019-09-13 00:21:00'),
-(13, 'Higor', '0000-00-00', 'gg@gmail.com', '1234', '2019-09-13 00:21:01'),
-(14, 'Higor', '0000-00-00', 'gg@gmail.com', '1234', '2019-09-13 00:21:01'),
-(15, 'alinson', '0000-00-00', 'gg@gmail.com', '1234', '2019-09-13 00:21:01'),
-(16, 'Higor', '0000-00-00', 'gg@gmail.com', '1234', '2019-09-13 00:21:02'),
-(17, 'Higor', '0000-00-00', 'gg@gmail.com', '1234', '2019-09-13 00:21:02'),
-(18, 'Higor', '0000-00-00', 'gg@gmail.com', '1234', '2019-09-13 00:21:02'),
-(19, 'Higor', '0000-00-00', 'gg@gmail.com', '1234', '2019-09-13 00:21:03'),
-(20, 'Higor', '0000-00-00', 'gg@gmail.com', '1234', '2019-09-13 00:21:03'),
-(21, 'Higor', '0000-00-00', 'gg@gmail.com', '1234', '2019-09-13 00:23:38'),
-(22, 'Higor', '0000-00-00', 'gg@gmail.com', '1234', '2019-09-17 22:24:09'),
-(23, 'Higor', '0000-00-00', 'gg@gmail.com', '1234', '2019-09-17 22:24:28'),
-(24, 'Higor', '0000-00-00', 'gg@gmail.com', '1234', '2019-09-17 22:24:29'),
-(25, 'Higor', '0000-00-00', 'gg@gmail.com', '1234', '2019-09-17 22:24:30'),
-(26, 'Higor', '0000-00-00', 'gg@gmail.com', '1234', '2019-09-17 22:25:33'),
-(27, 'Higor', '0000-00-00', 'gg@gmail.com', '1234', '2019-09-17 22:26:04'),
-(28, 'Higor', '0000-00-00', 'gg@gmail.com', '1234', '2019-09-17 22:26:33'),
-(29, 'Higor', '0000-00-00', 'gg@gmail.com', '1234', '2019-09-17 22:27:04'),
-(30, 'JoÃ£o', '0000-00-00', 'JoÃ£o@joÃ£o.com', '1234', '2019-09-17 22:29:45'),
-(31, 'JosÃƒÂ©', '0000-00-00', 'JoÃƒÂ£o@joÃƒÂ£o.com', '1234', '2019-09-17 22:32:24'),
-(32, 'José', '0000-00-00', 'JoÃƒÂ£o@joÃƒÂ£o.com', '1234', '2019-09-17 22:33:29'),
-(33, 'José', '0000-00-00', 'João@joão.com', '1234', '2019-09-17 22:34:38'),
-(34, 'dasd', '2019-10-05', 'dasda@gmail.com', '8f4031bfc7640c5f267b11b6fe0c2507', '2019-10-05 03:12:17'),
-(35, 'lucas', '1998-11-20', 'lucas@alves.com', 'e10adc3949ba59abbe56e057f20f883e', '2019-10-05 03:13:02'),
-(36, 'jose', '1900-11-20', 'jose@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', '2019-10-05 03:13:52'),
-(37, 'joÃ£o', '0000-00-00', 'jose@mao.com', 'e10adc3949ba59abbe56e057f20f883e', '2019-10-05 03:16:33'),
-(38, 'zxczx', '0000-00-00', 'sad@dasd.com', 'adbf5a778175ee757c34d0eba4e932bc', '2019-10-05 03:19:49'),
-(39, 'josÃ©', '0000-00-00', 'sada@gma.com', 'adbf5a778175ee757c34d0eba4e932bc', '2019-10-05 03:20:00'),
-(40, 'josÃ©', '1111-11-10', 'asd@sdf.com', 'adbf5a778175ee757c34d0eba4e932bc', '2019-10-05 03:21:30'),
-(41, 'josÃ©', '0004-12-12', '12@dasd.com', '0acf03f408f90ea0dcba786d300620db', '2019-10-05 03:25:00'),
-(42, 'josé', '0000-00-00', 'dasd@gmail.com', '8f4031bfc7640c5f267b11b6fe0c2507', '2019-10-05 03:28:28'),
-(43, 'dasda', '2019-10-05', 'minhas@msd.com', '60390c7e429e38e8449519011a24f79d', '2019-10-06 01:17:35'),
-(44, 'dasda', '2019-10-05', 'minhas@msd.com', 'b01abf84324066bdb4eed4d5bf20f887', '2019-10-06 01:18:20'),
-(45, 'josé', '0000-00-00', 'hjose@hoas.com', '28dc0ef2b70634d0a45511fff4f68db7', '2019-10-06 01:47:11'),
-(46, 'josé', '0000-00-00', 'jose@jose.com', 'da345a145bfdc207f522165062a5d80d', '2019-10-06 19:27:59'),
-(47, 'jose', '0000-00-00', 'dadas@sfd.com', '425f8f73289dbbaec12b5186481022d4', '2019-10-06 19:42:11'),
-(48, 'Lucas Alves Freitas', '1998-11-20', 'lucas@gmail.com', '018114d402352b3d13568d3251015ea8', '2019-10-06 20:01:01'),
-(49, 'joséclineton', '0000-00-00', 'lucas1@gmail.com', '154e5c1eee08d38019511476cbd257ea', '2019-10-06 20:26:10'),
-(50, 'joão', '0000-00-00', 'lucas12@gmail.com', 'da345a145bfdc207f522165062a5d80d', '2019-10-06 20:32:19');
+(1, 'admin', '0000-00-00', 'admin@admin.com', '81dc9bdb52d04dc20036dbd8313ed055', '2019-10-16 00:11:57');
 
 --
 -- Indexes for dumped tables
@@ -378,12 +337,12 @@ ALTER TABLE `avaliacao`
 -- AUTO_INCREMENT for table `categoria`
 --
 ALTER TABLE `categoria`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `foto_receita`
 --
 ALTER TABLE `foto_receita`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `ingrediente`
 --
@@ -393,17 +352,17 @@ ALTER TABLE `ingrediente`
 -- AUTO_INCREMENT for table `ingrediente_receita`
 --
 ALTER TABLE `ingrediente_receita`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `pais`
 --
 ALTER TABLE `pais`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `receita`
 --
 ALTER TABLE `receita`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `receita_favorita`
 --
@@ -413,12 +372,12 @@ ALTER TABLE `receita_favorita`
 -- AUTO_INCREMENT for table `subscribers`
 --
 ALTER TABLE `subscribers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT for table `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
