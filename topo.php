@@ -35,8 +35,6 @@ if(isset($_SESSION) && isset($_SESSION['id_user'])){
 	<link href="css/dropzone.min.css" rel="stylesheet" />
 
 	<style>
-		
-
 		.suspenso{
 			display: none!important;
 		}
@@ -55,8 +53,6 @@ if(isset($_SESSION) && isset($_SESSION['id_user'])){
 			background-color: #e64a19 !important;
 			border-color: #e64a19 !important;
 		}
-
-
 	</style>
 
 	<style>
@@ -185,7 +181,7 @@ if(isset($_SESSION) && isset($_SESSION['id_user'])){
 			background-color: #b30000;
 			right: 0;
 			bottom: 0;
-			z-index: 20;
+			z-index: -1!important;
 		}
 
 		.fab button.main:before{
@@ -213,7 +209,6 @@ if(isset($_SESSION) && isset($_SESSION['id_user'])){
 		li.ativo > a{
 			color: #FFF!important;
 		}
-
 	</style>
 
 	<style type="text/css">

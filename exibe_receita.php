@@ -32,15 +32,28 @@ include 'topo.php';
 
 <!-- INCLUIR OU CRIAR AQUI SEUS ESTILOS -->
 <style>
+    img.d-block{
+        max-height: 480px!important;
+    }
 
+    .destaque{
+        font-size: 20px;
+        text-transform: uppercase;
+
+    }
+    .destaque > b{
+        font-size: 26px;
+        text-transform: uppercase;
+        font-weight: bold;
+    }
 </style>
 
 <!-- CRIAR AQUI O HTML DA SUA PAGINA -->
-<div class="container">
-    <div class="card" style="margin-top: 45px;">
+<div class="container-fluid" style="padding: 45px;">
+
+    <div class="card">
         <!-- Card content -->
         <div class="card-body">
-            <h4 class="card-title "><a><?php echo $receita->getTitulo(); ?></a></h4>
             <!--Carousel Wrapper-->
             <div id="carousel-<?php echo($key); ?>" class="carousel slide carousel-fade" data-ride="carousel">
                 <!--Indicators-->
@@ -85,44 +98,72 @@ include 'topo.php';
             </div>
             <br>
             <!-- Title -->
-            <div class="row" align="center">
-                <div class="col-sm-4">
-                    <h6 class="font-weight-bold py-2"> <i class="fas fa-cheese"></i> 4 Porções</h6>
+            <div class="row">
+
+                <div class="col-sm-6">
+                    <h4 class="card-title"><a style="font-size: 24px;"><?php echo $receita->getTitulo(); ?></a></h4>
                 </div>
 
-                <div class="col-sm-4">
-                    <h6 class="font-weight-bold indigo-text py-2"> <i class="far fa-clock"></i> 50:00 </h6>
+                <div class="col-sm-2 col-6">
+                    <h6 class="font-weight-bold indigo-text py-2" style="padding-top: 0px!important;"> <i class="far fa-clock"></i> <?php echo number_format($receita->getTempo_preparo(), 2, ':', ''); ?></h6>
                 </div>
 
-                <div class="col-sm-4">
+                <div class="col-sm-2 col-6">
                     <span class="fa fa-star checked"></span>
                     <span class="fa fa-star checked"></span>
                     <span class="fa fa-star checked"></span>
                     <span class="fa fa-star"></span>
                     <span class="fa fa-star"></span>
+                </div>
+
+                <div class="col-sm-12" align="center">
+                    <a href="#" class="btn btn-success">Adicionar Foto</a>
                 </div>
             </div>
 
+           
+        </div>
+    </div>
+
+    <div class="card" style="margin-top: 45px;">
+        <div class="card-body">
             <div class="row">
                 <div class="col-sm-12" align="center">
                     <p style="font-size: 24px; font-weight: bold;">INGREDIENTES</p>
                 </div>
                 <div class="col-sm-12">
-                    <ul class="list-group list-group-flush">
+                    <ul class="list-group">
                     <?php 
 
                         $ingre_receita = new IngredienteReceita();
                         $aux_ingre = $ingre_receita->executeQuery("SELECT * FROM `ingrediente_receita` WHERE `receita` = ".$receita->getId());
 
+                        
                         foreach ($aux_ingre as $key => $value) {
                             $ingrediente = new Ingrediente();
-
                             $ingrediente->selectIngredienteId($value->getIngrediente());
-                        }
-
                         ?>
-                        <li class="list-group-item"><?php echo ($key+1).' '.$ingrediente->getNome().' '.$ingrediente->getMedida().' '.$value->getQuantidade(); ?></li>
+                        <li class="list-group-item destaque"><?php echo '<b>'.($key+1).' - </b>  '.$value->getQuantidade().' '.$ingrediente->getMedida().' de '.$ingrediente->getNome(); ?></li>
                         <?php
+                        }
+                    ?>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card" style="margin-top: 45px;">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-sm-12" align="center">
+                    <p style="font-size: 24px; font-weight: bold;">MODO DE PREPARO</p>
+                </div>
+                <div class="col-sm-12">
+                    <ul class="list-group">
+                    <?php 
+
+                        echo $receita->getModo_preparo();
                     ?>
                     </ul>
                 </div>

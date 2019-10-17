@@ -1,5 +1,9 @@
 <?php
 include 'topo.php';
+include 'src/conexao.php';
+include 'src/Categoria.php';
+include 'src/Pais.php';
+
 ?>
 
 <!-- INCLUIR OU CRIAR AQUI SEUS ESTILOS -->
@@ -56,10 +60,6 @@ include 'topo.php';
 
 	<p class="page-title" id="titulo-page">CADASTRO DE RECEITA  <i class="fas fa-utensils mr-3"></i></p>
 
-	<select class=" custom-select">
-		<option>Selecione</option>
-	</select>
-
 	<div style="margin-top: 30px;">
 		<form action="control/images.php" id="DropZoneFiddle" class="dropzone" >
 			<div class="dz-message">
@@ -73,6 +73,63 @@ include 'topo.php';
 			<div class="card-body" align="center">
 				<label style="font-size: 24px; font-weight: bold;">Titulo</label>
 				<input type="text" class="form-control" required name="titulo-receita" placeholder="Digite aqui o Titulo da Receita">
+			</div>
+		</div>
+
+		<div class="card list-margin">
+			<div class="card-body">
+
+				<?php 
+
+					$pais = new Pais();
+					$paises = $pais->selectAll();
+
+					$categoria = new Categoria();
+					$categorias = $categoria->selectAll();
+
+				?>
+
+				<div class="form-row">
+					<div class="col">
+						<label for="select-pais" class="label col" style="font-size: 18px; font-weight: bold;">Tempo preparo</label>
+						<input type="number" required class="form-control" name="tempo-preparo" id="tempo-preparo" placeholder="Tempo em Minutos">
+					</div>
+				</div>
+
+				<div class="form-row" style="margin-top: 2%;">
+					<div class="col" style="margin: 0px!important;">
+						<label for="select-categoria" class="label col" style="font-size: 18; font-weight: bold;">Categoria</label>
+						<select class=" custom-select" required name="categoria" id="select-categoria">
+							<option value="-1">Selecione</option>
+							<?php 
+								foreach ($categorias as $key => $value) {
+									?>
+									<option value="<?php echo $value->getId(); ?>">
+										<?php echo $value->getTitulo(); ?>
+									</option>
+									<?php
+								}
+							?>
+						</select>
+					</div>
+
+					<div class="col">
+						<label for="select-pais" class="label col" style="font-size: 18px; font-weight: bold;">Pais</label>
+						<select class=" custom-select" name="pais" required id="select-pais">
+							<option value="-1">Selecione</option>
+							<?php 
+								foreach ($paises as $key => $value) {
+									?>
+									<option value="<?php echo $value->getId(); ?>">
+										<?php echo $value->getNome(); ?>
+									</option>
+									<?php
+								}
+							?>
+						</select>
+					</div>
+				</div>
+				
 			</div>
 		</div>
 

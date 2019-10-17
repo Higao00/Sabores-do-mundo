@@ -81,7 +81,7 @@ if(isset($_SESSION['id_user'])){
                                 <tr>
                                     <th class="text-center">Pais</th>
                                     <th class="text-center">Localidade</th>
-                                    <th class="text-center">Icone</th>
+                                    <th class="text-center">Icone (128pxX128px)</th>
                                     <th class="text-center">Ação</th>
                                     <th class="text-center">Excluir</th>
                                 </tr>

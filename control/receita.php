@@ -50,7 +50,7 @@
 			}
 		}
 
-		$receita = new Receita('', $_POST['titulo-receita'], $modoPreparo, $user);
+		$receita = new Receita('', $_POST['titulo-receita'], $modoPreparo, $user, $_POST['categoria'], $_POST['pais'], $_POST{'tempo-preparo'});
 
 		$idReceita = $receita->insertReceita();
 
@@ -74,9 +74,9 @@
 		die();
 	}
 
-	$receita->selectReceitaId($idReceita);
-	echo "<pre>";
-	print_r($receita);
-	echo "</pre>";
+	// $receita->selectReceitaId($idReceita);
+	// echo "<pre>";
+	// print_r($receita);
+	// echo "</pre>";
 
 ?>

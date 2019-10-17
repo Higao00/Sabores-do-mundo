@@ -79,7 +79,7 @@ if(isset($_SESSION['id_user'])){
                             <thead>
                                 <tr>
                                     <th class="text-center">Categoria</th>
-                                    <th class="text-center">Icone</th>
+                                    <th class="text-center">Icone (128pxX128px)</th>
                                     <th class="text-center">Ação</th>
                                     <th class="text-center">Excluir</th>
                                 </tr>

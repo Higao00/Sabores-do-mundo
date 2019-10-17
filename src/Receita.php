@@ -5,13 +5,21 @@ class Receita{
     private $titulo;
     private $modo_preparo;
     private $usuario;
+    private $categoria;
+    private $pais;
+    private $tempo_preparo;
     private $timestamp;
+
+
     
-    function __construct($id="", $titulo="", $modo_preparo="", $usuario="", $timestamp="") {
+    function __construct($id="", $titulo="", $modo_preparo="", $usuario="", $categoria="", $pais="", $tempo_preparo="", $timestamp="") {
         $this->id = $id;
         $this->titulo =  (addslashes($titulo));
         $this->modo_preparo =  (addslashes($modo_preparo));
         $this->usuario =  (addslashes($usuario));
+        $this->categoria = addslashes($categoria);
+        $this->pais = addslashes($pais);
+        $this->tempo_preparo = addslashes($tempo_preparo);
         $this->timestamp = $timestamp;
     }
     
@@ -28,7 +36,19 @@ class Receita{
     }
 
     function getUsuario() {
-        return utf8_encode($this->usuario);
+        return ($this->usuario);
+    }
+
+    function getCategoria(){
+        return $this->categoria;
+    }
+
+    function getPais() {
+        return $this->pais;
+    }
+
+    function getTempo_preparo() {
+        return $this->tempo_preparo;
     }
 
     function getTimestamp() {
@@ -48,7 +68,19 @@ class Receita{
     }
 
     function setUsuario($usuario) {
-        $this->usuario =  utf8_decode(addslashes($usuario));
+        $this->usuario =  (addslashes($usuario));
+    }
+
+    function setCategoria($categoria) {
+        $this->categoria =  (addslashes($categoria));
+    }
+
+    function setPais($pais) {
+        $this->pais =  (addslashes($pais));
+    }
+
+    function setTempo_preparo($tempo_preparo) {
+        $this->tempo_preparo =  (addslashes($tempo_preparo));
     }
 
     function setTimestamp($timestamp) {
@@ -60,8 +92,8 @@ class Receita{
         if (empty($this->id)) {
             $conexao = new conexao();
             try {
-                $connect = $conexao->insertDB("INSERT INTO `receita`(`titulo`, `modo_preparo`, `usuario`) "
-                        . "VALUES ('" . $this->titulo . "','".$this->modo_preparo."' ,'" . $this->usuario . "')");
+                $connect = $conexao->insertDB("INSERT INTO `receita`(`titulo`, `modo_preparo`, `usuario`, `categoria`, `pais`, `tempo_preparo`) "
+                        . "VALUES ('" . $this->titulo . "','".$this->modo_preparo."' ,'" . $this->usuario . "','" . $this->categoria . "','" . $this->pais . "','" . $this->tempo_preparo . "')");
                 $this->id = $connect;
 
                 return $connect;
@@ -82,6 +114,9 @@ class Receita{
             $this->titulo = $connect[0]->titulo;
             $this->modo_preparo = $connect[0]->modo_preparo;
             $this->usuario = $connect[0]->usuario;
+            $this->categoria = $connect[0]->categoria;
+            $this->pais = $connect[0]->pais;
+            $this->tempo_preparo = $connect[0]->tempo_preparo;
             $this->timestamp = $connect[0]->timestamp;
         } catch (Exception $ex) {
             var_dump($ex);
@@ -96,7 +131,7 @@ class Receita{
             $receita = [];
 
             foreach ($connect as $key => $value) {
-                $receita[] = new Receita($value->id, $value->titulo, $this->modo_preparo, $value->usuario, $value->timestamp);
+                $receita[] = new Receita($value->id, $value->titulo, $value->modo_preparo, $value->usuario, $value->categoria, $value->pais, $value->tempo_preparo, $value->timestamp);
             }
             return $receita;
         } catch (Exception $ex) {
@@ -107,7 +142,7 @@ class Receita{
     function updateReceita() {
         $conexao = new conexao();
         try {
-            $connect = $conexao->updateDB("UPDATE `receita` SET `titulo`= '$this->titulo',`modo_preparo`= '$this->modo_preparo', `usuario`= '$this->usuario', `timestamp`= '$this->timestamp' WHERE `id` = $this->id");
+            $connect = $conexao->updateDB("UPDATE `receita` SET `titulo`= '$this->titulo',`modo_preparo`= '$this->modo_preparo', `usuario`= '$this->usuario', `categoria`= '$this->categoria', `pais`= '$this->pais', `tempo_preparo`= '$this->tempo_preparo', `timestamp`= '$this->timestamp' WHERE `id` = $this->id");
             return $connect;
         } catch (Exception $ex) {
             var_dump($ex);
@@ -123,8 +158,8 @@ class Receita{
             $receita = [];
 
             foreach ($connect as $key => $value) {
-                if (isset($value->id) && isset($value->titulo) && isset($value->modo_preparo) && isset($value->usuario) && isset($value->timestamp)) {
-                    $aux = new Receita($value->id, $value->titulo, $value->modo_preparo, $value->usuario, $value->timestamp);
+                if (isset($value->id) && isset($value->titulo) && isset($value->modo_preparo) && isset($value->usuario) && isset($value->categoria) && isset($value->pais)&& isset($value->tempo_preparo) && isset($value->timestamp)) {
+                    $aux = new Receita($value->id, $value->titulo, $value->modo_preparo, $value->usuario, $value->categoria, $value->pais, $value->tempo_preparo, $value->timestamp);
                     // $aux = new Receita();
 
                     // $aux->setId($value->id);
