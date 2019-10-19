@@ -1,29 +1,26 @@
+<?php 
+    include 'topo.php';
+?>
 <?php
 
-error_reporting(0);
-ini_set(“display_errors”, 0 );
-
-include 'src/conexao.php';
-include 'src/Usuario.php';
+// error_reporting(0);
+// ini_set(“display_errors”, 0 );
 
 if(isset($_SESSION['id_user'])){
     $logado = 1; 
+    $user = new Usuario();
+    $user->selectUserId($_SESSION['id_user']);
 }else{
     session_start();
 
     if(isset($_SESSION['id_user'])){
         $user = new Usuario();
-
         $user->selectUserId($_SESSION['id_user']);
     }else{
         header('Location: index.php');
         die();
     }
 }
-?>
-
-<?php 
-    include 'topo.php';
 ?>
 
 <!-- INCLUIR OU CRIAR AQUI SEUS ESTILOS -->

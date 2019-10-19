@@ -12,22 +12,12 @@ require 'topo.php';
 
 <!-- CRIAR AQUI O HTML DA SUA PAGINA -->
 <div class="container">
+	<?php 
 
-<?php 
-	isset($_SESSION['id_user']) ? $user = $_SESSION['id_user'] : $user = 0;
-?>
-<div class="row" style="margin-top: 50px;">
-	<form class="form" action="control/notificacao.php" method="POST">
-		<input type="text" name="id_user" style="display: none;" value="<?php echo($user);  ?>">
-		<div class="form-group">
-			<label>Digite a mensagem</label>
-			<input type="text" class="form-control" name="msg">
-		</div>
-
-		<button type="submit" class="btn btn-succes" name="send_notification">Enviar</button>
-	</form>
-</div>
-
+		$receita = new Receita();
+		$aux = $receita->executeQuery('SELECT * FROM `receita` ORDER BY `receita`.`id` DESC LIMIT 30');
+		monta_lista_receita($aux);
+	?>
 </div>
 
 <?php

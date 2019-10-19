@@ -1,7 +1,7 @@
 <?php
 
-error_reporting(0);
-ini_set(“display_errors”, 0 );
+// error_reporting(0);
+// ini_set(“display_errors”, 0 );
 
 if(isset($_SESSION['id_user'])){
     $logado = 1; 
@@ -14,20 +14,19 @@ if(isset($_SESSION['id_user'])){
     }
 }
 
-include "src/conexao.php";
-include "src/Receita.php";
-include 'src/FotoReceita.php'; 
-include 'src/Ingrediente.php'; 
-include 'src/IngredienteReceita.php';
 
-$receita = new Receita();
-
-$receita->selectReceitaId($_GET['id_receita']);
 
 ?>
 
 <?php 
 include 'topo.php';
+
+// include "src/conexao.php";
+
+
+$receita = new Receita();
+
+$receita->selectReceitaId($_GET['id_receita']);
 ?>
 
 <!-- INCLUIR OU CRIAR AQUI SEUS ESTILOS -->
@@ -46,6 +45,14 @@ include 'topo.php';
         text-transform: uppercase;
         font-weight: bold;
     }
+
+    .checked {
+      color: orange;
+    }
+
+    .favorito{
+        color: red;
+    }
 </style>
 
 <!-- CRIAR AQUI O HTML DA SUA PAGINA -->
@@ -55,14 +62,7 @@ include 'topo.php';
         <!-- Card content -->
         <div class="card-body">
             <!--Carousel Wrapper-->
-            <div id="carousel-<?php echo($key); ?>" class="carousel slide carousel-fade" data-ride="carousel">
-                <!--Indicators-->
-                <ol class="carousel-indicators">
-                    <li data-target="#carousel-<?php echo($key); ?>" data-slide-to="0" class="active"></li>
-                    <li data-target="#carousel-<?php echo($key); ?>" data-slide-to="1"></li>
-                    <li data-target="#carousel-<?php echo($key); ?>" data-slide-to="2"></li>
-                </ol>
-                <!--/.Indicators-->
+            <div id="carousel" class="carousel slide carousel-fade" data-ride="carousel">
                 <!--Slides-->
                 <div class="carousel-inner" role="listbox">
                     <!--First slide-->
@@ -86,11 +86,11 @@ include 'topo.php';
                 </div>
                 <!--/.Slides-->
                 <!--Controls-->
-                <a class="carousel-control-prev" href="#carousel-<?php echo($key); ?>" role="button" data-slide="prev">
+                <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                     <span class="sr-only">Anterior</span>
                 </a>
-                <a class="carousel-control-next" href="#carousel-<?php echo($key); ?>" role="button" data-slide="next">
+                <a class="carousel-control-next" href="#carousel" role="button" data-slide="next">
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     <span class="sr-only">Próximo</span>
                 </a>
@@ -100,8 +100,8 @@ include 'topo.php';
             <!-- Title -->
             <div class="row">
 
-                <div class="col-sm-6">
-                    <h4 class="card-title"><a style="font-size: 24px;"><?php echo $receita->getTitulo(); ?></a></h4>
+                <div class="col-sm-4">
+                    <h4 class="card-title"><a style="font-size: 28px; "><?php echo $receita->getTitulo(); ?></a></h4>
                 </div>
 
                 <div class="col-sm-2 col-6">
@@ -109,15 +109,38 @@ include 'topo.php';
                 </div>
 
                 <div class="col-sm-2 col-6">
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
+                    <?php 
+
+                        for ($i=1; $i <= 5 ; $i++) { 
+                            ?>
+                            <span class="fa fa-star checked" value="<?php echo($i) ?>"></span>
+                            <?php
+                        }
+                    ?>
+
                 </div>
 
+                <div class="col-sm-2 col-6" align="center">
+                    <span class="fa fa-heart favorito" value="<?php echo($receita->getId()); ?>" style="font-size: 26px;"></span>
+                </div>
+
+                <div class="col-md-2 col-6">
+                    <?php 
+                        $pais = new Pais();
+                        $aux = $pais->executeQuery("SELECT `pais`.* FROM `pais` INNER JOIN `receita` ON `pais`.`id` = `receita`.`pais` WHERE `receita`.`id` = ".$receita->getId());
+
+                        if(count($aux)){
+                            ?>
+                            <a href="#" style="font-size: 16px; font-weight: bold; color: #000;">
+                                <img src="<?php echo($aux[0]->getPath_icon()); ?>" width="30">
+                                <?php echo $aux[0]->getNome(); ?>
+                            </a>
+                            <?php
+                        }
+                    ?>
+                </div>
                 <div class="col-sm-12" align="center">
-                    <a href="#" class="btn btn-success">Adicionar Foto</a>
+                    <a href="#adicionar-foto" class="btn btn-success" data-toggle="modal" data-target="#adicionar-foto">Adicionar Foto</a>
                 </div>
             </div>
 
@@ -159,20 +182,50 @@ include 'topo.php';
                 <div class="col-sm-12" align="center">
                     <p style="font-size: 24px; font-weight: bold;">MODO DE PREPARO</p>
                 </div>
-                <div class="col-sm-12">
-                    <ul class="list-group">
+                <div class="col-sm-12 destaque" style="padding-left: 5%">
                     <?php 
 
                         echo $receita->getModo_preparo();
                     ?>
-                    </ul>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
+<div class="modal fade top" id="adicionar-foto" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria="true" data-backdrop="true">
+    <div class="modal-dialog modal-notify modal-info" role="document">
+        <!--Content-->
+        <div class="modal-content">
+            <div class="modal-header d-flex justify-content-center">
+                <p class="heading">Coloque sua Receita Aqui !</p>
+            </div>
+            <!--Body-->
+            <div class="modal-body">
+                <div class="row d-flex justify-content-center align-items-center" align="center">
+                    <form action="control/images.php" enctype="multipart/form-data" method="POST">
+                        <input type="text" name="id-receita" style="display: none;" value="<?php echo($receita->getId()); ?>">
 
+                        <div class="form-group custom-file">
+                            <input type="file" class="custom-file-input" id="adicionar-foto" name="adicionar-foto" accept="image/*">
+                            <label class="custom-file-label" for="adicionar-foto" data-browse="Galeria">
+                                Selecione seu Arquivo
+                            </label>
+                        </div>
+
+                        <div class="form-group" style="margin-top: 15px;">
+                            <button type="submit" class="btn btn-success">
+                                Enviar
+                            </button>
+                        </div>
+                        
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!--/.Content-->
+    </div>
+</div>
 <?php
 include 'rodape.php';
 ?>

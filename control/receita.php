@@ -5,6 +5,8 @@
 	include '../src/FotoReceita.php'; 
 	include '../src/Ingrediente.php'; 
 	include '../src/IngredienteReceita.php'; 
+	include '../src/Util.php';
+	include '../src/Subscribers.php';
 
 	// echo "<pre>";
 	// print_r($_POST);
@@ -46,7 +48,7 @@
 		//Foreach para montar o modo de preparo
 		foreach ($_POST['modo-preparo'] as $key => $value) {
 			if ($key > 0) {
-				$modoPreparo .= '<br>'.($key).' : '.$value;
+				$modoPreparo .= '<br><b>'.($key).'</b>  -  '.$value;
 			}
 		}
 
@@ -69,8 +71,10 @@
 			$value->insertIngredienteReceita();
 		}
 
+		manda_notifica("SELECT * FROM `subscribers`", "Tem receita Fresquinha no Aplicativo !", "Venha ver a mais nova receita cadastrada no APP !", 'exibe_receita.php?id_receita='.$idReceita);
+
 		$_SESSION['msg'] = 'Sucesso ao Cadastrar Receita!';
-		header('Location: ../lista_receita.php?status=1');
+		header('Location: ../exibe_receita.php?id_receita='.$idReceita);
 		die();
 	}
 

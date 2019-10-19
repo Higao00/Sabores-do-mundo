@@ -10,6 +10,16 @@ if(isset($_SESSION) && isset($_SESSION['id_user'])){
 		$logado = 0; 
 	}
 }
+
+include "src/conexao.php";
+include "src/Pais.php";
+include "src/Categoria.php";
+include "src/Usuario.php";
+include "src/Receita.php";
+include 'src/FotoReceita.php'; 
+include 'src/Ingrediente.php'; 
+include 'src/IngredienteReceita.php';
+include 'src/Util.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -270,8 +280,8 @@ if(isset($_SESSION) && isset($_SESSION['id_user'])){
 						<?php 
 						if($logado == 1){
 							?>
-							<li class="nav-item">
-								<a href="lista_receita.php" class="nav-link waves-effect bold-1">
+							<li class="nav-item" id="minhas-receitas">
+								<a href="lista_receita.php?tipo=self" class="nav-link waves-effect bold-1">
 									<i class="fas fa-book-open mr-3 suspenso"></i>Minhas Receitas
 								</a>
 							</li>
@@ -279,10 +289,17 @@ if(isset($_SESSION) && isset($_SESSION['id_user'])){
 						}
 						?>
 
-						<li class="nav-item">
+						<li class="nav-item" id="pais-receita">
 							<a href="#" id="dropdownMenuButton" class="nav-link waves-effect bold-1" data-toggle="modal" data-target="#pais">
 								<i class="fas fa-flag mr-3 suspenso"></i>
 								Receitas Estrangeiras 
+							</a>
+						</li>
+
+						<li class="nav-item" id="categoria-receita">
+							<a href="#" id="dropdownMenuButton" class="nav-link waves-effect bold-1" data-toggle="modal" data-target="#categoria">
+								<i class="fas fa-dumpster mr-3 suspenso"></i>
+								Categoria de Receitas
 							</a>
 						</li>
 

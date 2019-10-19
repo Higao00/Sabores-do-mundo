@@ -48,7 +48,7 @@ class Pais {
         $this->localidade =  (addslashes($localidade));
     }
 
-    function setPath_icon($icon) {
+    function setPath_icon($path_icon) {
         $this->path_icon =  (addslashes($path_icon));
     }
 
@@ -125,7 +125,7 @@ class Pais {
 
             foreach ($connect as $key => $value) {
                 if (isset($value->id) && isset($value->nome) && isset($value->localidade) && isset($value->path_icon) && isset($value->timestamp)) {
-                    $aux = new Pais($value->id, $value->nome, $value->localidade, $value->path_icon , $$value->timestamp);
+                    $aux = new Pais($value->id, $value->nome, $value->localidade, $value->path_icon , $value->timestamp);
                     $pais[] = $aux;
                 }
             }

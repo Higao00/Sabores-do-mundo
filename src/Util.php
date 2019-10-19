@@ -349,4 +349,142 @@
 
     	curl_close($curl);
     }
+
+    function monta_lista_receita($aux){
+        if (count($aux) > 0) {
+            foreach ($aux as $key => $value) {
+                ?>
+                <div class="card" style="margin-top: 45px;">
+                    <!-- Card content -->
+                    <div class="card-body">
+                        <!--Carousel Wrapper-->
+                        <div id="carousel-<?php echo($key); ?>" class="carousel slide carousel-fade" data-ride="carousel">
+                            <!--Slides-->
+                            <div class="carousel-inner" role="listbox">
+                                <!--First slide-->
+                                <?php 
+                                    $aux_foto = '';
+
+                                    $foto_receita = new FotoReceita();
+                                    $aux_foto = $foto_receita->executeQuery('SELECT FR.id, FR.receita, FR.path_foto, FR.usuario, FR.timestamp FROM foto_receita AS FR INNER JOIN receita ON FR.receita = receita.id WHERE receita.id ='.$value->getId());
+
+                                    if (count($aux_foto) > 0) {
+                                        foreach ($aux_foto as $chave => $foto) {
+                                            ?>
+                                           <div class="carousel-item <?php if($chave == 0){echo 'active';} ?>">
+                                               <img class="d-block w-100" src="<?php echo($foto->getPath_foto()); ?>" onclick="location.href='exibe_receita.php?id_receita=<?php echo($value->getId()); ?>'">
+                                           </div>
+                                           <?php
+                                        }
+                                    }
+                                ?>
+                               
+                            </div>
+                            <!--/.Slides-->
+                            <!--Controls-->
+                            <a class="carousel-control-prev" href="#carousel-<?php echo($key); ?>" role="button" data-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="carousel-control-next" href="#carousel-<?php echo($key); ?>" role="button" data-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                            <!--/.Controls-->
+                        </div>
+                        <br>
+                        <!-- Title -->
+                        <div class="row">
+                            <div class="col-sm-6 col-12">
+                                <h4 class="card-title"><a style="font-size: 26px; font-weight: bold; text-transform: uppercase;" onclick="location.href='exibe_receita.php?id_receita=<?php echo($value->getId()); ?>'"><?php echo $value->getTitulo(); ?></a></h4>
+                            </div>
+
+                            <div class="col-sm-2 col-6">
+                                <h5 class="font-weight-bold py-2" style="padding-top: 0px!important;"> <i class="far fa-clock"> </i> <?php echo number_format($value->getTempo_preparo(), 2, ':', ''); ?></h5>
+                            </div>
+
+                            <div class="col-sm-2 col-6">
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star"></span>
+                                <span class="fa fa-star"></span>
+                            </div>
+
+                            <div class="col-md-2">
+                                <?php 
+                                    $pais = new Pais();
+                                    $aux = $pais->executeQuery("SELECT `pais`.* FROM `pais` INNER JOIN `receita` ON `pais`.`id` = `receita`.`pais` WHERE `receita`.`id` = ".$value->getId());
+
+                                    if(count($aux)){
+                                        ?>
+                                        <a href="#" style="font-size: 16px; font-weight: bold; color: #000;">
+                                            <img src="<?php echo($aux[0]->getPath_icon()); ?>" width="30">
+                                            <?php echo $aux[0]->getNome(); ?>
+                                        </a>
+                                        <?php
+                                    }
+                                ?>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <?php
+            }
+        }else{
+            ?>
+            <div class="card" style="margin-top: 45px;">
+                <!-- Card content -->
+                <div class="card-body" align="center">
+                    <i class="fas fa-grin-beam-sweat" style="font-size: 68px;"></i>
+                    <p style="font-size: 28px; font-weight: bold; ">
+                        Não há Receitas cadastradas nessa Categoria <br>Cadastre uma agora Mesmo !
+                    </p>
+                </div>
+            </div>
+            <?php  
+        }
+    }
+
+    function manda_notifica($query, $titulo, $msg, $link){
+
+        $notificacao = new Subscribers();
+        $aux = $notificacao->executeQuery($query);
+
+        $notificacoes = [];
+        $notifica_linha;
+
+        foreach ($aux as $key => $value) {
+
+            $dado = '';
+            $dado['titulo'] = $titulo;
+            $dado['msg'] = $msg;
+            $dado['icon'] = 'http://descomplicasms.com/saboresdomundo/images/icons/icon-512x512.png';
+            $dado['link_red'] = $link;
+
+            $notifica_linha['dados'] = $dado;
+
+            $notifica_linha['auth']['endpoint'] = $value->getEndpoint();
+            $notifica_linha['auth']['p256dh'] = $value->getP256dh();
+            $notifica_linha['auth']['auth'] = $value->getAuth();
+
+            $notificacoes[] = $notifica_linha;
+        }
+
+        $curl = curl_init();
+
+        curl_setopt($curl, CURLOPT_URL, 'https://notificacao.ibsystem.com.br/demosite/get_notification.php');
+        curl_setopt($curl,CURLOPT_SSL_VERIFYPEER, false);
+
+        curl_setopt($curl, CURLOPT_POSTFIELDS, 
+        http_build_query($notificacoes));
+
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+
+        $result = curl_exec($curl);
+
+        // $aux = curl_getinfo($curl);
+        curl_close($curl);
+    }
 ?>

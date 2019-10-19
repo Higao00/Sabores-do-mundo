@@ -19,10 +19,53 @@
 
 			$notificacao->insertSubscribers();
 		}
+	}
+	else if(isset($_POST['action'])  && isset($_POST['auth']) && isset($_POST['p256dh'])){
+		session_start();
+		switch ($_POST['action']) {
+			case 'Sim':
 
-	}elseif(isset($_POST['axn']) && $_POST['axn'] == 'unsubscribe' ){
+				$inscrito = new Subscribers('', '', $_POST['auth'], $_POST['p256dh']);
 
-	}elseif(isset($_POST['send_notification']) && isset($_POST['msg'])){
+				$aux_inscrito = $inscrito->executeQuery("SELECT * FROM `subscribers` WHERE `p256dh` = '".$inscrito->getP256dh()."' AND `auth` = '".$inscrito->getAuth()."' ");
+
+				if(count($aux_inscrito)){
+					if ( $aux_inscrito[0]->getStatus() != 1) {
+						$aux_inscrito[0]->setStatus('1');
+						$aux_inscrito[0]->updateSubscribers();
+					}
+				}
+				$_SESSION['msg'] = 'Notificações Habilitadas com Sucesso!';
+				header('Location: ../home.php?status=1');
+				die();
+
+				break;
+
+			case 'Não':
+				$inscrito = new Subscribers('', '', $_POST['auth'], $_POST['p256dh']);
+
+				$aux_inscrito = $inscrito->executeQuery("SELECT * FROM `subscribers` WHERE `p256dh` = '".$inscrito->getP256dh()."' AND `auth` = '".$inscrito->getAuth()."' ");
+
+				if(count($aux_inscrito)){
+
+					if ( $aux_inscrito[0]->getStatus() != 0) {
+						$aux_inscrito[0]->setStatus('0');
+						$aux_inscrito[0]->updateSubscribers();
+					}
+				}
+				$_SESSION['msg'] = 'Notificações desabilitadas com Sucesso!';
+				header('Location: ../home.php?status=1');
+				die();
+
+				break;
+			
+			default:
+				header('Location: ../home.php');
+				die();
+				break;
+		}
+	}
+	elseif(isset($_POST['send_notification']) && isset($_POST['msg'])){
 
 		$notificacao = new Subscribers();
 		$aux = $notificacao->executeQuery("SELECT * FROM `subscribers` ");
@@ -33,10 +76,9 @@
 		foreach ($aux as $key => $value) {
 
 			$dado = '';
-			$dado['id_user'] = $_POST['id_user'];
 			$dado['titulo'] = $_POST['msg'];
 			$dado['msg'] = $_POST['msg'];
-			$dado['icon'] = 'http://descomplicasms.com/SaboresDoMundo/images/icons/icon-512x512.png';
+			$dado['icon'] = 'http://descomplicasms.com/saboresdomundo/images/icons/icon-512x512.png';
 			$dado['link_red'] = 'http://descomplicasms.com';
 
 			$notifica_linha['dados'] = $dado;

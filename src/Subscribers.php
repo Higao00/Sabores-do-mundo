@@ -118,10 +118,9 @@ class Subscribers {
     function updateSubscribers() {
         $conexao = new conexao();
         try {
-            $connect = $conexao->updateDB("UPDATE `subscribers` SET `endpoint`= '$this->endpoint',`auth`= '$this->auth', `usuario`= '$this->usuario', `p256dh`= '$this->p256dh', `status` = '$this->staus' WHERE `id` = $this->id");
+            $connect = $conexao->updateDB("UPDATE `subscribers` SET `endpoint`= '$this->endpoint',`auth`= '$this->auth', `usuario`= '$this->usuario', `p256dh`= '$this->p256dh', `status` = '$this->status' WHERE `id` = $this->id");
             return $connect;
         } catch (Exception $ex) {
-            var_dump($ex);
             return false;
         }
     }

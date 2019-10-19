@@ -73,7 +73,7 @@
 				<!--Body-->
 				<div class="modal-body">
 					<!--Body-->
-					<form action="control/usuario.php" method="POST">
+					<form action="control/usuario.php" method="POST" id="login">
 						<div class="md-form mb-5">
 							<input type="email" id="email_login" name="email" class="form-control white-text">
 							<label for="email_login">E-mail</label>
@@ -120,9 +120,12 @@
 			</div>
 			<!--Footer-->
 
+			<form action="control/notificacao.php" method="POST" id="form-notifica">
+			</form>
+
 			<div class="modal-footer flex-center">
-				<a type="button" href="control/notificacao.php?action=unscriber" class="btn btn-success">Sim</a>
-				<a type="button" href="control/notificacao.php?action=subscriber" class="btn btn-danger">Não</a>
+				<input type="submit" name="action" form="form-notifica" class="btn btn-success" value="Sim">
+				<input type="submit" name="action" form="form-notifica" class="btn btn-danger" value="Não">
 			</div>
 		</div>
 		<!--/.Content-->
@@ -135,45 +138,73 @@
 		<div class="modal-content text-center">
 			<!--Header-->
 			<div class="modal-header d-flex justify-content-center">
-				<p class="heading">Lista de Paises</p>
+				<p class="heading" style="font-size: 22px;">Lista de Paises</p>
+				<a class="close" data-dismiss="modal" aria-label="Close" id="botao_paises">
+					<span aria-hidden="true" style="color: #FFF;">&times;</span>
+				</a>
 			</div>
 
 			<!--Body-->
 			<div class="modal-body">
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close" id="botao_paises">
-					<span aria-hidden="true">&times;</span>
-				</button>
 				<ul class="navbar-nav">
-					<li class="nav-item">
-						<a class="dropdown-item" href="#"><img src="images/icon_australia.png" class="img_paises">Australia</a>
-					</li>
-					<li class="nav-item">
-						<a class="dropdown-item" href="#"><img src="images/icon_brasil.png" id="img_paises2">Brasil</a>
-					</li>
-					<li class="nav-item">
-						<a class="dropdown-item" href="#"><img src="images/icon_china.png" id="img_paises3">China</a>
-					</li>
-					<li class="nav-item">
-						<a class="dropdown-item" href="#"><img src="images/icon_espanha.png" id="img_paises4">Espanha</a>
-					</li>
-					<li class="nav-item">
-						<a class="dropdown-item" href="#"><img src="images/icon_franca.png" id="img_paises5">França</a>
-					</li>
-					<li class="nav-item">
-						<a class="dropdown-item" href="#"><img src="images/icon_inglaterra.png" id="img_paises6">Inglaterra</a>
-					</li>
-					<li class="nav-item">
-						<a class="dropdown-item" href="#"><img src="images/icon_italia.png" id="img_paises7">Italia</a>
-					</li>
-					<li class="nav-item">
-						<a class="dropdown-item" href="#"><img src="images/icon_japao.png" id="img_paises8">Japão</a>
-					</li>
-					<li class="nav-item">
-						<a class="dropdown-item" href="#"><img src="images/icon_mexico.png" id="img_paises9">Mexico</a>
-					</li>
-					<li class="nav-item">
-						<a class="dropdown-item" href="#"><img src="images/icon_tailandia.png" id="img_paises10" >Tailandia</a>
-					</li>
+					<?php 
+
+						$pais = new Pais();
+
+						$paises = $pais->selectAll();
+
+						foreach ($paises as $key => $value) {
+							?>
+							<li class="nav-item"> 
+								<a class="dropdown-item" href="lista_receita.php?tipo=pais&id=<?php echo($value->getId()); ?>" style="font-size: 20px; font-weight: bold;">
+									<img src="<?php echo($value->getPath_icon()); ?>" id="<?php echo($key) ?>" width="50">
+									<?php echo $value->getNome(); ?>
+								</a>
+							</li>
+							<?php
+						}
+					?>
+				</ul>
+			</div>
+		</div>
+		<!--/.Content-->
+	</div>
+</div>
+
+<div class="modal fade " id="categoria" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria="true">
+	<div class="modal-dialog modal-notify modal-info" role="document">
+		<!--Content-->
+		<div class="modal-content text-center">
+			<!--Header-->
+			<div class="modal-header d-flex justify-content-center">
+				<p class="heading" style="font-size: 22px;">Lista de Categorias</p>
+				<a class="close" data-dismiss="modal" aria-label="Close" id="botao_categoria">
+					<span aria-hidden="true" style="color: #FFF;">&times;</span>
+				</a>
+			</div>
+
+			<!--Body-->
+			<div class="modal-body">
+				<ul class="navbar-nav">
+					<?php 
+
+						$categoria = new Categoria();
+
+						$categorias = $categoria->selectAll();
+
+						foreach ($categorias as $key => $value) {
+							?>
+							<li class="nav-item"> 
+								<div class="row">
+									<a class="dropdown-item" href="lista_receita.php?tipo=categoria&id=<?php echo($value->getId()); ?>" style="font-size: 20px; font-weight: bold;">
+										<img src="<?php echo($value->getPath_icon()); ?>" id="<?php echo($key) ?>" width="50">
+										<?php echo $value->getTitulo(); ?>
+									</a>
+								</div>
+							</li>
+							<?php
+						}
+					?>
 				</ul>
 			</div>
 		</div>
@@ -249,6 +280,25 @@
 		}
 
 		?>
+
+		swRegistration.pushManager.getSubscription()
+		.then(function(subscription) {
+		  isSubscribed = !(subscription === null);
+
+		  if (isSubscribed) {
+		  	// METODO PARA PEGAR AS CHAVES PARA AUTENTICACAO POSTERIOR
+		  	var p256dh = btoa(String.fromCharCode.apply(null, new Uint8Array(subscription.getKey('p256dh'))));
+		  	var auth = btoa(String.fromCharCode.apply(null, new Uint8Array(subscription.getKey('auth'))));
+
+		  	$('form#login > div.row').append("<input name='auth' value='"+auth+"' style='display:none;'>");
+		  	$('form#login > div.row').append('<input name="p256dh" value="'+p256dh+'" style=" display:none;">');
+
+		  	$('form#form-notifica').append("<input name='auth' value='"+auth+"' style='display:none;'>");
+		  	$('form#form-notifica').append('<input name="p256dh" value="'+p256dh+'" style=" display:none;">');
+
+		  } 		  
+		  //updateBtn();
+		});
 
 	});
 </script>

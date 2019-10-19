@@ -1,11 +1,11 @@
+<?php 
+    include 'topo.php';
+?>
+
 <?php
 
-error_reporting(0);
-ini_set(“display_errors”, 0 );
-
-include 'src/conexao.php';
-include 'src/Usuario.php';
-include 'src/Categoria.php';
+// error_reporting(0);
+// ini_set(“display_errors”, 0 );
 
 if(isset($_SESSION['id_user'])){
     $logado = 1; 
@@ -26,10 +26,6 @@ if(isset($_SESSION['id_user'])){
 //     header('Location: home.php');
 //     die();
 // }
-?>
-
-<?php 
-    include 'topo.php';
 ?>
 
 <!-- INCLUIR OU CRIAR AQUI SEUS ESTILOS -->
@@ -92,8 +88,15 @@ if(isset($_SESSION['id_user'])){
                                 <tr class="hide">
                                     <form class="text-center" action="control/categoria.php" method="POST" enctype="multipart/form-data" id="<?php echo($randomic);?>"></form>
                                     <input class="hide" type="text" name="id-categoria" value="-1" form="<?php echo($randomic);?>">
-                                    <td class="pt-3-half" style="width: 55px!important;"><input class="form-control" type="text" name="nome" form="<?php echo($randomic);?>"  placeholder="Nome da categoria"></td>
-                                    <td class="pt-3-half"> <input type="file" name="icone_categoria" accept="image/*" form="<?php echo($randomic);?>"></td>
+                                    <td class="pt-3-half" style="width: 25%!important;"><input class="form-control" type="text" name="nome" form="<?php echo($randomic);?>"  placeholder="Nome da categoria"></td>
+                                    <td class="pt-3-half"> 
+                                        <div class="form-group custom-file">
+                                           <input type="file" class="custom-file-input" name="icone_categoria" accept="image/*" form="<?php echo($randomic);?>">
+                                           <label class="custom-file-label" for="adicionar-foto" data-browse="Galeria" style="text-align: left;">
+                                               Selecione o Icone
+                                           </label>
+                                       </div>
+                                    </td>
                                     <td>
                                         <span class="table-change hide"><input type="button"class="btn btn-warning btn-rounded btn-sm my-0" value="Alterar"></span>
                                         <span class="table-save"><input type="submit" name="action" form="<?php echo($randomic);?>" class="btn btn-success btn-rounded btn-sm my-0" value="Salvar"></span>
@@ -117,7 +120,14 @@ if(isset($_SESSION['id_user'])){
                                         <form class="text-center" action="control/categoria.php" method="POST" enctype="multipart/form-data" id="<?php echo($randomic);?>"></form>
                                         <input class="hide" type="text" name="id-categoria" value="<?php echo($value->getId());  ?>" form="<?php echo($randomic);?>">
                                         <td class="pt-3-half"><input disabled class="form-control" required type="text" name="nome" form="<?php echo($randomic);?>" placeholder="Nome da Categoria" value="<?php echo($value->getTitulo());  ?>"></td>
-                                        <td class="pt-3-half"> <input type="file" name="icone_categoria" accept="image/*" form="<?php echo($randomic);?>"></td>
+                                        <td class="pt-3-half"> 
+                                            <div class="form-group custom-file">
+                                                <input type="file" class="custom-file-input" name="icone_categoria" accept="image/*" form="<?php echo($randomic);?>">
+                                                <label class="custom-file-label" for="adicionar-foto" data-browse="Galeria" style="text-align: left;">
+                                                    Selecione o Icone
+                                                </label>
+                                            </div>
+                                        </td>
                                         <td>
                                             <span class="table-change"><input type="button"class="btn btn-warning btn-rounded btn-sm my-0" value="Alterar"></span>
                                             <span class="table-save hide"><input type="submit" name="action" class="btn btn-success btn-rounded btn-sm my-0" value="Salvar" form="<?php echo($randomic);?>"></span>

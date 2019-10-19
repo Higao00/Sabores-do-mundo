@@ -2,6 +2,8 @@
 	
     require("../src/conexao.php");
     require("../src/Usuario.php");
+    require("../src/Subscribers.php");
+    include('../src/Util.php');
     // error_reporting(E_ALL);
 
     // var_dump($_POST);
@@ -113,6 +115,20 @@
     	    		$_SESSION['id_user'] = $usuario->getId();
     	    		$_SESSION['login'] = $today;
     	    	}
+
+                $inscrito = new Subscribers('', '', $_POST['auth'], $_POST['p256dh']);
+
+
+                $aux_inscrito = $inscrito->executeQuery("SELECT * FROM `subscribers` WHERE `p256dh` = '".$inscrito->getP256dh()."' AND `auth` = '".$inscrito->getAuth()."' ");
+
+                if(count($aux_inscrito)){
+
+                    if($aux_inscrito[0]->getUsuario() != $_SESSION['id_user']){
+                        $aux_inscrito[0]->setUsuario($_SESSION['id_user']);
+                        $aux_inscrito[0]->updateSubscribers();
+                    }
+
+                }
 
     	    	header('Location: ../home.php');
     	    	die();

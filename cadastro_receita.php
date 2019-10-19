@@ -1,11 +1,6 @@
-<?php
-include 'topo.php';
-include 'src/conexao.php';
-include 'src/Categoria.php';
-include 'src/Pais.php';
-
+<?php 
+	include "topo.php";
 ?>
-
 <!-- INCLUIR OU CRIAR AQUI SEUS ESTILOS -->
 <style>
 	.pt-3-half {
@@ -258,7 +253,7 @@ include 'rodape.php';
 <script>
 	Dropzone.options.DropZoneFiddle = {
 	  paramName: "foto-receita", // The name that will be used to transfer the file
-	  maxFilesize: 1, // MB
+	  maxFilesize: 8, // MB
 	  maxFiles: 5,
 	  acceptedFiles:"image/*",
 	  resizeWidth: 1024,
