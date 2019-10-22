@@ -114,7 +114,7 @@ class ReceitaFavorita{
 
             foreach ($connect as $key => $value) {
                 if (isset($value->id) && isset($value->receita) && isset($value->usuario) && isset($value->timestamp)) {
-                    $aux = new ReceitaFavorita($value->id, $value->receita, $value->usuario, $$value->timestamp);
+                    $aux = new ReceitaFavorita($value->id, $value->receita, $value->usuario, $value->timestamp);
                     $receita_favorita[] = $aux;
                 }
             }

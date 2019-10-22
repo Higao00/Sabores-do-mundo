@@ -19,7 +19,10 @@ include "src/Receita.php";
 include 'src/FotoReceita.php'; 
 include 'src/Ingrediente.php'; 
 include 'src/IngredienteReceita.php';
+include 'src/Avaliacao.php';
+include 'src/ReceitaFavorita.php';
 include 'src/Util.php';
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -271,8 +274,8 @@ include 'src/Util.php';
 								<i class="fas fa-home mr-3 suspenso"></i>Home
 							</a>
 						</li>
-						<li class="nav-item">
-							<a href="#" class="nav-link waves-effect bold-1">
+						<li class="nav-item" id="top_receita">
+							<a href="lista_receita.php?tipo=top_receita" class="nav-link waves-effect bold-1">
 								<i class="fas fa-star mr-3 suspenso"></i>Melhores Receitas
 							</a>
 						</li>
@@ -306,8 +309,8 @@ include 'src/Util.php';
 						<?php 
 						if($logado == 1){
 							?>
-							<li class="nav-item suspenso">
-								<a href="#" class="nav-link waves-effect bold-1">
+							<li class="nav-item suspenso" id="favoritas">
+								<a href="lista_receita.php?tipo=favoritas" class="nav-link waves-effect bold-1">
 									<i class="fas fa-heart mr-3"></i>Receitas Favoritas
 								</a>
 							</li>
@@ -401,7 +404,7 @@ include 'src/Util.php';
 		<!-- Sidebar -->
 		<div class="sidebar-fixed position-fixed">
 
-			<img src="images/logo.png" id="logo">
+			<img src="images/logo.png" id="logo" onclick="window.location='home.php'">
 
 			<div class="list-group list-group-flush">
 
@@ -421,7 +424,7 @@ include 'src/Util.php';
 					<?php 
 					if($logado == 1){
 						?>
-						<a href="#" class="list-group-item list-group-item-action waves-effect">
+						<a href="lista_receita.php?tipo=favoritas" class="list-group-item list-group-item-action waves-effect">
 							<i class="fas fa-star mr-3"></i>Receitas Favoritas
 						</a>
 						<?php
@@ -497,4 +500,4 @@ include 'src/Util.php';
 		<!--Main Navigation-->
 
 		<!--Main layout-->
-		<main class="pt-5 mx-lg-5">
+		<main class="pt-5 mx-lg-5" style="padding-top: 3%!important; padding-bottom: 3%!important;">

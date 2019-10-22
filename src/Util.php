@@ -404,11 +404,27 @@
                             </div>
 
                             <div class="col-sm-2 col-6">
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span>
+                                <?php 
+
+                                    $conexao = new conexao();
+
+                                    $media = $conexao->selectDB("SELECT AVG(`avaliacao`) AS media FROM `avaliacao` WHERE `receita` = ".$value->getId()." GROUP BY `receita` ORDER BY media DESC");
+
+                                    $media = intval($media[0]->media);
+
+                                    for($i = 1; $i <= 5; $i++){
+                                        if($i <= $media){
+                                            ?>
+                                            <span class="fa fa-star checked"></span>
+                                            <?php
+                                        }else{
+                                            ?>
+                                            <span class="fa fa-star"></span>
+                                            <?php
+                                        }
+                                    }
+                                ?>
+                                
                             </div>
 
                             <div class="col-md-2">
