@@ -124,8 +124,5 @@ class Ingrediente {
             return false;
         }
     }
-    
-    
-    
 }
 ?>

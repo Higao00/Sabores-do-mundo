@@ -1,30 +1,4 @@
 <?php 
-	class Upload{
-        var $tipo;
-        var $nome;
-        var $tamanho;
-         
-        function Upload(){
-        //Criando objeto
-        }
-         
-        function UploadArquivo($arquivo, $pasta){ 
-            if(isset($arquivo)){
-                $nomeOriginal = $arquivo["name"]; 
-                $tamanho = $arquivo["size"];
-                 
-                if (move_uploaded_file($arquivo["tmp_name"], $pasta . $nomeOriginal)){ 
-
-                    $this->nome=$pasta . $nomeOriginal;
-                    $this->tamanho=number_format($arquivo["size"]/1024, 2) . "KB";
-                    return true; 
-                }else{ 
-                    return false;
-                } 
-            }
-        } 
-    }
-
     class Image{
     	/**
     	 * @param string form_field - The HTML form field name to check
@@ -473,7 +447,7 @@
 
         foreach ($aux as $key => $value) {
 
-            $dado = '';
+            $dado = [];
             $dado['titulo'] = $titulo;
             $dado['msg'] = $msg;
             $dado['icon'] = 'http://descomplicasms.com/saboresdomundo/images/icons/icon-512x512.png';
