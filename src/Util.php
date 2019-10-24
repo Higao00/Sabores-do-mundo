@@ -1,30 +1,4 @@
 <?php 
-	class Upload{
-        var $tipo;
-        var $nome;
-        var $tamanho;
-         
-        function Upload(){
-        //Criando objeto
-        }
-         
-        function UploadArquivo($arquivo, $pasta){ 
-            if(isset($arquivo)){
-                $nomeOriginal = $arquivo["name"]; 
-                $tamanho = $arquivo["size"];
-                 
-                if (move_uploaded_file($arquivo["tmp_name"], $pasta . $nomeOriginal)){ 
-
-                    $this->nome=$pasta . $nomeOriginal;
-                    $this->tamanho=number_format($arquivo["size"]/1024, 2) . "KB";
-                    return true; 
-                }else{ 
-                    return false;
-                } 
-            }
-        } 
-    }
-
     class Image{
     	/**
     	 * @param string form_field - The HTML form field name to check
@@ -404,11 +378,27 @@
                             </div>
 
                             <div class="col-sm-2 col-6">
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span>
+                                <?php 
+
+                                    $conexao = new conexao();
+
+                                    $media = $conexao->selectDB("SELECT AVG(`avaliacao`) AS media FROM `avaliacao` WHERE `receita` = ".$value->getId()." GROUP BY `receita` ORDER BY media DESC");
+
+                                    $media = intval($media[0]->media);
+
+                                    for($i = 1; $i <= 5; $i++){
+                                        if($i <= $media){
+                                            ?>
+                                            <span class="fa fa-star checked"></span>
+                                            <?php
+                                        }else{
+                                            ?>
+                                            <span class="fa fa-star"></span>
+                                            <?php
+                                        }
+                                    }
+                                ?>
+                                
                             </div>
 
                             <div class="col-md-2">
@@ -457,7 +447,7 @@
 
         foreach ($aux as $key => $value) {
 
-            $dado = '';
+            $dado = [];
             $dado['titulo'] = $titulo;
             $dado['msg'] = $msg;
             $dado['icon'] = 'http://descomplicasms.com/saboresdomundo/images/icons/icon-512x512.png';

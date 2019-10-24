@@ -6,20 +6,20 @@
 if(isset($_SESSION['id_user'])){
     $logado = 1; 
 }else{
+    $logado = 0; 
     session_start();
-
-    if(!isset($_SESSION['id_user']) || !isset($_GET['id_receita'])){
-        header('Location: home.php');
-        die();
-    }
 }
-
 
 
 ?>
 
 <?php 
 include 'topo.php';
+
+if(isset($_SESSION['id_user'])){
+    $current_user = new Usuario();
+    $current_user->selectUserId($_SESSION['id_user']);
+}
 
 // include "src/conexao.php";
 
@@ -52,6 +52,14 @@ $receita->selectReceitaId($_GET['id_receita']);
 
     .favorito{
         color: red;
+    }
+
+    .fa-star:hover{
+        cursor: pointer;
+    }
+
+    .fa-heart:hover{
+        cursor: pointer;
     }
 </style>
 
@@ -111,18 +119,61 @@ $receita->selectReceitaId($_GET['id_receita']);
                 <div class="col-sm-2 col-6">
                     <?php 
 
-                        for ($i=1; $i <= 5 ; $i++) { 
-                            ?>
-                            <span class="fa fa-star checked" value="<?php echo($i) ?>"></span>
-                            <?php
+                        if(isset($_SESSION['id_user'])){
+                            $avaliacao = new Avaliacao();
+                            $avaliacoes = $avaliacao->executeQuery("SELECT * FROM `avaliacao` WHERE `usuario` = ".$current_user->getId()." AND `receita` = ".$receita->getId());
+
+                            if(count($avaliacoes)){
+                                for ($i=1; $i <= 5 ; $i++) { 
+
+                                    if($i <= $avaliacoes[0]->getAvaliacao()){
+                                        ?>
+                                        <span class="fa fa-star checked" value="<?php echo($i) ?>"></span>
+                                        <?php
+                                    }else{
+                                        ?>
+                                        <span class="fa fa-star" value="<?php echo($i) ?>"></span>
+                                        <?php
+                                    }
+                                }
+                            }else{
+                                for ($i=1; $i <= 5 ; $i++) { 
+                                   ?>
+                                   <span class="fa fa-star" value="<?php echo($i) ?>"></span>
+                                   <?php
+                                }
+                            }
                         }
                     ?>
 
                 </div>
 
-                <div class="col-sm-2 col-6" align="center">
-                    <span class="fa fa-heart favorito" value="<?php echo($receita->getId()); ?>" style="font-size: 26px;"></span>
-                </div>
+
+                    <?php 
+
+                        if(isset($_SESSION['id_user'])){
+                            ?>
+                                <div class="col-sm-2 col-6" align="center">
+                            <?php
+
+                            $receitafav = new ReceitaFavorita();
+                            $aux_receitafav = $receitafav->executeQuery("SELECT * FROM `receita_favorita` WHERE `receita` =".$receita->getId()." AND `usuario`= ".$_SESSION['id_user']);
+
+                            if(count($aux_receitafav)){
+                                ?>
+                                    <span class="fa fa-heart favorito" value="<?php echo($receita->getId()); ?>" style="font-size: 26px;"></span>
+                                <?php
+                            }else{
+                                ?>
+                                    <span class="fa fa-heart" value="<?php echo($receita->getId()); ?>" style="font-size: 26px;"></span>
+                                <?php
+                            }
+                            ?>
+                                </div>
+                            <?php
+                        }
+
+                    ?>
 
                 <div class="col-md-2 col-6">
                     <?php 
@@ -140,6 +191,7 @@ $receita->selectReceitaId($_GET['id_receita']);
                     ?>
                 </div>
                 <div class="col-sm-12" align="center">
+
                     <a href="#adicionar-foto" class="btn btn-success" data-toggle="modal" data-target="#adicionar-foto">Adicionar Foto</a>
                 </div>
             </div>
@@ -232,6 +284,114 @@ include 'rodape.php';
 
 <!-- FAZER AQUI A INCLUSAO DE SCRIPTS OU SEUS PROPIOS SCRIPTS -->
 <script>
+
+    $(document).ready(function(){
+
+        <?php 
+            if(isset($_SESSION['id_user'])){
+
+                echo 'var user = '.$_SESSION['id_user'].',';
+                echo "receita = ".$receita->getId().';';
+            ?>
+
+            $('.fa-star').click(function(){
+                
+                let valor = $(this).attr('value');
+
+                //limpo as estrelas
+                $('span.fa-star').each(function(){
+                    $(this).removeClass('checked');
+                });
+
+                $.ajax({  
+                    url:'control/avaliacao.php',  
+                    method:'POST', 
+                    data: {user:user, receita:receita, valor:valor, avalia_receita:1},
+                    dataType:'json',  
+                    success: dados =>   
+                    {   
+                       Swal.fire(
+                            'Sucesso ao Gravar a Avaliação !',
+                            '',
+                            'success'
+                        );
+
+                       $('span.fa-star').each(function(i){
+                            if(i < valor){
+                                $(this).addClass('checked');
+                            }
+                       });
+                    },
+                    error: erro => {
+                        Swal.fire(
+                            'Erro ao Gravar a Avaliação!',
+                            '',
+                            'error'
+                        );
+                    }  
+                });
+
+                $.ajax({  
+                    url:'control/avaliacao.php',  
+                    method:'POST', 
+                    data: {user:user, receita:receita, valor:valor, manda_notificacao:1},
+                });
+            });
+
+            $('span.fa-heart').click(function(){
+
+                var acao ='';
+                $('span.fa-heart').hasClass('favorito') ? acao = 'desfavorita' : acao = 'favorita';
+
+                console.log(acao);
+
+                $.ajax({  
+                    url:'control/receita_favorita.php',  
+                    method:'POST', 
+                    data: {user:user, receita:receita, acao:acao},
+                    dataType:'json',  
+                    success: dados =>   
+                    {   
+                      if(acao == 'favorita'){
+                        $('span.fa-heart').addClass('favorito');
+
+                        Swal.fire(
+                             'Sucesso ao Favoritar a Receita!',
+                             '',
+                             'success'
+                         );
+
+                        $.ajax({  
+                            url:'control/receita_favorita.php',  
+                            method:'POST', 
+                            data: {user:user, receita:receita, manda_notificacao:1},
+                        });
+
+                      }else{
+                        Swal.fire(
+                             'Sucesso ao Desfavoritar a Receita!',
+                             '',
+                             'success'
+                         ); 
+
+                        $('span.fa-heart').removeClass('favorito');
+                      }
+                    },
+                    error: erro => {
+                        Swal.fire(
+                            'Erro ao Favoritar a Receita!',
+                            '',
+                            'error'
+                        );
+                    }  
+                });
+            });
+
+            <?php
+            }
+        ?>
+
+    });
 
 
 </script>

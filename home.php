@@ -7,7 +7,9 @@ require 'topo.php';
 
 <!-- INCLUIR OU CRIAR AQUI SEUS ESTILOS -->
 <style>
-
+	.checked {
+	  color: orange!important;
+	}
 </style>
 
 <!-- CRIAR AQUI O HTML DA SUA PAGINA -->

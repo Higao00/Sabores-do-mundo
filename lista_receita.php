@@ -6,12 +6,8 @@
 if(isset($_SESSION['id_user'])){
     $logado = 1; 
 }else{
+    $logado = 0;
     session_start();
-
-    if(!isset($_SESSION['id_user'])){
-        header('Location: home.php');
-        die();
-    }
 }
 ?>
 
@@ -26,7 +22,7 @@ include 'topo.php';
     }
 
     .checked {
-      color: orange;
+      color: orange!important;
     }
 </style>
 
@@ -34,8 +30,6 @@ include 'topo.php';
 <!-- Card -->
 <div class="container">
     <?php 
-
-
 
         if(isset($_GET['tipo'])){
 
@@ -67,6 +61,24 @@ include 'topo.php';
                     $receita = new Receita();
 
                     $aux = $receita->executeQuery('SELECT `receita`.* FROM `receita` INNER JOIN `categoria` ON `receita`.`categoria` = `categoria`.`id` WHERE `categoria`.`id` = '.$id_categoria);
+
+                    monta_lista_receita($aux);
+                    break;
+
+                case 'top_receita':
+                    $receita = new Receita();
+
+                    $aux = $receita->executeQuery('SELECT `receita`.* FROM `receita` INNER JOIN (SELECT AVG(`avaliacao`) AS media, id AS id_aux FROM `avaliacao` GROUP BY `receita` ORDER BY media DESC) AS aux_receita ON receita.id = aux_receita.id_aux');
+
+                    monta_lista_receita($aux);
+                    break;
+
+                case 'favoritas':
+                    isset($_SESSION['id_user']) ? $user = $_SESSION['id_user'] : $user = -1;
+
+                    $receita = new Receita();
+
+                    $aux = $receita->executeQuery('SELECT `receita`.* FROM `receita` INNER JOIN `receita_favorita` ON `receita`.`id` = `receita_favorita`.`receita`  WHERE `receita_favorita`.`usuario` = '.$user);
 
                     monta_lista_receita($aux);
                     break;
@@ -108,6 +120,18 @@ include 'rodape.php';
                     case 'pais':
                         ?>
                         $('li#pais-receita').addClass('ativo');
+                        <?php
+                        break;
+                    case 'top_receita':
+                        ?>
+                        $('li#top_receita').addClass('ativo');
+                        <?php
+                        break;
+                    case 'favoritas':
+                        ?>
+                        $('li#favoritas').addClass('ativo');
+
+                        $('a[href="lista_receita.php?tipo=favoritas"]').addClass('active');
                         <?php
                         break;
                     

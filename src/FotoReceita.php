@@ -79,11 +79,14 @@ class FotoReceita {
         try {
             $connect = $conexao->selectDB("SELECT * FROM `foto_receita` WHERE `id` = " . $id);
 
-            $this->id = $connect[0]->id;
-            $this->receita = $connect[0]->receita;
-            $this->path_foto = $connect[0]->path_foto;
-            $this->usuario = $connect[0]->usuario;
-            $this->timestamp = $connect[0]->timestamp;
+            if(count($connect)){
+                $this->id = $connect[0]->id;
+                $this->receita = $connect[0]->receita;
+                $this->path_foto = $connect[0]->path_foto;
+                $this->usuario = $connect[0]->usuario;
+                $this->timestamp = $connect[0]->timestamp;
+            }
+           
         } catch (Exception $ex) {
             var_dump($ex);
         }

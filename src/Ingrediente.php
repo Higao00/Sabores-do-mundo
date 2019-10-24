@@ -113,7 +113,7 @@ class Ingrediente {
 
             foreach ($connect as $key => $value) {
                 if (isset($value->id) && isset($value->nome) && isset($value->medida) && isset($value->timestamp)) {
-                    $aux = new Ingrediente($value->id, $value->nome, $value->medida, $$value->timestamp);
+                    $aux = new Ingrediente($value->id, $value->nome, $value->medida, $value->timestamp);
                     $ingrediente[] = $aux;
                 }
             }
@@ -124,8 +124,5 @@ class Ingrediente {
             return false;
         }
     }
-    
-    
-    
 }
 ?>

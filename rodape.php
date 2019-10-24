@@ -156,9 +156,16 @@
 						foreach ($paises as $key => $value) {
 							?>
 							<li class="nav-item"> 
-								<a class="dropdown-item" href="lista_receita.php?tipo=pais&id=<?php echo($value->getId()); ?>" style="font-size: 20px; font-weight: bold;">
-									<img src="<?php echo($value->getPath_icon()); ?>" id="<?php echo($key) ?>" width="50">
-									<?php echo $value->getNome(); ?>
+								<div class="row">
+									<div class="col-sm-4" align="right">
+										<img src="<?php echo($value->getPath_icon()); ?>" id="<?php echo($key) ?>" width="50">
+									</div>
+									<div class="col-sm-8" align="left">
+										<a class="dropdown-item" href="lista_receita.php?tipo=pais&id=<?php echo($value->getId()); ?>" style="font-size: 20px; font-weight: bold;">
+											<?php echo $value->getNome(); ?>
+
+									</div>
+								</div>
 								</a>
 							</li>
 							<?php
