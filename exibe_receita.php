@@ -56,7 +56,7 @@ $receita->selectReceitaId($_GET['id_receita']);
 </style>
 
 <!-- CRIAR AQUI O HTML DA SUA PAGINA -->
-<div class="container-fluid" style="padding: 45px;">
+<div class="container">
 
     <div class="card">
         <!-- Card content -->
