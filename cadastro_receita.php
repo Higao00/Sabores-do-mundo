@@ -1,5 +1,10 @@
 <?php 
 	include "topo.php";
+
+	if(!isset($_SESSION['id_user'])){
+		header('Location: ../home.php');
+		die();
+	}
 ?>
 <!-- INCLUIR OU CRIAR AQUI SEUS ESTILOS -->
 <style>

@@ -1,11 +1,18 @@
 </main>
 
 <!-- Botao Flutuante -->
+<?php 
 
-<div class="fab">
-	<button class="main" onclick="location.href='cadastro_receita.php'">
-	</button>
-</div>
+	if($logado == 1){
+		?>
+		<div class="fab">
+			<button class="main" onclick="location.href='cadastro_receita.php'">
+			</button>
+		</div>
+		<?php
+	}
+
+?>
 
 
 <div class="modal fade" id="cadastro" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria="true">

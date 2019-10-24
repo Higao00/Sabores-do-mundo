@@ -1,19 +1,14 @@
 <?php
 
-// error_reporting(0);
-// ini_set(“display_errors”, 0 );
+error_reporting(0);
+ini_set(“display_errors”, 0 );
 
 if(isset($_SESSION['id_user'])){
     $logado = 1; 
 }else{
     $logado = 0; 
-    session_start();
 }
 
-
-?>
-
-<?php 
 include 'topo.php';
 
 if(isset($_SESSION['id_user'])){
@@ -60,6 +55,17 @@ $receita->selectReceitaId($_GET['id_receita']);
 
     .fa-heart:hover{
         cursor: pointer;
+    }
+    main{
+        padding-top: 10%!important;
+        padding-bottom: 5%!important;
+    }
+
+    @media only screen and (max-width: 450px) {
+        main{
+            padding-top: 20%!important;
+            padding-bottom: 5%!important;
+        }
     }
 </style>
 

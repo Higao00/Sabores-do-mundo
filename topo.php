@@ -3,7 +3,6 @@ if(isset($_SESSION) && isset($_SESSION['id_user'])){
 	$logado = 1; 
 }else{
 	session_start();
-
 	if(isset($_SESSION['id_user'])){
 		$logado = 1; 
 	}else{
@@ -222,6 +221,10 @@ include 'src/Util.php';
 		li.ativo > a{
 			color: #FFF!important;
 		}
+		main{
+			padding-top: 5%!important; 
+			padding-bottom: 3%!important;
+		}
 	</style>
 
 	<style type="text/css">
@@ -240,6 +243,11 @@ include 'src/Util.php';
 
 			img#icon-mobile{
 				display: inline-block!important;
+			}
+
+			main{
+				padding-top: 25%!important;
+				padding-bottom: 5%!important;
 			}
 		}
 	</style>
@@ -500,4 +508,4 @@ include 'src/Util.php';
 		<!--Main Navigation-->
 
 		<!--Main layout-->
-		<main class="pt-5 mx-lg-5" style="padding-top: 3%!important; padding-bottom: 3%!important;">
+		<main class="mx-lg-5">

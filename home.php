@@ -10,6 +10,13 @@ require 'topo.php';
 	.checked {
 	  color: orange!important;
 	}
+
+	 @media only screen and (max-width: 450px) {
+        main{
+            padding-top: 15%!important;
+            padding-bottom: 5%!important;
+        }
+    }
 </style>
 
 <!-- CRIAR AQUI O HTML DA SUA PAGINA -->
