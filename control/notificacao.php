@@ -108,4 +108,7 @@
 		header('Location: ../index.php?status=1');
 		die();
 	}
+
+	header('Location: ../home.php');
+	die();
 ?>

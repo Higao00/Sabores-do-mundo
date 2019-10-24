@@ -265,7 +265,7 @@ $receita->selectReceitaId($_GET['id_receita']);
                         <input type="text" name="id-receita" style="display: none;" value="<?php echo($receita->getId()); ?>">
 
                         <div class="form-group custom-file">
-                            <input type="file" class="custom-file-input" id="adicionar-foto" name="adicionar-foto" accept="image/*">
+                            <input type="file" class="custom-file-input" id="adicionar-foto" required name="adicionar-foto" accept="image/*">
                             <label class="custom-file-label" for="adicionar-foto" data-browse="Galeria">
                                 Selecione seu Arquivo
                             </label>

@@ -167,6 +167,7 @@ include 'src/Util.php';
 			position: fixed;
 			bottom:10px;
 			right:10px;
+			z-index: 2;
 		}
 
 		.fab button{
@@ -193,7 +194,6 @@ include 'src/Util.php';
 			background-color: #b30000;
 			right: 0;
 			bottom: 0;
-			z-index: -1!important;
 		}
 
 		.fab button.main:before{
