@@ -95,7 +95,7 @@ if(isset($_SESSION['id_user'])){
                                     <td class="pt-3-half"><input class="form-control" type="text" name="localidade" form="<?php echo($randomic);?>"  placeholder="Localidade"></td>
                                     <td class="pt-3-half"> 
                                         <div class="form-group custom-file">
-                                            <input type="file" class="custom-file-input" name="icone_pais" required accept="image/*" form="<?php echo($randomic);?>">
+                                            <input type="file" class="custom-file-input" name="icone_pais" accept="image/*" form="<?php echo($randomic);?>">
                                             <label class="custom-file-label" for="adicionar-foto" data-browse="Galeria" style="text-align: left;">
                                                 Selecione o Icone
                                             </label>
@@ -127,7 +127,7 @@ if(isset($_SESSION['id_user'])){
                                         <td class="pt-3-half"><input disabled class="form-control" required type="text" name="localidade" form="<?php echo($randomic);?>"  placeholder="Localidade" value="<?php echo($value->getLocalidade());  ?>"></td>
                                         <td class="pt-3-half"> 
                                             <div class="form-group custom-file">
-                                                <input type="file" class="custom-file-input" name="icone_pais" required accept="image/*" form="<?php echo($randomic);?>">
+                                                <input type="file" class="custom-file-input" name="icone_pais" accept="image/*" form="<?php echo($randomic);?>">
                                                 <label class="custom-file-label" for="adicionar-foto" data-browse="Galeria" style="text-align: left;">
                                                     Selecione o Icone
                                                 </label>

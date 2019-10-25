@@ -128,6 +128,8 @@
 			<!--Footer-->
 
 			<form action="control/notificacao.php" method="POST" id="form-notifica">
+				<input name="auth" value="" required style="display:none;">
+				<input name="p256dh" value="" required style="display:none;">
 			</form>
 
 			<div class="modal-footer flex-center">
@@ -164,10 +166,10 @@
 							?>
 							<li class="nav-item"> 
 								<div class="row">
-									<div class="col-sm-4" align="right">
+									<div class="col-sm-4 col-4" align="right">
 										<img src="<?php echo($value->getPath_icon()); ?>" id="<?php echo($key) ?>" width="50">
 									</div>
-									<div class="col-sm-8" align="left">
+									<div class="col-sm-8 col-8" align="left">
 										<a class="dropdown-item" href="lista_receita.php?tipo=pais&id=<?php echo($value->getId()); ?>" style="font-size: 20px; font-weight: bold;">
 											<?php echo $value->getNome(); ?>
 
@@ -210,10 +212,14 @@
 							?>
 							<li class="nav-item"> 
 								<div class="row">
-									<a class="dropdown-item" href="lista_receita.php?tipo=categoria&id=<?php echo($value->getId()); ?>" style="font-size: 20px; font-weight: bold;">
+									<div class="col-sm-4 col-4" align="right">
 										<img src="<?php echo($value->getPath_icon()); ?>" id="<?php echo($key) ?>" width="50">
-										<?php echo $value->getTitulo(); ?>
-									</a>
+									</div>
+									<div class="col-sm-8 col-8" align="left">
+										<a class="dropdown-item" href="lista_receita.php?tipo=categoria&id=<?php echo($value->getId()); ?>" style="font-size: 20px; font-weight: bold;">
+											<?php echo $value->getTitulo(); ?>
+										</a>
+									</div>
 								</div>
 							</li>
 							<?php
@@ -307,11 +313,19 @@
 		  	$('form#login > div.row').append("<input name='auth' value='"+auth+"' style='display:none;'>");
 		  	$('form#login > div.row').append('<input name="p256dh" value="'+p256dh+'" style=" display:none;">');
 
-		  	$('form#form-notifica').append("<input name='auth' value='"+auth+"' style='display:none;'>");
-		  	$('form#form-notifica').append('<input name="p256dh" value="'+p256dh+'" style=" display:none;">');
+		  	$('form#form-notifica > input[name="auth"]').val(auth);
+		  	$('form#form-notifica > input[name="p256dh"]').val(p256dh);
 
 		  } 		  
 		  //updateBtn();
+		});
+
+		// Rotina para inpedir multiplos cliques de submit em formularios
+		$(document).on("submit", "form", function() {
+		    $(this).submit(function() {
+		        return false;
+		    });
+		    return true;
 		});
 
 	});
