@@ -1,5 +1,7 @@
 # Sistema para compartilhamento de receitas culinárias
-Sistema para compartilhamento de receitas culinárias.
+Feito com técnologias como HTML5, MDBootstrap, JQuery, AJAX, PWA e muito mais ...
+
+![alt text](https://raw.githubusercontent.com/Lucas-Feitas/SaboresDoMundo/master/images/prints/print1.jpg)
 
 ## Documentação Extra
 * [Como utilizar o GitHub](https://docs.google.com/document/d/1tkLoMl36GVBOLx65DFY7RL-ss-EARA5kiWxK7eJA0Hs/)
@@ -24,3 +26,4 @@ se encontra em -> SaboresDoMundo/database/saboresdomundo.sql
 Depois de importar a base de dados altere o arquivo de conexão com os 
 dados criados para -> SaboresDoMundo/src/conexao.php
 ```
+z
