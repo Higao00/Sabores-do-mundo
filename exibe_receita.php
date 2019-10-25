@@ -114,15 +114,15 @@ $receita->selectReceitaId($_GET['id_receita']);
             <!-- Title -->
             <div class="row">
 
-                <div class="col-sm-4">
+                <div class="col-sm-4" align="center">
                     <h4 class="card-title"><a style="font-size: 28px; "><?php echo $receita->getTitulo(); ?></a></h4>
                 </div>
 
-                <div class="col-sm-2 col-6">
+                <div class="col-sm-2 col-6" align="center">
                     <h6 class="font-weight-bold indigo-text py-2" style="padding-top: 0px!important;"> <i class="far fa-clock"></i> <?php echo number_format($receita->getTempo_preparo(), 2, ':', ''); ?></h6>
                 </div>
 
-                <div class="col-sm-2 col-6">
+                <div class="col-sm-2 col-6" align="center">
                     <?php 
 
                         if(isset($_SESSION['id_user'])){
@@ -159,7 +159,7 @@ $receita->selectReceitaId($_GET['id_receita']);
 
                         if(isset($_SESSION['id_user'])){
                             ?>
-                                <div class="col-sm-2 col-6" align="center">
+                                <div class="col-sm-2 col-6" align="center" >
                             <?php
 
                             $receitafav = new ReceitaFavorita();
@@ -181,7 +181,7 @@ $receita->selectReceitaId($_GET['id_receita']);
 
                     ?>
 
-                <div class="col-md-2 col-6">
+                <div class="col-md-2 col-6" align="center">
                     <?php 
                         $pais = new Pais();
                         $aux = $pais->executeQuery("SELECT `pais`.* FROM `pais` INNER JOIN `receita` ON `pais`.`id` = `receita`.`pais` WHERE `receita`.`id` = ".$receita->getId());
@@ -189,7 +189,7 @@ $receita->selectReceitaId($_GET['id_receita']);
                         if(count($aux)){
                             ?>
                             <a href="#" style="font-size: 16px; font-weight: bold; color: #000;">
-                                <img src="<?php echo($aux[0]->getPath_icon()); ?>" width="30">
+                                <img src="<?php echo($aux[0]->getPath_icon()); ?>" class="rounded-circle hoverable" width="30">
                                 <?php echo $aux[0]->getNome(); ?>
                             </a>
                             <?php
@@ -197,8 +197,14 @@ $receita->selectReceitaId($_GET['id_receita']);
                     ?>
                 </div>
                 <div class="col-sm-12" align="center">
+                    <?php 
+                        if(isset($_SESSION['id_user'])){
+                            ?>
+                            <a href="#adicionar-foto" class="btn btn-success" data-toggle="modal" data-target="#adicionar-foto">Adicionar Foto</a>
+                            <?
+                        }
 
-                    <a href="#adicionar-foto" class="btn btn-success" data-toggle="modal" data-target="#adicionar-foto">Adicionar Foto</a>
+                    ?>
                 </div>
             </div>
 
@@ -300,104 +306,104 @@ include 'rodape.php';
                 echo "receita = ".$receita->getId().';';
             ?>
 
-            $('.fa-star').click(function(){
-                
-                let valor = $(this).attr('value');
+                $('.fa-star').click(function(){
+                    
+                    let valor = $(this).attr('value');
 
-                //limpo as estrelas
-                $('span.fa-star').each(function(){
-                    $(this).removeClass('checked');
+                    //limpo as estrelas
+                    $('span.fa-star').each(function(){
+                        $(this).removeClass('checked');
+                    });
+
+                    $.ajax({  
+                        url:'control/avaliacao.php',  
+                        method:'POST', 
+                        data: {user:user, receita:receita, valor:valor, avalia_receita:1},
+                        dataType:'json',  
+                        success: dados =>   
+                        {   
+                           Swal.fire(
+                                'Sucesso ao Gravar a Avaliação !',
+                                '',
+                                'success'
+                            );
+
+                           $('span.fa-star').each(function(i){
+                                if(i < valor){
+                                    $(this).addClass('checked');
+                                }
+                           });
+                        },
+                        error: erro => {
+                            Swal.fire(
+                                'Erro ao Gravar a Avaliação!',
+                                '',
+                                'error'
+                            );
+                        }  
+                    });
+
+                    $.ajax({  
+                        url:'control/avaliacao.php',  
+                        method:'POST', 
+                        data: {user:user, receita:receita, valor:valor, manda_notificacao:1},
+                    });
                 });
 
-                $.ajax({  
-                    url:'control/avaliacao.php',  
-                    method:'POST', 
-                    data: {user:user, receita:receita, valor:valor, avalia_receita:1},
-                    dataType:'json',  
-                    success: dados =>   
-                    {   
-                       Swal.fire(
-                            'Sucesso ao Gravar a Avaliação !',
-                            '',
-                            'success'
-                        );
+                $('span.fa-heart').click(function(){
 
-                       $('span.fa-star').each(function(i){
-                            if(i < valor){
-                                $(this).addClass('checked');
-                            }
-                       });
-                    },
-                    error: erro => {
-                        Swal.fire(
-                            'Erro ao Gravar a Avaliação!',
-                            '',
-                            'error'
-                        );
-                    }  
+                    var acao ='';
+                    $('span.fa-heart').hasClass('favorito') ? acao = 'desfavorita' : acao = 'favorita';
+
+                    // console.log(acao);
+
+                    $.ajax({  
+                        url:'control/receita_favorita.php',  
+                        method:'POST', 
+                        data: {user:user, receita:receita, acao:acao},
+                        dataType:'json',  
+                        success: dados =>   
+                        {   
+                          if(acao == 'favorita'){
+                            $('span.fa-heart').addClass('favorito');
+
+                            Swal.fire(
+                                 'Sucesso ao Favoritar a Receita!',
+                                 '',
+                                 'success'
+                             );
+
+                            $.ajax({  
+                                url:'control/receita_favorita.php',  
+                                method:'POST', 
+                                data: {user:user, receita:receita, manda_notificacao:1},
+                            });
+
+                          }else{
+                            Swal.fire(
+                                 'Sucesso ao Desfavoritar a Receita!',
+                                 '',
+                                 'success'
+                             ); 
+
+                            $('span.fa-heart').removeClass('favorito');
+                          }
+                        },
+                        error: erro => {
+                            Swal.fire(
+                                'Erro ao Favoritar a Receita!',
+                                '',
+                                'error'
+                            );
+                        }  
+                    });
                 });
-
-                $.ajax({  
-                    url:'control/avaliacao.php',  
-                    method:'POST', 
-                    data: {user:user, receita:receita, valor:valor, manda_notificacao:1},
-                });
-            });
-
-            $('span.fa-heart').click(function(){
-
-                var acao ='';
-                $('span.fa-heart').hasClass('favorito') ? acao = 'desfavorita' : acao = 'favorita';
-
-                console.log(acao);
-
-                $.ajax({  
-                    url:'control/receita_favorita.php',  
-                    method:'POST', 
-                    data: {user:user, receita:receita, acao:acao},
-                    dataType:'json',  
-                    success: dados =>   
-                    {   
-                      if(acao == 'favorita'){
-                        $('span.fa-heart').addClass('favorito');
-
-                        Swal.fire(
-                             'Sucesso ao Favoritar a Receita!',
-                             '',
-                             'success'
-                         );
-
-                        $.ajax({  
-                            url:'control/receita_favorita.php',  
-                            method:'POST', 
-                            data: {user:user, receita:receita, manda_notificacao:1},
-                        });
-
-                      }else{
-                        Swal.fire(
-                             'Sucesso ao Desfavoritar a Receita!',
-                             '',
-                             'success'
-                         ); 
-
-                        $('span.fa-heart').removeClass('favorito');
-                      }
-                    },
-                    error: erro => {
-                        Swal.fire(
-                            'Erro ao Favoritar a Receita!',
-                            '',
-                            'error'
-                        );
-                    }  
-                });
-            });
 
             <?php
             }
+        }
         ?>
 
     });
-
 
 </script>

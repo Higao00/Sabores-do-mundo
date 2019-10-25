@@ -402,7 +402,14 @@ include 'src/Util.php';
 							<?php
 						}
 						?>
+					</ul>
 
+					<ul class="navbar-nav nav-flex-icons">
+						<li class="nav-item">
+							<a href="https://github.com/Lucas-Feitas/SaboresDoMundo" class="nav-link waves-effect"target="_blank">
+								<img src="images/github-brands.svg" width="26"> GitHub
+							</a>
+						</li>
 					</ul>
 				</div>
 			</div>

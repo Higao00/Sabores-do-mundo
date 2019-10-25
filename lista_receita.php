@@ -75,7 +75,7 @@ include 'topo.php';
                 case 'top_receita':
                     $receita = new Receita();
 
-                    $aux = $receita->executeQuery('SELECT `receita`.* FROM `receita` INNER JOIN (SELECT AVG(`avaliacao`) AS media, id AS id_aux FROM `avaliacao` GROUP BY `receita` ORDER BY media DESC) AS aux_receita ON receita.id = aux_receita.id_aux');
+                    $aux = $receita->executeQuery('SELECT `receita`.* FROM `receita` LEFT JOIN (SELECT AVG(`avaliacao`) AS media, receita AS id_aux FROM `avaliacao` GROUP BY `receita` ORDER BY media DESC) AS aux_receita ON receita.id = aux_receita.id_aux ORDER BY aux_receita.media DESC');
 
                     monta_lista_receita($aux);
                     break;

@@ -48,8 +48,8 @@
 	}
 
 	@media only screen and (max-width: 450px) {
-		p#titulo-page{
-			margin-top: 50px;
+		main{
+			padding-top: 15%!important;
 		}
 	}
 </style>

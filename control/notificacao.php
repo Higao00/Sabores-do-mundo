@@ -78,7 +78,7 @@
 			$dado = '';
 			$dado['titulo'] = $_POST['msg'];
 			$dado['msg'] = $_POST['msg'];
-			$dado['icon'] = 'http://descomplicasms.com/saboresdomundo/images/icons/icon-512x512.png';
+			$dado['icon'] = 'http://saboresdomundo.tech/saboresdomundo/images/icons/icon-512x512.png';
 			$dado['link_red'] = 'http://descomplicasms.com';
 
 			$notifica_linha['dados'] = $dado;

@@ -384,7 +384,11 @@
 
                                     $media = $conexao->selectDB("SELECT AVG(`avaliacao`) AS media FROM `avaliacao` WHERE `receita` = ".$value->getId()." GROUP BY `receita` ORDER BY media DESC");
 
-                                    $media = intval($media[0]->media);
+                                    if(count($media)){
+                                        $media = intval($media[0]->media);
+                                    }else{
+                                        $media = 0;
+                                    }
 
                                     for($i = 1; $i <= 5; $i++){
                                         if($i <= $media){
@@ -409,7 +413,7 @@
                                     if(count($aux)){
                                         ?>
                                         <a href="#" style="font-size: 16px; font-weight: bold; color: #000;">
-                                            <img src="<?php echo($aux[0]->getPath_icon()); ?>" width="30">
+                                            <img src="<?php echo($aux[0]->getPath_icon()); ?>" class="img-fluid rounded-circle hoverable" width="30">
                                             <?php echo $aux[0]->getNome(); ?>
                                         </a>
                                         <?php
