@@ -1,4 +1,9 @@
 <?php 
+
+error_reporting(0);
+ini_set(“display_errors”, 0 );
+
+
 if(isset($_SESSION) && isset($_SESSION['id_user'])){
 	$logado = 1; 
 }else{

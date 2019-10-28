@@ -201,9 +201,14 @@ $receita->selectReceitaId($_GET['id_receita']);
                         if(isset($_SESSION['id_user'])){
                             ?>
                             <a href="#adicionar-foto" class="btn btn-success" data-toggle="modal" data-target="#adicionar-foto">Adicionar Foto</a>
-                            <?
+                            <?php
                         }
 
+                        if(isset($_SESSION['id_user']) && ($receita->getUsuario() == $_SESSION['id_user'] || $_SESSION['id_user'] == 1)){
+                            ?>
+                            <a href="control/receita.php?excluir-receita=<?php echo($receita->getId()) ?>" class="btn btn-danger">Excluir Receita</a>
+                            <?
+                        }
                     ?>
                 </div>
             </div>
