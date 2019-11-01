@@ -114,7 +114,7 @@
 					</div>
 
 					<div class="col">
-						<label for="select-pais" class="label col" style="font-size: 18px; font-weight: bold;">Pais</label>
+						<label for="select-pais" class="label col" style="font-size: 18px; font-weight: bold;">País</label>
 						<select class=" custom-select" name="pais" required id="select-pais">
 							<option value="-1">Selecione</option>
 							<?php 
