@@ -146,7 +146,7 @@
 		<div class="modal-content text-center">
 			<!--Header-->
 			<div class="modal-header d-flex justify-content-center">
-				<p class="heading" style="font-size: 22px;">Lista de Paises</p>
+				<p class="heading" style="font-size: 22px;">Lista de Países</p>
 				<a class="close" data-dismiss="modal" aria-label="Close" id="botao_paises">
 					<span aria-hidden="true" style="color: #FFF;">&times;</span>
 				</a>

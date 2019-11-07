@@ -60,7 +60,7 @@ if(isset($_SESSION['id_user'])){
         <!-- Content -->
         <div class="card-body">
             <!-- Name -->
-            <h4 class="card-title">Cadastro de Pais</h4>
+            <h4 class="card-title">Cadastro de País</h4>
             <hr>
             <!-- Card -->
             <div class="card">
@@ -76,7 +76,7 @@ if(isset($_SESSION['id_user'])){
                         <table class="table table-bordered table-responsive-md table-striped text-center" id="modo-preparo">
                             <thead>
                                 <tr>
-                                    <th class="text-center">Pais</th>
+                                    <th class="text-center">País</th>
                                     <th class="text-center">Localidade</th>
                                     <th class="text-center">Icone (128pxX128px)</th>
                                     <th class="text-center">Ação</th>
