@@ -26,4 +26,3 @@ se encontra em -> SaboresDoMundo/database/saboresdomundo.sql
 Depois de importar a base de dados altere o arquivo de conexão com os 
 dados criados para -> SaboresDoMundo/src/conexao.php
 ```
-z
